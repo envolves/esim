@@ -1,265 +1,1036 @@
-/*
-  eSIM Solutions Pakistan
-  Static checkout for GitHub Pages.
+/* =========================================================
+   BUSINESS SETTINGS
+========================================================= */
 
-  IMPORTANT:
-  1) Replace SITE_CONFIG.instagramUsername
-  2) Replace SITE_CONFIG.jazzCashNumber
-  3) Replace SITE_CONFIG.jazzCashAccountTitle
-  4) Replace assets/jazzcash-qr-placeholder.svg with your real JazzCash QR image
-*/
+const BUSINESS = {
+  instagram: "esimsolutions.pk",
 
-const SITE_CONFIG = {
-  instagramUsername: "esimsolutions.pk",
-  jazzCashNumber: "0318 7151102",
-  jazzCashAccountTitle: "Mohammad Yasin",
-  jazzCashQrPath: "assets/jazzcash-qr-placeholder.svg"
+  merchantName:
+    "MOHAMMAD Shop",
+
+  tillId:
+    "983606109"
 };
+
+
+/* =========================================================
+   PACKAGE DATA
+========================================================= */
 
 const PACKAGES = {
+
   nonExpiry: [
-    { id: "NE-3", data: "3 GB", price: 1200, validity: "Non-Expiry" },
-    { id: "NE-5", data: "5 GB", price: 1490, validity: "Non-Expiry" },
-    { id: "NE-10", data: "10 GB", price: 2250, validity: "Non-Expiry", featured: true },
-    { id: "NE-20", data: "20 GB", price: 3599, validity: "Non-Expiry" },
-    { id: "NE-50", data: "50 GB", price: 6999, validity: "Non-Expiry" },
-    { id: "NE-100", data: "100 GB", price: 11000, validity: "Non-Expiry" }
+
+    {
+      id: "NE-3",
+      data: "3 GB",
+      validity: "Non-Expiry",
+      price: 1200
+    },
+
+    {
+      id: "NE-5",
+      data: "5 GB",
+      validity: "Non-Expiry",
+      price: 1490
+    },
+
+    {
+      id: "NE-10",
+      data: "10 GB",
+      validity: "Non-Expiry",
+      price: 2250,
+      popular: true
+    },
+
+    {
+      id: "NE-20",
+      data: "20 GB",
+      validity: "Non-Expiry",
+      price: 3599
+    },
+
+    {
+      id: "NE-50",
+      data: "50 GB",
+      validity: "Non-Expiry",
+      price: 6999
+    },
+
+    {
+      id: "NE-100",
+      data: "100 GB",
+      validity: "Non-Expiry",
+      price: 11000
+    }
+
   ],
+
+
   thirtyDays: [
-    { id: "30D-1", data: "1 GB", price: 650, validity: "30 Days" },
-    { id: "30D-3", data: "3 GB", price: 850, validity: "30 Days" },
-    { id: "30D-5", data: "5 GB", price: 1150, validity: "30 Days", featured: true },
-    { id: "30D-10", data: "10 GB", price: 1750, validity: "30 Days" },
-    { id: "30D-20", data: "20 GB", price: 2750, validity: "30 Days" }
+
+    {
+      id: "30-1",
+      data: "1 GB",
+      validity: "30 Days",
+      price: 650
+    },
+
+    {
+      id: "30-3",
+      data: "3 GB",
+      validity: "30 Days",
+      price: 850
+    },
+
+    {
+      id: "30-5",
+      data: "5 GB",
+      validity: "30 Days",
+      price: 1150,
+      popular: true
+    },
+
+    {
+      id: "30-10",
+      data: "10 GB",
+      validity: "30 Days",
+      price: 1750
+    },
+
+    {
+      id: "30-20",
+      data: "20 GB",
+      validity: "30 Days",
+      price: 2750
+    }
+
   ]
+
 };
 
-let activeCategory = "nonExpiry";
-let selectedPackage = null;
-let currentOrder = null;
 
-const $ = (selector) => document.querySelector(selector);
-const $$ = (selector) => [...document.querySelectorAll(selector)];
+/* =========================================================
+   STATE
+========================================================= */
 
-function money(value) {
-  return `Rs. ${Number(value).toLocaleString("en-PK")}`;
+let activeCategory =
+  "nonExpiry";
+
+let selectedPackage =
+  null;
+
+let currentOrder =
+  null;
+
+
+/* =========================================================
+   HELPERS
+========================================================= */
+
+function formatPrice(value) {
+
+  return (
+    "Rs. " +
+    Number(value)
+      .toLocaleString("en-PK")
+  );
+
 }
 
-function instagramUrl() {
-  return `https://www.instagram.com/${SITE_CONFIG.instagramUsername}/`;
+
+function findPackage(id) {
+
+  return [
+
+    ...PACKAGES.nonExpiry,
+
+    ...PACKAGES.thirtyDays
+
+  ].find(
+    packageItem =>
+      packageItem.id === id
+  );
+
 }
 
-function applyConfig() {
-  ["#topInstagramLink", "#heroInstagramLink", "#compatInstagramLink", "#footerInstagramLink", "#finalInstagramLink"]
-    .forEach(selector => {
-      const element = $(selector);
-      if (element) element.href = instagramUrl();
-    });
 
-  $("#jazzCashNumber").textContent = SITE_CONFIG.jazzCashNumber;
-  $("#jazzCashTitle").textContent = SITE_CONFIG.jazzCashAccountTitle;
-  $("#jazzCashQr").src = SITE_CONFIG.jazzCashQrPath;
-  $("#year").textContent = new Date().getFullYear();
+function escapeHTML(value) {
+
+  const div =
+    document.createElement("div");
+
+  div.textContent =
+    String(value);
+
+  return div.innerHTML;
+
 }
+
+
+/* =========================================================
+   PACKAGE DISPLAY
+========================================================= */
 
 function renderPackages() {
-  const grid = $("#packageGrid");
-  grid.innerHTML = "";
 
-  PACKAGES[activeCategory].forEach(pkg => {
-    const card = document.createElement("article");
-    card.className = `package-card ${pkg.featured ? "featured" : ""}`;
+  const grid =
+    document.getElementById(
+      "packageGrid"
+    );
 
-    card.innerHTML = `
-      <div class="package-top">
-        <span class="package-type">${pkg.validity.toUpperCase()}</span>
-        ${pkg.featured ? '<span class="package-badge">POPULAR</span>' : ""}
-      </div>
-      <div class="package-data">${pkg.data}</div>
-      <div class="package-validity">${pkg.validity === "Non-Expiry" ? "No fixed expiry period" : "Valid for 30 days"}</div>
-      <div class="package-price">
-        <span>PKR</span>
-        <strong>${money(pkg.price).replace("Rs. ", "")}</strong>
-      </div>
-      <button class="btn btn-primary full buy-button" data-package-id="${pkg.id}">Buy Now</button>
-    `;
 
-    grid.appendChild(card);
-  });
+  grid.innerHTML =
+    "";
 
-  $$(".buy-button").forEach(button => {
-    button.addEventListener("click", () => {
-      const allPackages = [...PACKAGES.nonExpiry, ...PACKAGES.thirtyDays];
-      const pkg = allPackages.find(item => item.id === button.dataset.packageId);
-      openCheckout(pkg);
+
+  PACKAGES[
+    activeCategory
+  ].forEach(
+    (packageItem, index) => {
+
+      const article =
+        document.createElement(
+          "article"
+        );
+
+
+      article.className =
+        "package-card reveal";
+
+
+      article.innerHTML = `
+
+        <div class="package-meta">
+
+          <span>
+            ${
+              String(index + 1)
+                .padStart(2, "0")
+            }
+          </span>
+
+          <span>
+            ${
+              packageItem.popular
+                ? "Popular"
+                : packageItem.validity
+            }
+          </span>
+
+        </div>
+
+
+        <h3>
+          ${packageItem.data}
+        </h3>
+
+
+        <div class="package-validity">
+
+          ${
+            packageItem.validity ===
+            "Non-Expiry"
+
+              ? "Non-expiry data"
+
+              : "Valid for 30 days"
+          }
+
+        </div>
+
+
+        <div class="package-bottom">
+
+          <div class="package-price">
+
+            <span>
+              PKR
+            </span>
+
+            <strong>
+              ${
+                Number(
+                  packageItem.price
+                )
+                .toLocaleString(
+                  "en-PK"
+                )
+              }
+            </strong>
+
+          </div>
+
+
+          <button
+            class="buy-button"
+            type="button"
+            data-package="${packageItem.id}"
+          >
+            Purchase
+          </button>
+
+        </div>
+
+      `;
+
+
+      grid.appendChild(
+        article
+      );
+
+    }
+  );
+
+
+  document
+    .querySelectorAll(
+      ".buy-button"
+    )
+    .forEach(button => {
+
+      button.addEventListener(
+        "click",
+        () => {
+
+          openCheckout(
+            button.dataset.package
+          );
+
+        }
+      );
+
     });
+
+
+  observeReveals();
+
+}
+
+
+/* =========================================================
+   PACKAGE TABS
+========================================================= */
+
+document
+  .querySelectorAll(
+    ".package-tab"
+  )
+  .forEach(tab => {
+
+    tab.addEventListener(
+      "click",
+      function() {
+
+        document
+          .querySelectorAll(
+            ".package-tab"
+          )
+          .forEach(item => {
+
+            item.classList.remove(
+              "active"
+            );
+
+          });
+
+
+        this.classList.add(
+          "active"
+        );
+
+
+        activeCategory =
+          this.dataset.category;
+
+
+        renderPackages();
+
+      }
+    );
+
   });
+
+
+/* =========================================================
+   CHECKOUT
+========================================================= */
+
+const modal =
+  document.getElementById(
+    "checkoutModal"
+  );
+
+
+function openCheckout(packageId) {
+
+  selectedPackage =
+    findPackage(packageId);
+
+
+  if (!selectedPackage) {
+    return;
+  }
+
+
+  currentOrder =
+    null;
+
+
+  document.getElementById(
+    "selectedPackage"
+  ).textContent =
+    selectedPackage.data;
+
+
+  document.getElementById(
+    "selectedValidity"
+  ).textContent =
+    selectedPackage.validity;
+
+
+  document.getElementById(
+    "selectedPrice"
+  ).textContent =
+    formatPrice(
+      selectedPackage.price
+    );
+
+
+  document.getElementById(
+    "checkoutForm"
+  ).reset();
+
+
+  showStep(1);
+
+
+  modal.classList.add(
+    "open"
+  );
+
+
+  modal.setAttribute(
+    "aria-hidden",
+    "false"
+  );
+
+
+  document.body.classList.add(
+    "modal-open"
+  );
+
 }
 
-function setCategory(category) {
-  activeCategory = category;
-  $$(".tab").forEach(tab => {
-    tab.classList.toggle("active", tab.dataset.category === category);
-  });
-  renderPackages();
-}
-
-function generateOrderNumber() {
-  const now = new Date();
-  const datePart = [
-    String(now.getFullYear()).slice(-2),
-    String(now.getMonth() + 1).padStart(2, "0"),
-    String(now.getDate()).padStart(2, "0")
-  ].join("");
-  const randomPart = Math.floor(1000 + Math.random() * 9000);
-  return `ESIM-${datePart}-${randomPart}`;
-}
-
-function openCheckout(pkg) {
-  selectedPackage = pkg;
-  currentOrder = null;
-
-  $("#selectedPackageName").textContent = pkg.data;
-  $("#selectedValidity").textContent = pkg.validity;
-  $("#selectedPrice").textContent = money(pkg.price);
-
-  $("#customerForm").reset();
-  showCheckoutStep(1);
-
-  const modal = $("#checkoutModal");
-  modal.classList.add("open");
-  modal.setAttribute("aria-hidden", "false");
-  document.body.style.overflow = "hidden";
-}
 
 function closeCheckout() {
-  const modal = $("#checkoutModal");
-  modal.classList.remove("open");
-  modal.setAttribute("aria-hidden", "true");
-  document.body.style.overflow = "";
+
+  modal.classList.remove(
+    "open"
+  );
+
+
+  modal.setAttribute(
+    "aria-hidden",
+    "true"
+  );
+
+
+  document.body.classList.remove(
+    "modal-open"
+  );
+
 }
 
-function showCheckoutStep(step) {
-  $$(".checkout-step").forEach(el => {
-    el.classList.toggle("active", Number(el.dataset.step) === step);
-  });
 
-  $$(".progress-dot").forEach(dot => {
-    dot.classList.toggle("active", Number(dot.dataset.stepDot) <= step);
-  });
+function showStep(stepNumber) {
+
+  document
+    .querySelectorAll(
+      ".checkout-step"
+    )
+    .forEach(step => {
+
+      step.classList.toggle(
+
+        "active",
+
+        Number(
+          step.dataset.step
+        ) === stepNumber
+
+      );
+
+    });
+
+
+  document.getElementById(
+    "stepLabel"
+  ).textContent =
+    `0${stepNumber} / 03`;
+
 }
 
-function saveOrderLocally(order) {
-  const existing = JSON.parse(localStorage.getItem("esimOrders") || "[]");
-  existing.push(order);
-  localStorage.setItem("esimOrders", JSON.stringify(existing.slice(-50)));
+
+/* =========================================================
+   CUSTOMER FORM
+========================================================= */
+
+document
+  .getElementById(
+    "checkoutForm"
+  )
+  .addEventListener(
+    "submit",
+    event => {
+
+      event.preventDefault();
+
+
+      currentOrder = {
+
+        orderNumber:
+          createOrderNumber(),
+
+        package:
+          selectedPackage,
+
+        customer: {
+
+          name:
+            document
+              .getElementById(
+                "customerName"
+              )
+              .value
+              .trim(),
+
+          phone:
+            document
+              .getElementById(
+                "customerPhone"
+              )
+              .value
+              .trim(),
+
+          email:
+            document
+              .getElementById(
+                "customerEmail"
+              )
+              .value
+              .trim(),
+
+          instagram:
+            document
+              .getElementById(
+                "customerInstagram"
+              )
+              .value
+              .trim()
+
+        },
+
+        createdAt:
+          new Date()
+            .toISOString()
+
+      };
+
+
+      document.getElementById(
+        "paymentAmount"
+      ).textContent =
+        formatPrice(
+          selectedPackage.price
+        );
+
+
+      document.getElementById(
+        "paymentOrderNumber"
+      ).textContent =
+        currentOrder.orderNumber;
+
+
+      saveOrderLocally();
+
+
+      showStep(2);
+
+    }
+  );
+
+
+/* =========================================================
+   ORDER NUMBER
+========================================================= */
+
+function createOrderNumber() {
+
+  const date =
+    new Date();
+
+
+  const year =
+    String(
+      date.getFullYear()
+    ).slice(-2);
+
+
+  const month =
+    String(
+      date.getMonth() + 1
+    ).padStart(2, "0");
+
+
+  const day =
+    String(
+      date.getDate()
+    ).padStart(2, "0");
+
+
+  const random =
+    Math.floor(
+      1000 +
+      Math.random() *
+      9000
+    );
+
+
+  return (
+    `ESIM-${year}${month}${day}-${random}`
+  );
+
 }
 
-function buildOrderMessage(order) {
-  return [
-    `Assalam-o-Alaikum, I have paid for an eSIM order.`,
-    ``,
-    `Order: ${order.orderNumber}`,
-    `Package: ${order.package.data}`,
-    `Validity: ${order.package.validity}`,
-    `Amount: ${money(order.package.price)}`,
-    `Name: ${order.customer.name}`,
-    `Phone: ${order.customer.phone}`,
-    `Email: ${order.customer.email}`,
-    order.customer.instagram ? `Instagram: ${order.customer.instagram}` : null,
-    ``,
-    `I will attach my JazzCash payment screenshot here.`
-  ].filter(Boolean).join("\n");
-}
 
-async function copyText(text, successLabel, button) {
+/* =========================================================
+   LOCAL ORDER STORAGE
+========================================================= */
+
+function saveOrderLocally() {
+
   try {
-    await navigator.clipboard.writeText(text);
-    const old = button.textContent;
-    button.textContent = successLabel;
-    setTimeout(() => button.textContent = old, 1600);
-  } catch {
-    window.prompt("Copy this text:", text);
+
+    const orders =
+      JSON.parse(
+        localStorage.getItem(
+          "esimOrders"
+        ) || "[]"
+      );
+
+
+    orders.push(
+      currentOrder
+    );
+
+
+    localStorage.setItem(
+
+      "esimOrders",
+
+      JSON.stringify(
+        orders.slice(-50)
+      )
+
+    );
+
   }
+
+  catch(error) {
+
+    console.warn(
+      "Local order storage unavailable."
+    );
+
+  }
+
 }
 
-function completeOrderSummary(order) {
-  $("#finalOrderNumber").textContent = order.orderNumber;
-  $("#finalSummary").innerHTML = `
-    <strong>${order.package.data} — ${order.package.validity}</strong><br>
-    Total: ${money(order.package.price)}<br>
-    Customer: ${escapeHtml(order.customer.name)}<br>
-    Phone: ${escapeHtml(order.customer.phone)}
-  `;
+
+/* =========================================================
+   PAYMENT
+========================================================= */
+
+document
+  .getElementById(
+    "copyTillButton"
+  )
+  .addEventListener(
+    "click",
+    event => {
+
+      copyText(
+
+        BUSINESS.tillId,
+
+        event.currentTarget,
+
+        "Copied"
+
+      );
+
+    }
+  );
+
+
+document
+  .getElementById(
+    "paidButton"
+  )
+  .addEventListener(
+    "click",
+    () => {
+
+      if (!currentOrder) {
+        return;
+      }
+
+
+      document.getElementById(
+        "finalOrderNumber"
+      ).textContent =
+        currentOrder.orderNumber;
+
+
+      document.getElementById(
+        "finalOrderSummary"
+      ).innerHTML = `
+
+        <strong>
+
+          ${escapeHTML(
+            currentOrder.package.data
+          )}
+
+          ·
+
+          ${escapeHTML(
+            currentOrder.package.validity
+          )}
+
+        </strong>
+
+        <br><br>
+
+        Amount:
+        ${formatPrice(
+          currentOrder.package.price
+        )}
+
+        <br>
+
+        Customer:
+        ${escapeHTML(
+          currentOrder.customer.name
+        )}
+
+        <br>
+
+        Phone:
+        ${escapeHTML(
+          currentOrder.customer.phone
+        )}
+
+        <br>
+
+        Merchant:
+        ${BUSINESS.merchantName}
+
+        <br>
+
+        TILL ID:
+        ${BUSINESS.tillId}
+
+      `;
+
+
+      showStep(3);
+
+    }
+  );
+
+
+/* =========================================================
+   ORDER MESSAGE
+========================================================= */
+
+function createOrderMessage() {
+
+  if (!currentOrder) {
+    return "";
+  }
+
+
+  let message = `Assalam-o-Alaikum,
+
+I have made payment for an eSIM order.
+
+Order Number: ${currentOrder.orderNumber}
+Package: ${currentOrder.package.data}
+Validity: ${currentOrder.package.validity}
+Amount: ${formatPrice(currentOrder.package.price)}
+
+Name: ${currentOrder.customer.name}
+Phone: ${currentOrder.customer.phone}
+Email: ${currentOrder.customer.email}`;
+
+
+  if (
+    currentOrder.customer.instagram
+  ) {
+
+    message += `
+
+Instagram: ${currentOrder.customer.instagram}`;
+
+  }
+
+
+  message += `
+
+Payment Method: JazzCash / Raast
+Merchant Name: ${BUSINESS.merchantName}
+TILL ID: ${BUSINESS.tillId}
+
+I am attaching my payment screenshot for verification.`;
+
+
+  return message;
+
 }
 
-function escapeHtml(value) {
-  return String(value)
-    .replaceAll("&", "&amp;")
-    .replaceAll("<", "&lt;")
-    .replaceAll(">", "&gt;")
-    .replaceAll('"', "&quot;")
-    .replaceAll("'", "&#039;");
+
+document
+  .getElementById(
+    "copyOrderButton"
+  )
+  .addEventListener(
+    "click",
+    event => {
+
+      copyText(
+
+        createOrderMessage(),
+
+        event.currentTarget,
+
+        "Message copied"
+
+      );
+
+    }
+  );
+
+
+/* =========================================================
+   COPY UTILITY
+========================================================= */
+
+async function copyText(
+  text,
+  button,
+  successText
+) {
+
+  try {
+
+    await navigator.clipboard
+      .writeText(text);
+
+
+    const originalText =
+      button.textContent;
+
+
+    button.textContent =
+      successText;
+
+
+    window.setTimeout(
+      () => {
+
+        button.textContent =
+          originalText;
+
+      },
+      1500
+    );
+
+  }
+
+  catch(error) {
+
+    window.prompt(
+      "Copy:",
+      text
+    );
+
+  }
+
 }
 
-/* Event listeners */
-$$(".tab").forEach(tab => {
-  tab.addEventListener("click", () => setCategory(tab.dataset.category));
-});
 
-$$("[data-close-modal]").forEach(el => {
-  el.addEventListener("click", closeCheckout);
-});
+/* =========================================================
+   MODAL EVENTS
+========================================================= */
 
-document.addEventListener("keydown", event => {
-  if (event.key === "Escape") closeCheckout();
-});
+document
+  .getElementById(
+    "closeModalButton"
+  )
+  .addEventListener(
+    "click",
+    closeCheckout
+  );
 
-$("#customerForm").addEventListener("submit", event => {
-  event.preventDefault();
 
-  currentOrder = {
-    orderNumber: generateOrderNumber(),
-    createdAt: new Date().toISOString(),
-    package: selectedPackage,
-    customer: {
-      name: $("#customerName").value.trim(),
-      phone: $("#customerPhone").value.trim(),
-      email: $("#customerEmail").value.trim(),
-      instagram: $("#customerInstagram").value.trim()
-    },
-    status: "awaiting-payment-verification"
-  };
+document
+  .querySelector(
+    ".modal-backdrop"
+  )
+  .addEventListener(
+    "click",
+    closeCheckout
+  );
 
-  saveOrderLocally(currentOrder);
 
-  $("#paymentAmount").textContent = money(selectedPackage.price);
-  $("#orderNumber").textContent = currentOrder.orderNumber;
+document.addEventListener(
+  "keydown",
+  event => {
 
-  showCheckoutStep(2);
-});
+    if (
+      event.key ===
+      "Escape"
+    ) {
 
-$("#copyNumberBtn").addEventListener("click", event => {
-  copyText(SITE_CONFIG.jazzCashNumber, "Copied!", event.currentTarget);
-});
+      closeCheckout();
 
-$("#paidButton").addEventListener("click", () => {
-  if (!currentOrder) return;
-  completeOrderSummary(currentOrder);
-  showCheckoutStep(3);
-});
+    }
 
-$("#copyOrderMessageBtn").addEventListener("click", event => {
-  if (!currentOrder) return;
-  copyText(buildOrderMessage(currentOrder), "Order Message Copied!", event.currentTarget);
-});
+  }
+);
 
-$("#newOrderBtn").addEventListener("click", () => {
-  closeCheckout();
-  setTimeout(() => {
-    document.querySelector("#packages").scrollIntoView({ behavior: "smooth" });
-  }, 120);
-});
 
-applyConfig();
+/* =========================================================
+   NEW ORDER
+========================================================= */
+
+document
+  .getElementById(
+    "newOrderButton"
+  )
+  .addEventListener(
+    "click",
+    () => {
+
+      closeCheckout();
+
+
+      setTimeout(
+        () => {
+
+          document
+            .getElementById(
+              "packages"
+            )
+            .scrollIntoView({
+              behavior:
+                "smooth"
+            });
+
+        },
+        150
+      );
+
+    }
+  );
+
+
+/* =========================================================
+   SCROLL REVEALS
+========================================================= */
+
+let revealObserver;
+
+
+function observeReveals() {
+
+  if (!revealObserver) {
+
+    revealObserver =
+      new IntersectionObserver(
+
+        entries => {
+
+          entries.forEach(
+            entry => {
+
+              if (
+                entry.isIntersecting
+              ) {
+
+                entry.target
+                  .classList
+                  .add(
+                    "visible"
+                  );
+
+
+                revealObserver
+                  .unobserve(
+                    entry.target
+                  );
+
+              }
+
+            }
+          );
+
+        },
+
+        {
+          threshold:
+            0.12,
+
+          rootMargin:
+            "0px 0px -35px 0px"
+        }
+
+      );
+
+  }
+
+
+  document
+    .querySelectorAll(
+      ".reveal:not(.visible)"
+    )
+    .forEach(element => {
+
+      revealObserver
+        .observe(element);
+
+    });
+
+}
+
+
+/* =========================================================
+   CURRENT YEAR
+========================================================= */
+
+document.getElementById(
+  "year"
+).textContent =
+  new Date()
+    .getFullYear();
+
+
+/* =========================================================
+   INITIALIZATION
+========================================================= */
+
 renderPackages();
+
+observeReveals();
