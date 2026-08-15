@@ -1,1549 +1,2502 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="description" content="eSIM Solutions Pakistan - Fast, stable and reliable data eSIM packages." />
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
   <title>eSIM Solutions Pakistan</title>
+
+  <meta
+    name="description"
+    content="Fast, stable and reliable data eSIM packages in Pakistan."
+  >
+
+  <!-- EMBEDDED eSIM FAVICON -->
+  <link
+    rel="icon"
+    type="image/png"
+    href="data:image/png;base64,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"
+  >
+
+  <meta name="theme-color" content="#071220">
 
   <style>
     :root {
-      --bg: #071220;
-      --bg2: #0d1c32;
-      --card: #ffffff;
-      --text: #111827;
-      --muted: #667085;
-      --line: #e4e8f0;
-      --blue: #2962ff;
-      --blue-dark: #1648d8;
-      --red: #e32727;
-      --green: #179953;
-      --light: #f6f8fc;
-      --yellow: #ffde17;
-      --shadow: 0 20px 60px rgba(0, 0, 0, 0.12);
-      --radius: 22px;
+      --navy:#071220;
+      --navy2:#0c1c31;
+      --blue:#2f63f6;
+      --blue-dark:#174ad5;
+      --text:#101828;
+      --muted:#667085;
+      --line:#e4e8ef;
+      --light:#f7f9fc;
+      --white:#fff;
+      --red:#e02d2d;
+      --green:#168c4b;
+      --yellow:#ffdc18;
+      --radius:20px;
+      --shadow:0 20px 60px rgba(15,23,42,.10);
     }
 
     * {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
+      box-sizing:border-box;
+      margin:0;
+      padding:0;
     }
 
     html {
-      scroll-behavior: smooth;
+      scroll-behavior:smooth;
     }
 
     body {
-      font-family: Arial, Helvetica, sans-serif;
-      background: #fff;
-      color: var(--text);
-      line-height: 1.5;
+      font-family:Arial,Helvetica,sans-serif;
+      background:#fff;
+      color:var(--text);
+      line-height:1.55;
     }
 
-    body.modal-open {
-      overflow: hidden;
+    body.lock {
+      overflow:hidden;
     }
 
     a {
-      text-decoration: none;
-      color: inherit;
+      color:inherit;
+      text-decoration:none;
     }
 
     button,
     input {
-      font: inherit;
+      font:inherit;
     }
 
     button {
-      cursor: pointer;
-      border: none;
+      cursor:pointer;
     }
 
     .container {
-      width: min(1160px, calc(100% - 28px));
-      margin: 0 auto;
+      width:min(1160px,calc(100% - 30px));
+      margin:auto;
     }
 
     .section {
-      padding: 85px 0;
+      padding:88px 0;
     }
 
-    .section-light {
-      background: var(--light);
+    .light {
+      background:var(--light);
     }
 
     .eyebrow {
-      font-size: 12px;
-      font-weight: 900;
-      text-transform: uppercase;
-      letter-spacing: 2px;
-      color: var(--blue);
-      margin-bottom: 10px;
+      color:var(--blue);
+      font-size:12px;
+      font-weight:900;
+      letter-spacing:2px;
+      text-transform:uppercase;
+      margin-bottom:10px;
     }
 
-    .section-title {
-      text-align: center;
-      margin-bottom: 40px;
+    .section-heading {
+      text-align:center;
+      max-width:700px;
+      margin:0 auto 42px;
     }
 
-    .section-title h2 {
-      font-size: clamp(32px, 4vw, 48px);
-      line-height: 1.1;
-      letter-spacing: -1px;
+    .section-heading h2 {
+      font-size:clamp(32px,5vw,48px);
+      line-height:1.1;
+      letter-spacing:-1.5px;
     }
 
-    .section-title p {
-      color: var(--muted);
-      margin-top: 10px;
-      font-size: 16px;
+    .section-heading p {
+      color:var(--muted);
+      margin-top:10px;
     }
 
     .btn {
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      gap: 8px;
-      border-radius: 14px;
-      padding: 14px 20px;
-      font-weight: 800;
-      transition: 0.2s ease;
+      border:0;
+      border-radius:13px;
+      padding:14px 20px;
+      display:inline-flex;
+      justify-content:center;
+      align-items:center;
+      font-weight:800;
+      transition:.2s ease;
     }
 
     .btn:hover {
-      transform: translateY(-2px);
+      transform:translateY(-2px);
     }
 
     .btn-primary {
-      background: var(--blue);
-      color: white;
+      background:var(--blue);
+      color:white;
     }
 
     .btn-primary:hover {
-      background: var(--blue-dark);
+      background:var(--blue-dark);
     }
 
     .btn-white {
-      background: white;
-      color: var(--text);
-      border: 1px solid var(--line);
+      background:white;
+      color:var(--text);
+      border:1px solid var(--line);
     }
 
     .btn-outline {
-      background: transparent;
-      border: 1px solid rgba(255,255,255,0.22);
-      color: white;
+      color:white;
+      border:1px solid rgba(255,255,255,.22);
+      background:transparent;
     }
 
     .btn-soft {
-      background: #eef3ff;
-      color: #1749bb;
+      background:#edf3ff;
+      color:#1747b5;
     }
 
-    .btn-full {
-      width: 100%;
+    .full {
+      width:100%;
     }
 
     /* HEADER */
+
     header {
-      position: sticky;
-      top: 0;
-      z-index: 100;
-      background: rgba(7, 18, 32, 0.95);
-      backdrop-filter: blur(12px);
-      border-bottom: 1px solid rgba(255,255,255,0.08);
+      position:sticky;
+      top:0;
+      z-index:100;
+      background:rgba(7,18,32,.96);
+      backdrop-filter:blur(14px);
+      border-bottom:1px solid rgba(255,255,255,.08);
     }
 
-    .navbar {
-      min-height: 76px;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 20px;
+    .nav {
+      min-height:76px;
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:24px;
     }
 
     .brand {
-      display: flex;
-      align-items: center;
-      gap: 11px;
-      color: white;
+      display:flex;
+      align-items:center;
+      gap:11px;
+      color:white;
     }
 
-    .brand-logo {
-      width: 50px;
-      height: 50px;
-      border-radius: 50%;
-      background: white;
-      border: 4px solid var(--blue);
-      display: grid;
-      place-items: center;
-      color: var(--red);
-      font-weight: 900;
-      font-size: 14px;
+    .brand-icon {
+      width:48px;
+      height:48px;
+      background:white;
+      border:4px solid var(--blue);
+      border-radius:50%;
+      display:grid;
+      place-items:center;
+      color:#071b45;
+      font-weight:900;
+      font-size:13px;
     }
 
     .brand-text strong,
-    .brand-text span {
-      display: block;
+    .brand-text small {
+      display:block;
     }
 
-    .brand-text strong {
-      font-size: 15px;
+    .brand-text small {
+      color:#98a5b8;
+      font-size:11px;
     }
 
-    .brand-text span {
-      color: #a9b5c8;
-      font-size: 12px;
+    nav {
+      display:flex;
+      align-items:center;
+      gap:28px;
     }
 
-    .nav-links {
-      display: flex;
-      gap: 28px;
-      align-items: center;
+    nav a {
+      color:#c3ccda;
+      font-size:14px;
+      font-weight:700;
     }
 
-    .nav-links a {
-      color: #d1d8e4;
-      font-size: 14px;
-      font-weight: 700;
-    }
-
-    .nav-links a:hover {
-      color: white;
+    nav a:hover {
+      color:white;
     }
 
     /* HERO */
+
     .hero {
+      color:white;
       background:
-        radial-gradient(circle at 80% 15%, rgba(41,98,255,0.28), transparent 28%),
-        radial-gradient(circle at 15% 95%, rgba(227,39,39,0.10), transparent 25%),
-        linear-gradient(135deg, #05101c, #0d1d33);
-      color: white;
-      overflow: hidden;
+        radial-gradient(circle at 80% 18%,rgba(47,99,246,.32),transparent 30%),
+        radial-gradient(circle at 9% 95%,rgba(224,45,45,.09),transparent 24%),
+        linear-gradient(135deg,#06101c,#0b1b30);
+      overflow:hidden;
     }
 
     .hero-grid {
-      min-height: 640px;
-      display: grid;
-      grid-template-columns: 1.1fr 0.9fr;
-      gap: 60px;
-      align-items: center;
-      padding: 72px 0;
+      min-height:640px;
+      display:grid;
+      grid-template-columns:1.08fr .92fr;
+      align-items:center;
+      gap:60px;
+      padding:70px 0;
     }
 
     .hero h1 {
-      font-size: clamp(44px, 6vw, 74px);
-      line-height: 1.02;
-      letter-spacing: -2px;
-      max-width: 700px;
+      font-size:clamp(45px,6vw,74px);
+      line-height:1.02;
+      letter-spacing:-3px;
+      max-width:720px;
     }
 
-    .hero p {
-      margin-top: 20px;
-      max-width: 640px;
-      color: #bcc7d7;
-      font-size: 18px;
+    .hero-copy > p {
+      max-width:650px;
+      color:#bac6d7;
+      font-size:18px;
+      margin-top:22px;
     }
 
     .hero-actions {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 12px;
-      margin-top: 30px;
+      display:flex;
+      flex-wrap:wrap;
+      gap:12px;
+      margin-top:30px;
     }
 
-    .hero-features {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 12px 20px;
-      margin-top: 28px;
-      color: #b2bfd2;
-      font-size: 13px;
-      font-weight: 600;
+    .hero-points {
+      display:flex;
+      flex-wrap:wrap;
+      gap:10px 22px;
+      margin-top:29px;
+      color:#aebbd0;
+      font-size:13px;
+      font-weight:600;
     }
 
     .phone-wrap {
-      display: flex;
-      justify-content: center;
+      display:flex;
+      justify-content:center;
     }
 
     .phone {
-      width: min(345px, 90vw);
-      background: #02060c;
-      padding: 12px;
-      border-radius: 42px;
-      border: 1px solid rgba(255,255,255,0.12);
-      box-shadow: 0 35px 90px rgba(0,0,0,0.4);
-      transform: rotate(4deg);
+      width:min(345px,90vw);
+      background:#02060b;
+      padding:12px;
+      border-radius:44px;
+      border:1px solid rgba(255,255,255,.12);
+      box-shadow:0 40px 100px rgba(0,0,0,.42);
+      transform:rotate(3deg);
     }
 
-    .phone-notch {
-      width: 40%;
-      height: 22px;
-      margin: 0 auto 8px;
-      border-radius: 20px;
-      background: #0f1621;
+    .notch {
+      width:38%;
+      height:22px;
+      background:#111925;
+      border-radius:20px;
+      margin:0 auto 8px;
     }
 
-    .phone-screen {
-      min-height: 500px;
-      border-radius: 32px;
+    .screen {
+      min-height:490px;
+      border-radius:32px;
+      padding:30px;
+      display:flex;
+      flex-direction:column;
+      justify-content:center;
+      align-items:center;
+      text-align:center;
       background:
-        radial-gradient(circle at 50% 30%, rgba(41,98,255,0.25), transparent 28%),
-        linear-gradient(180deg, #12233b, #071320);
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      text-align: center;
-      padding: 30px;
+        radial-gradient(circle at 50% 32%,rgba(47,99,246,.25),transparent 28%),
+        linear-gradient(180deg,#112441,#081522);
     }
 
-    .esim-chip {
-      width: 130px;
-      height: 130px;
-      border-radius: 28px;
-      border: 3px solid #5d8fff;
-      display: grid;
-      place-items: center;
-      box-shadow: 0 0 55px rgba(41,98,255,0.45);
-      font-size: 28px;
-      font-weight: 900;
-      margin-bottom: 28px;
+    .chip {
+      width:128px;
+      height:128px;
+      border:3px solid #6493ff;
+      border-radius:27px;
+      display:grid;
+      place-items:center;
+      font-size:27px;
+      font-weight:900;
+      box-shadow:0 0 55px rgba(47,99,246,.45);
+      margin-bottom:28px;
     }
 
-    .phone-screen h3 {
-      font-size: 27px;
-      line-height: 1.3;
+    .screen h3 {
+      font-size:27px;
     }
 
-    .phone-screen p {
-      margin-top: 10px;
-      font-size: 14px;
-      color: #c0cad9;
+    .screen p {
+      color:#b8c5d6;
+      font-size:14px;
+      margin-top:10px;
     }
 
-    .phone-badge {
-      margin-top: 32px;
-      font-size: 11px;
-      letter-spacing: 3px;
-      color: #8eb3ff;
-      font-weight: 900;
+    .screen-tag {
+      margin-top:35px;
+      color:#89adff;
+      font-size:10px;
+      font-weight:900;
+      letter-spacing:2.5px;
     }
 
-    .notice-bar {
-      background: white;
-      border-bottom: 1px solid var(--line);
+    /* NOTICE */
+
+    .notice {
+      background:white;
+      border-bottom:1px solid var(--line);
     }
 
-    .notice-items {
-      min-height: 65px;
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: center;
-      align-items: center;
-      gap: 12px 26px;
-      font-size: 13px;
-      font-weight: 700;
-      color: #435065;
+    .notice-row {
+      min-height:66px;
+      display:flex;
+      flex-wrap:wrap;
+      align-items:center;
+      justify-content:center;
+      gap:12px 28px;
+      font-size:13px;
+      font-weight:700;
+      color:#445065;
     }
 
-    .notice-red {
-      color: var(--red);
+    .danger {
+      color:var(--red);
     }
 
     /* PACKAGES */
+
     .tabs {
-      display: flex;
-      justify-content: center;
-      margin-bottom: 28px;
+      display:flex;
+      justify-content:center;
+      margin-bottom:30px;
     }
 
-    .tab-wrap {
-      background: #edf1f7;
-      padding: 5px;
-      border-radius: 14px;
-      display: inline-flex;
+    .tab-box {
+      display:inline-flex;
+      padding:5px;
+      background:#edf1f6;
+      border-radius:14px;
     }
 
     .tab {
-      background: transparent;
-      color: var(--muted);
-      border-radius: 10px;
-      padding: 12px 22px;
-      font-weight: 800;
+      border:0;
+      background:transparent;
+      border-radius:10px;
+      padding:12px 22px;
+      color:var(--muted);
+      font-weight:800;
     }
 
     .tab.active {
-      background: white;
-      color: var(--text);
-      box-shadow: 0 5px 18px rgba(0,0,0,0.08);
+      background:white;
+      color:var(--text);
+      box-shadow:0 5px 18px rgba(15,23,42,.08);
     }
 
     .package-grid {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 20px;
+      display:grid;
+      grid-template-columns:repeat(3,1fr);
+      gap:20px;
     }
 
     .package-card {
-      background: white;
-      border: 1px solid var(--line);
-      border-radius: 22px;
-      padding: 24px;
-      box-shadow: 0 10px 30px rgba(10, 25, 52, 0.05);
-      position: relative;
-      transition: 0.2s ease;
+      position:relative;
+      background:white;
+      border:1px solid var(--line);
+      border-radius:22px;
+      padding:25px;
+      box-shadow:0 10px 30px rgba(15,23,42,.04);
+      transition:.22s;
     }
 
     .package-card:hover {
-      transform: translateY(-4px);
-      box-shadow: 0 20px 45px rgba(10, 25, 52, 0.09);
+      transform:translateY(-5px);
+      box-shadow:0 22px 50px rgba(15,23,42,.09);
     }
 
     .package-card.featured {
-      border: 2px solid var(--blue);
+      border:2px solid var(--blue);
     }
 
-    .package-pill {
-      position: absolute;
-      top: 16px;
-      right: 16px;
-      background: #eaf0ff;
-      color: var(--blue);
-      font-size: 10px;
-      padding: 6px 9px;
-      border-radius: 999px;
-      font-weight: 900;
-      letter-spacing: 0.5px;
+    .popular {
+      position:absolute;
+      right:15px;
+      top:15px;
+      color:var(--blue);
+      background:#eaf0ff;
+      padding:6px 9px;
+      border-radius:999px;
+      font-size:10px;
+      font-weight:900;
     }
 
     .package-type {
-      color: var(--muted);
-      font-size: 11px;
-      font-weight: 900;
-      letter-spacing: 1.5px;
-      text-transform: uppercase;
+      color:var(--muted);
+      font-size:11px;
+      letter-spacing:1.5px;
+      font-weight:900;
     }
 
     .package-data {
-      font-size: 40px;
-      font-weight: 900;
-      margin-top: 28px;
-      letter-spacing: -1px;
+      font-size:40px;
+      font-weight:900;
+      letter-spacing:-1.5px;
+      margin-top:28px;
     }
 
     .package-validity {
-      color: var(--muted);
-      font-size: 14px;
-      margin-top: 4px;
+      color:var(--muted);
+      font-size:14px;
+      margin-top:4px;
     }
 
     .package-price {
-      font-size: 28px;
-      font-weight: 900;
-      margin: 25px 0 20px;
+      font-size:28px;
+      font-weight:900;
+      margin:26px 0 22px;
     }
 
     .package-price small {
-      font-size: 12px;
-      font-weight: 700;
-      color: var(--muted);
-      margin-right: 5px;
+      color:var(--muted);
+      font-size:12px;
+      font-weight:700;
+      margin-right:5px;
     }
 
-    /* HOW */
+    /* STEPS */
+
     .steps {
-      display: grid;
-      grid-template-columns: repeat(4, 1fr);
-      gap: 18px;
+      display:grid;
+      grid-template-columns:repeat(4,1fr);
+      gap:18px;
     }
 
-    .step-card {
-      background: white;
-      border: 1px solid var(--line);
-      border-radius: 18px;
-      padding: 24px;
+    .step {
+      background:white;
+      border:1px solid var(--line);
+      border-radius:18px;
+      padding:25px;
     }
 
-    .step-no {
-      width: 42px;
-      height: 42px;
-      border-radius: 12px;
-      background: #eaf0ff;
-      color: var(--blue);
-      display: grid;
-      place-items: center;
-      font-weight: 900;
-      margin-bottom: 22px;
+    .step-number {
+      width:42px;
+      height:42px;
+      border-radius:12px;
+      background:#eaf0ff;
+      color:var(--blue);
+      display:grid;
+      place-items:center;
+      font-weight:900;
+      margin-bottom:24px;
     }
 
-    .step-card h3 {
-      font-size: 18px;
+    .step h3 {
+      font-size:18px;
     }
 
-    .step-card p {
-      color: var(--muted);
-      font-size: 14px;
-      margin-top: 8px;
+    .step p {
+      color:var(--muted);
+      font-size:14px;
+      margin-top:8px;
     }
 
-    /* COMPAT */
-    .compat-box {
-      background: var(--bg);
-      color: white;
-      border-radius: 28px;
-      padding: 46px;
-      display: grid;
-      grid-template-columns: 1.1fr 0.9fr;
-      gap: 42px;
-      align-items: center;
+    /* COMPATIBILITY */
+
+    .compat {
+      background:var(--navy);
+      color:white;
+      padding:48px;
+      border-radius:28px;
+      display:grid;
+      grid-template-columns:1.15fr .85fr;
+      gap:45px;
+      align-items:center;
     }
 
-    .compat-box h2 {
-      font-size: clamp(32px, 4vw, 44px);
-      line-height: 1.1;
-      margin-bottom: 22px;
+    .compat h2 {
+      font-size:clamp(32px,4vw,45px);
+      line-height:1.1;
+      margin-bottom:22px;
     }
 
-    .compat-box ul {
-      padding-left: 18px;
-      color: #c5d0df;
+    .compat ul {
+      color:#c4cedd;
+      padding-left:20px;
     }
 
-    .compat-box li {
-      margin: 10px 0;
+    .compat li {
+      margin:9px 0;
     }
 
-    .help-card {
-      background: white;
-      color: var(--text);
-      border-radius: 18px;
-      padding: 26px;
+    .help {
+      background:white;
+      color:var(--text);
+      padding:26px;
+      border-radius:18px;
     }
 
-    .help-card p {
-      color: var(--muted);
-      margin: 10px 0 20px;
+    .help p {
+      color:var(--muted);
+      margin:10px 0 20px;
     }
 
     /* FAQ */
+
     .faq {
-      max-width: 860px;
-      margin: 0 auto;
+      max-width:860px;
+      margin:auto;
     }
 
     details {
-      background: white;
-      border: 1px solid var(--line);
-      border-radius: 14px;
-      padding: 18px 20px;
-      margin-bottom: 12px;
+      background:white;
+      border:1px solid var(--line);
+      border-radius:14px;
+      padding:18px 20px;
+      margin-bottom:12px;
     }
 
     summary {
-      font-weight: 800;
-      cursor: pointer;
+      cursor:pointer;
+      font-weight:800;
     }
 
     details p {
-      color: var(--muted);
-      margin-top: 12px;
+      color:var(--muted);
+      margin-top:11px;
     }
 
     /* FOOTER */
+
     footer {
-      background: #06111f;
-      color: white;
-      padding: 55px 0 26px;
+      background:#06101c;
+      color:white;
+      padding:55px 0 25px;
     }
 
     .footer-grid {
-      display: grid;
-      grid-template-columns: 1fr auto;
-      gap: 40px;
+      display:grid;
+      grid-template-columns:1fr auto;
+      gap:40px;
     }
 
     .footer-links {
-      display: grid;
-      gap: 8px;
-      color: #b7c3d3;
+      display:grid;
+      gap:8px;
+      color:#b7c2d1;
     }
 
     .copyright {
-      margin-top: 34px;
-      border-top: 1px solid rgba(255,255,255,0.1);
-      padding-top: 18px;
-      font-size: 12px;
-      color: #7f8a9a;
+      border-top:1px solid rgba(255,255,255,.1);
+      padding-top:19px;
+      margin-top:35px;
+      color:#79869a;
+      font-size:12px;
     }
 
-    /* MODAL */
+    /* CHECKOUT */
+
     .modal {
-      position: fixed;
-      inset: 0;
-      background: rgba(1, 7, 15, 0.76);
-      backdrop-filter: blur(6px);
-      z-index: 999;
-      display: none;
-      align-items: center;
-      justify-content: center;
-      padding: 20px;
+      position:fixed;
+      inset:0;
+      z-index:999;
+      display:none;
+      justify-content:center;
+      align-items:center;
+      padding:20px;
+      background:rgba(1,7,15,.78);
+      backdrop-filter:blur(7px);
     }
 
     .modal.show {
-      display: flex;
+      display:flex;
     }
 
     .checkout {
-      width: min(720px, 100%);
-      max-height: calc(100vh - 40px);
-      overflow-y: auto;
-      background: white;
-      border-radius: 24px;
-      padding: 30px;
-      position: relative;
-      box-shadow: var(--shadow);
+      width:min(720px,100%);
+      max-height:calc(100vh - 40px);
+      overflow:auto;
+      position:relative;
+      background:white;
+      border-radius:24px;
+      padding:30px;
+      box-shadow:var(--shadow);
     }
 
-    .close-modal {
-      position: absolute;
-      top: 14px;
-      right: 14px;
-      width: 40px;
-      height: 40px;
-      border-radius: 50%;
-      background: #f0f3f8;
-      font-size: 24px;
-      line-height: 1;
+    .close {
+      width:40px;
+      height:40px;
+      position:absolute;
+      right:14px;
+      top:14px;
+      border:0;
+      border-radius:50%;
+      background:#f0f3f7;
+      font-size:24px;
     }
 
-    .checkout-progress {
-      max-width: 280px;
-      margin: 0 auto 28px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
+    .progress {
+      max-width:280px;
+      margin:0 auto 28px;
+      display:flex;
+      align-items:center;
+      justify-content:center;
     }
 
-    .progress-dot {
-      width: 31px;
-      height: 31px;
-      border-radius: 50%;
-      background: #e8edf4;
-      color: #7c8697;
-      display: grid;
-      place-items: center;
-      font-size: 12px;
-      font-weight: 900;
+    .dot {
+      width:31px;
+      height:31px;
+      border-radius:50%;
+      background:#e8edf4;
+      color:#7e8999;
+      display:grid;
+      place-items:center;
+      font-size:12px;
+      font-weight:900;
     }
 
-    .progress-dot.active {
-      background: var(--blue);
-      color: white;
+    .dot.active {
+      background:var(--blue);
+      color:white;
     }
 
-    .progress-line {
-      width: 70px;
-      height: 2px;
-      background: #dbe2ec;
+    .line {
+      height:2px;
+      width:70px;
+      background:#dde3ec;
     }
 
     .checkout-step {
-      display: none;
+      display:none;
     }
 
     .checkout-step.active {
-      display: block;
+      display:block;
     }
 
     .checkout h2 {
-      font-size: 31px;
-      line-height: 1.1;
-      margin-bottom: 18px;
+      font-size:31px;
+      margin-bottom:18px;
     }
 
-    .checkout-text {
-      color: var(--muted);
-      margin-bottom: 20px;
+    .checkout-copy {
+      color:var(--muted);
+      margin-bottom:20px;
     }
 
-    .summary-box {
-      border: 1px solid var(--line);
-      border-radius: 16px;
-      overflow: hidden;
-      margin-bottom: 22px;
+    .summary {
+      border:1px solid var(--line);
+      border-radius:15px;
+      overflow:hidden;
+      margin-bottom:22px;
     }
 
     .summary-row {
-      display: flex;
-      justify-content: space-between;
-      gap: 20px;
-      padding: 14px 16px;
-      border-bottom: 1px solid var(--line);
+      display:flex;
+      justify-content:space-between;
+      gap:20px;
+      padding:14px 16px;
+      border-bottom:1px solid var(--line);
     }
 
     .summary-row:last-child {
-      border-bottom: 0;
+      border-bottom:0;
     }
 
     .summary-row span {
-      color: var(--muted);
-      font-size: 13px;
+      color:var(--muted);
+      font-size:13px;
     }
 
-    .form-group {
-      margin-bottom: 14px;
+    .field {
+      margin-bottom:14px;
     }
 
-    .form-group label {
-      display: block;
-      font-size: 13px;
-      font-weight: 800;
-      margin-bottom: 7px;
+    .field label {
+      display:block;
+      font-size:13px;
+      font-weight:800;
+      margin-bottom:7px;
     }
 
-    .form-group input {
-      width: 100%;
-      border: 1px solid #cfd7e3;
-      border-radius: 11px;
-      padding: 13px 14px;
-      outline: none;
+    .field input {
+      width:100%;
+      padding:13px 14px;
+      border:1px solid #cfd6e1;
+      border-radius:11px;
+      outline:none;
     }
 
-    .form-group input:focus {
-      border-color: var(--blue);
-      box-shadow: 0 0 0 3px rgba(41,98,255,0.10);
+    .field input:focus {
+      border-color:var(--blue);
+      box-shadow:0 0 0 3px rgba(47,99,246,.1);
     }
 
-    .checkbox-row {
-      display: flex;
-      align-items: flex-start;
-      gap: 10px;
-      margin: 16px 0 18px;
-      color: #3d4a5c;
-      font-size: 13px;
-      font-weight: 600;
+    .check {
+      display:flex;
+      align-items:flex-start;
+      gap:10px;
+      margin:17px 0;
+      color:#3d495c;
+      font-size:13px;
+      font-weight:600;
     }
 
-    .checkbox-row input {
-      margin-top: 3px;
+    .check input {
+      margin-top:3px;
     }
+
+    /* PAYMENT */
 
     .payment-grid {
-      display: grid;
-      grid-template-columns: 260px 1fr;
-      gap: 20px;
-      align-items: start;
-      margin-top: 20px;
+      display:grid;
+      grid-template-columns:280px 1fr;
+      gap:22px;
+      align-items:start;
+      margin-top:20px;
     }
 
-    .qr-card {
-      background: var(--yellow);
-      border: 1px solid #e5bf00;
-      border-radius: 18px;
-      padding: 16px;
-      text-align: center;
+    .payment-qr {
+      background:#ffdf19;
+      border:1px solid #e9c800;
+      border-radius:18px;
+      padding:14px;
+      text-align:center;
     }
 
-    .qr-label {
-      font-size: 14px;
-      font-weight: 900;
-      margin-bottom: 10px;
+    .payment-qr img {
+      display:block;
+      width:100%;
+      border-radius:10px;
+      background:white;
     }
 
-    .qr-wrap {
-      background: white;
-      border-radius: 12px;
-      padding: 10px;
+    .payment-qr-title {
+      font-weight:900;
+      margin-bottom:10px;
     }
 
-    #paymentQr {
-      width: 100%;
-      height: auto;
-      display: block;
-      image-rendering: pixelated;
-    }
-
-    .till-text {
-      margin-top: 10px;
-      color: var(--red);
-      font-weight: 900;
-      font-size: 12px;
-      letter-spacing: 1px;
-    }
-
-    .till-number {
-      font-size: 22px;
-      font-weight: 900;
-      letter-spacing: 2px;
+    .payment-details {
+      display:grid;
+      gap:11px;
     }
 
     .payment-detail {
-      border: 1px solid var(--line);
-      border-radius: 12px;
-      padding: 13px 14px;
-      margin-bottom: 10px;
-    }
-
-    .payment-detail span,
-    .payment-detail strong {
-      display: block;
+      border:1px solid var(--line);
+      padding:14px;
+      border-radius:12px;
     }
 
     .payment-detail span {
-      color: var(--muted);
-      font-size: 11px;
-      margin-bottom: 4px;
+      display:block;
+      color:var(--muted);
+      font-size:11px;
+      margin-bottom:4px;
+    }
+
+    .payment-detail strong {
+      font-size:17px;
     }
 
     .payment-note {
-      background: #fff8e5;
-      color: #6c4d00;
-      border: 1px solid #ffe1a4;
-      border-radius: 12px;
-      padding: 14px;
-      margin: 18px 0 14px;
-      font-size: 13px;
+      background:#fff8e4;
+      border:1px solid #ffe0a0;
+      color:#674900;
+      border-radius:12px;
+      padding:14px;
+      margin:20px 0 14px;
+      font-size:13px;
+    }
+
+    .small {
+      color:var(--muted);
+      font-size:12px;
+      margin-top:10px;
+    }
+
+    /* SUCCESS */
+
+    .success {
+      text-align:center;
     }
 
     .success-icon {
-      width: 72px;
-      height: 72px;
-      border-radius: 50%;
-      background: #e9f8ef;
-      color: var(--green);
-      font-size: 34px;
-      font-weight: 900;
-      display: grid;
-      place-items: center;
-      margin: 0 auto 18px;
-    }
-
-    .success-step {
-      text-align: center;
+      width:72px;
+      height:72px;
+      margin:0 auto 18px;
+      border-radius:50%;
+      background:#e9f8ef;
+      color:var(--green);
+      font-size:34px;
+      font-weight:900;
+      display:grid;
+      place-items:center;
     }
 
     .order-card {
-      text-align: left;
-      background: #f6f8fc;
-      border: 1px solid var(--line);
-      border-radius: 14px;
-      padding: 16px;
-      margin: 20px 0;
-      font-size: 14px;
+      text-align:left;
+      border:1px solid var(--line);
+      background:#f7f9fc;
+      border-radius:14px;
+      padding:16px;
+      margin:20px 0;
+      font-size:14px;
     }
 
-    .small-note {
-      color: var(--muted);
-      font-size: 12px;
-      margin-top: 10px;
+    .success .btn {
+      margin-top:10px;
     }
 
-    @media (max-width: 920px) {
-      .nav-links {
-        display: none;
+    /* RESPONSIVE */
+
+    @media(max-width:920px) {
+      nav {
+        display:none;
       }
 
       .hero-grid,
-      .compat-box {
-        grid-template-columns: 1fr;
-        text-align: center;
-      }
-
-      .hero p {
-        margin-left: auto;
-        margin-right: auto;
-      }
-
-      .hero-actions,
-      .hero-features {
-        justify-content: center;
-      }
-
-      .package-grid {
-        grid-template-columns: repeat(2, 1fr);
-      }
-
-      .steps {
-        grid-template-columns: repeat(2, 1fr);
-      }
-    }
-
-    @media (max-width: 620px) {
-      .brand-text {
-        display: none;
-      }
-
-      .navbar {
-        min-height: 68px;
+      .compat {
+        grid-template-columns:1fr;
       }
 
       .hero-grid {
-        min-height: auto;
-        padding: 56px 0;
-        gap: 42px;
+        text-align:center;
+      }
+
+      .hero-copy > p {
+        margin-left:auto;
+        margin-right:auto;
+      }
+
+      .hero-actions,
+      .hero-points {
+        justify-content:center;
+      }
+
+      .package-grid {
+        grid-template-columns:repeat(2,1fr);
+      }
+
+      .steps {
+        grid-template-columns:repeat(2,1fr);
+      }
+    }
+
+    @media(max-width:620px) {
+      .container {
+        width:min(100% - 22px,1160px);
+      }
+
+      .brand-text {
+        display:none;
+      }
+
+      .nav {
+        min-height:68px;
+      }
+
+      .hero-grid {
+        min-height:auto;
+        padding:55px 0;
+        gap:42px;
       }
 
       .hero h1 {
-        font-size: 42px;
+        font-size:42px;
+        letter-spacing:-2px;
       }
 
-      .hero p {
-        font-size: 16px;
+      .hero-copy > p {
+        font-size:16px;
       }
 
       .section {
-        padding: 64px 0;
+        padding:64px 0;
       }
 
       .package-grid,
       .steps,
       .footer-grid {
-        grid-template-columns: 1fr;
+        grid-template-columns:1fr;
       }
 
-      .compat-box {
-        padding: 28px 20px;
+      .compat {
+        padding:28px 20px;
       }
 
       .modal {
-        align-items: flex-end;
-        padding: 0;
+        padding:0;
+        align-items:flex-end;
       }
 
       .checkout {
-        border-radius: 24px 24px 0 0;
-        max-height: 94vh;
-        padding: 26px 18px 22px;
+        max-height:94vh;
+        padding:27px 18px 22px;
+        border-radius:24px 24px 0 0;
       }
 
       .payment-grid {
-        grid-template-columns: 1fr;
+        grid-template-columns:1fr;
       }
 
-      .qr-card {
-        max-width: 300px;
-        margin: auto;
+      .payment-qr {
+        width:min(310px,100%);
+        margin:auto;
       }
     }
   </style>
 </head>
+
 <body>
 
-  <header>
-    <div class="container navbar">
-      <a href="#home" class="brand">
-        <div class="brand-logo">eSIM</div>
-        <div class="brand-text">
-          <strong>eSIM Solutions</strong>
-          <span>Pakistan</span>
-        </div>
-      </a>
+<header>
+  <div class="container nav">
 
-      <nav class="nav-links">
-        <a href="#packages">Packages</a>
-        <a href="#how">How It Works</a>
-        <a href="#compatibility">Compatibility</a>
-        <a href="#faq">FAQ</a>
-      </nav>
+    <a class="brand" href="#home">
+      <div class="brand-icon">eSIM</div>
+
+      <div class="brand-text">
+        <strong>eSIM Solutions</strong>
+        <small>Pakistan</small>
+      </div>
+    </a>
+
+    <nav>
+      <a href="#packages">Packages</a>
+      <a href="#how">How It Works</a>
+      <a href="#compatibility">Compatibility</a>
+      <a href="#faq">FAQ</a>
+    </nav>
+
+    <a
+      class="btn btn-outline"
+      href="https://www.instagram.com/esimsolutions.pk/"
+      target="_blank"
+      rel="noopener"
+    >
+      Instagram
+    </a>
+
+  </div>
+</header>
+
+
+<main>
+
+  <!-- HERO -->
+
+  <section class="hero" id="home">
+
+    <div class="container hero-grid">
+
+      <div class="hero-copy">
+
+        <div class="eyebrow" style="color:#88adff;">
+          Pakistan Data eSIM
+        </div>
+
+        <h1>
+          Stay connected without carrying two phones.
+        </h1>
+
+        <p>
+          Reliable data-only eSIM packages with a simple purchase
+          process. Choose your plan, pay securely through JazzCash /
+          Raast and send your payment proof for confirmation.
+        </p>
+
+        <div class="hero-actions">
+
+          <a class="btn btn-primary" href="#packages">
+            View Packages
+          </a>
+
+          <a
+            class="btn btn-white"
+            href="https://www.instagram.com/esimsolutions.pk/"
+            target="_blank"
+            rel="noopener"
+          >
+            Message on Instagram
+          </a>
+
+        </div>
+
+        <div class="hero-points">
+          <span>⚡ Instant Delivery</span>
+          <span>📶 Reliable Data</span>
+          <span>🌍 Data Only</span>
+          <span>🔓 Factory-Unlocked Devices</span>
+        </div>
+
+      </div>
+
+
+      <div class="phone-wrap">
+
+        <div class="phone">
+
+          <div class="notch"></div>
+
+          <div class="screen">
+
+            <div class="chip">
+              eSIM
+            </div>
+
+            <h3>
+              Activate. Connect. Go.
+            </h3>
+
+            <p>
+              A simple way to keep your main phone connected wherever
+              you need data.
+            </p>
+
+            <div class="screen-tag">
+              FAST • STABLE • RELIABLE
+            </div>
+
+          </div>
+
+        </div>
+
+      </div>
+
+    </div>
+
+  </section>
+
+
+  <!-- NOTICE BAR -->
+
+  <section class="notice">
+
+    <div class="container notice-row">
+
+      <span>✓ eSIM Compatible</span>
+
+      <span>✓ Factory Unlocked</span>
+
+      <span class="danger">
+        ✕ Not for JV Phones
+      </span>
+
+      <span>
+        ✓ Data Only — No Calls/SMS
+      </span>
+
+    </div>
+
+  </section>
+
+
+  <!-- PACKAGES -->
+
+  <section class="section" id="packages">
+
+    <div class="container">
+
+      <div class="section-heading">
+
+        <div class="eyebrow">
+          Choose Your Plan
+        </div>
+
+        <h2>
+          Data eSIM Packages
+        </h2>
+
+        <p>
+          Choose the package that best matches your data requirements.
+        </p>
+
+      </div>
+
+
+      <div class="tabs">
+
+        <div class="tab-box">
+
+          <button
+            class="tab active"
+            data-category="nonExpiry"
+          >
+            Non-Expiry
+          </button>
+
+          <button
+            class="tab"
+            data-category="thirtyDays"
+          >
+            30 Days
+          </button>
+
+        </div>
+
+      </div>
+
+
+      <div
+        class="package-grid"
+        id="packageGrid"
+      ></div>
+
+    </div>
+
+  </section>
+
+
+  <!-- HOW IT WORKS -->
+
+  <section class="section light" id="how">
+
+    <div class="container">
+
+      <div class="section-heading">
+
+        <div class="eyebrow">
+          Simple Process
+        </div>
+
+        <h2>
+          How It Works
+        </h2>
+
+      </div>
+
+
+      <div class="steps">
+
+        <article class="step">
+
+          <div class="step-number">1</div>
+
+          <h3>
+            Choose a Package
+          </h3>
+
+          <p>
+            Select your preferred data amount and validity.
+          </p>
+
+        </article>
+
+
+        <article class="step">
+
+          <div class="step-number">2</div>
+
+          <h3>
+            Enter Your Details
+          </h3>
+
+          <p>
+            Provide basic customer information for your order.
+          </p>
+
+        </article>
+
+
+        <article class="step">
+
+          <div class="step-number">3</div>
+
+          <h3>
+            Pay by JazzCash
+          </h3>
+
+          <p>
+            Scan our JazzCash / Raast QR or use the merchant TILL ID.
+          </p>
+
+        </article>
+
+
+        <article class="step">
+
+          <div class="step-number">4</div>
+
+          <h3>
+            Send Payment Proof
+          </h3>
+
+          <p>
+            Send your order number and payment screenshot on Instagram.
+          </p>
+
+        </article>
+
+      </div>
+
+    </div>
+
+  </section>
+
+
+  <!-- COMPATIBILITY -->
+
+  <section class="section" id="compatibility">
+
+    <div class="container">
+
+      <div class="compat">
+
+        <div>
+
+          <div
+            class="eyebrow"
+            style="color:#89aeff;"
+          >
+            Before You Buy
+          </div>
+
+          <h2>
+            Check Device Compatibility
+          </h2>
+
+          <ul>
+            <li>Your phone must support eSIM.</li>
+            <li>Your phone must be factory unlocked.</li>
+            <li>Not compatible with JV phones.</li>
+            <li>Not compatible with SIM-restricted devices.</li>
+            <li>Packages provide mobile data only.</li>
+            <li>No standard calls or SMS are included.</li>
+          </ul>
+
+        </div>
+
+
+        <div class="help">
+
+          <h3>
+            Unsure about your device?
+          </h3>
+
+          <p>
+            Contact us on Instagram with your exact phone model before
+            making payment.
+          </p>
+
+          <a
+            class="btn btn-primary full"
+            href="https://www.instagram.com/esimsolutions.pk/"
+            target="_blank"
+            rel="noopener"
+          >
+            Ask on Instagram
+          </a>
+
+        </div>
+
+      </div>
+
+    </div>
+
+  </section>
+
+
+  <!-- FAQ -->
+
+  <section class="section light" id="faq">
+
+    <div class="container">
+
+      <div class="section-heading">
+
+        <div class="eyebrow">
+          FAQ
+        </div>
+
+        <h2>
+          Common Questions
+        </h2>
+
+      </div>
+
+
+      <div class="faq">
+
+        <details>
+          <summary>Is this a physical SIM?</summary>
+
+          <p>
+            No. This is a digital eSIM for compatible devices.
+          </p>
+        </details>
+
+
+        <details>
+          <summary>Will it work on a JV phone?</summary>
+
+          <p>
+            No. Your device must be factory unlocked and support eSIM.
+          </p>
+        </details>
+
+
+        <details>
+          <summary>Does the package include calls or SMS?</summary>
+
+          <p>
+            No. These are data-only packages.
+          </p>
+        </details>
+
+
+        <details>
+          <summary>How can I pay?</summary>
+
+          <p>
+            Select a package and checkout will display our JazzCash /
+            Raast merchant QR and TILL ID.
+          </p>
+        </details>
+
+
+        <details>
+          <summary>What happens after payment?</summary>
+
+          <p>
+            Send your order number and payment screenshot to
+            @esimsolutions.pk on Instagram.
+          </p>
+        </details>
+
+      </div>
+
+    </div>
+
+  </section>
+
+</main>
+
+
+<!-- FOOTER -->
+
+<footer>
+
+  <div class="container">
+
+    <div class="footer-grid">
+
+      <div>
+
+        <h3>
+          eSIM Solutions Pakistan
+        </h3>
+
+        <p style="color:#aeb9c9;margin-top:7px;">
+          Fast • Stable • Reliable
+        </p>
+
+      </div>
+
+
+      <div class="footer-links">
+
+        <a href="#packages">
+          Packages
+        </a>
+
+        <a href="#compatibility">
+          Compatibility
+        </a>
+
+        <a
+          href="https://www.instagram.com/esimsolutions.pk/"
+          target="_blank"
+          rel="noopener"
+        >
+          Instagram
+        </a>
+
+      </div>
+
+    </div>
+
+
+    <div class="copyright">
+
+      ©
+      <span id="year"></span>
+      eSIM Solutions Pakistan. All rights reserved.
+
+    </div>
+
+  </div>
+
+</footer>
+
+
+<!-- CHECKOUT -->
+
+<div class="modal" id="checkoutModal">
+
+  <div class="checkout">
+
+    <button
+      type="button"
+      class="close"
+      onclick="closeCheckout()"
+      aria-label="Close"
+    >
+      ×
+    </button>
+
+
+    <div class="progress">
+
+      <div class="dot active" id="dot1">
+        1
+      </div>
+
+      <div class="line"></div>
+
+      <div class="dot" id="dot2">
+        2
+      </div>
+
+      <div class="line"></div>
+
+      <div class="dot" id="dot3">
+        3
+      </div>
+
+    </div>
+
+
+    <!-- CHECKOUT STEP 1 -->
+
+    <section
+      class="checkout-step active"
+      id="step1"
+    >
+
+      <div class="eyebrow">
+        Checkout
+      </div>
+
+      <h2>
+        Review Your Order
+      </h2>
+
+
+      <div class="summary">
+
+        <div class="summary-row">
+
+          <span>
+            Package
+          </span>
+
+          <strong id="selectedPackage">
+            —
+          </strong>
+
+        </div>
+
+
+        <div class="summary-row">
+
+          <span>
+            Validity
+          </span>
+
+          <strong id="selectedValidity">
+            —
+          </strong>
+
+        </div>
+
+
+        <div class="summary-row">
+
+          <span>
+            Total
+          </span>
+
+          <strong id="selectedPrice">
+            —
+          </strong>
+
+        </div>
+
+      </div>
+
+
+      <form id="checkoutForm">
+
+        <div class="field">
+
+          <label for="customerName">
+            Full Name
+          </label>
+
+          <input
+            id="customerName"
+            type="text"
+            placeholder="Your full name"
+            autocomplete="name"
+            required
+          >
+
+        </div>
+
+
+        <div class="field">
+
+          <label for="customerPhone">
+            Phone Number
+          </label>
+
+          <input
+            id="customerPhone"
+            type="tel"
+            placeholder="03XX XXXXXXX"
+            autocomplete="tel"
+            required
+          >
+
+        </div>
+
+
+        <div class="field">
+
+          <label for="customerEmail">
+            Email
+          </label>
+
+          <input
+            id="customerEmail"
+            type="email"
+            placeholder="you@example.com"
+            autocomplete="email"
+            required
+          >
+
+        </div>
+
+
+        <div class="field">
+
+          <label for="customerInstagram">
+            Instagram Username
+            <span style="color:#98a2b3;font-weight:normal;">
+              (Optional)
+            </span>
+          </label>
+
+          <input
+            id="customerInstagram"
+            type="text"
+            placeholder="@username"
+          >
+
+        </div>
+
+
+        <label class="check">
+
+          <input
+            type="checkbox"
+            required
+          >
+
+          <span>
+            I confirm that my phone supports eSIM and is factory unlocked.
+          </span>
+
+        </label>
+
+
+        <button
+          class="btn btn-primary full"
+          type="submit"
+        >
+          Continue to Payment
+        </button>
+
+      </form>
+
+    </section>
+
+
+    <!-- PAYMENT STEP -->
+
+    <section
+      class="checkout-step"
+      id="step2"
+    >
+
+      <div class="eyebrow">
+        JazzCash / Raast
+      </div>
+
+      <h2>
+        Pay
+        <span id="paymentAmount">
+          Rs. 0
+        </span>
+      </h2>
+
+      <p class="checkout-copy">
+        Scan the merchant QR or use the TILL ID below.
+      </p>
+
+
+      <div class="payment-grid">
+
+
+        <div class="payment-qr">
+
+          <div class="payment-qr-title">
+            JazzCash / Raast
+          </div>
+
+          <img
+            src="jazzcash-qr.jpeg"
+            alt="MOHAMMAD Shop JazzCash Raast QR"
+          >
+
+        </div>
+
+
+        <div class="payment-details">
+
+
+          <div class="payment-detail">
+
+            <span>
+              Merchant Name
+            </span>
+
+            <strong>
+              MOHAMMAD Shop
+            </strong>
+
+          </div>
+
+
+          <div class="payment-detail">
+
+            <span>
+              TILL ID
+            </span>
+
+            <strong>
+              983606109
+            </strong>
+
+          </div>
+
+
+          <button
+            class="btn btn-soft full"
+            id="copyTillButton"
+            type="button"
+            onclick="copyTill()"
+          >
+            Copy TILL ID
+          </button>
+
+
+          <div class="payment-detail">
+
+            <span>
+              Order Number
+            </span>
+
+            <strong id="paymentOrderNumber">
+              —
+            </strong>
+
+          </div>
+
+
+          <div class="payment-detail">
+
+            <span>
+              Amount
+            </span>
+
+            <strong id="paymentAmountSmall">
+              —
+            </strong>
+
+          </div>
+
+        </div>
+
+      </div>
+
+
+      <div class="payment-note">
+
+        <strong>Important:</strong>
+        Make the exact payment shown above. After payment,
+        click <strong>I Have Paid</strong> and send your payment
+        screenshot with your order number on Instagram.
+
+      </div>
+
+
+      <button
+        class="btn btn-primary full"
+        type="button"
+        onclick="paymentComplete()"
+      >
+        I Have Paid
+      </button>
+
+
+      <p class="small">
+        Payment is manually verified after you submit proof on Instagram.
+      </p>
+
+    </section>
+
+
+    <!-- SUCCESS -->
+
+    <section
+      class="checkout-step success"
+      id="step3"
+    >
+
+      <div class="success-icon">
+        ✓
+      </div>
+
+      <div class="eyebrow">
+        Order Created
+      </div>
+
+      <h2>
+        Send Payment Proof
+      </h2>
+
+      <p>
+        Your order number is
+      </p>
+
+      <strong
+        id="finalOrderNumber"
+        style="display:block;font-size:26px;margin-top:6px;"
+      >
+        —
+      </strong>
+
+
+      <div
+        class="order-card"
+        id="finalSummary"
+      ></div>
+
+
+      <button
+        class="btn btn-soft full"
+        id="copyOrderButton"
+        type="button"
+        onclick="copyOrderMessage()"
+      >
+        Copy Order Message
+      </button>
+
 
       <a
-        class="btn btn-outline"
+        class="btn btn-primary full"
         href="https://www.instagram.com/esimsolutions.pk/"
         target="_blank"
         rel="noopener"
       >
-        Instagram
+        Open Instagram
       </a>
-    </div>
-  </header>
 
-  <main>
 
-    <section class="hero" id="home">
-      <div class="container hero-grid">
+      <button
+        class="btn btn-white full"
+        type="button"
+        onclick="newOrder()"
+      >
+        Buy Another Package
+      </button>
 
-        <div>
-          <div class="eyebrow" style="color:#89aeff;">Pakistan Data eSIM</div>
-
-          <h1>
-            Stay connected without carrying two phones.
-          </h1>
-
-          <p>
-            Fast, stable and reliable data-only eSIM packages.
-            Choose your plan, pay using JazzCash/Raast QR and send
-            your payment proof on Instagram for order confirmation.
-          </p>
-
-          <div class="hero-actions">
-            <a class="btn btn-primary" href="#packages">View Packages</a>
-
-            <a
-              class="btn btn-white"
-              href="https://www.instagram.com/esimsolutions.pk/"
-              target="_blank"
-              rel="noopener"
-            >
-              Message on Instagram
-            </a>
-          </div>
-
-          <div class="hero-features">
-            <span>⚡ Instant Delivery</span>
-            <span>📶 Fast Data</span>
-            <span>🌍 Data Only</span>
-            <span>🔓 Factory-Unlocked Phones</span>
-          </div>
-        </div>
-
-        <div class="phone-wrap">
-          <div class="phone">
-            <div class="phone-notch"></div>
-
-            <div class="phone-screen">
-              <div class="esim-chip">eSIM</div>
-              <h3>Activate. Connect.<br>Go.</h3>
-              <p>
-                Choose your package and get connected with a simple digital eSIM setup.
-              </p>
-              <div class="phone-badge">FAST • STABLE • RELIABLE</div>
-            </div>
-          </div>
-        </div>
-
-      </div>
     </section>
 
-    <section class="notice-bar">
-      <div class="container notice-items">
-        <span>✓ eSIM-Compatible Phones</span>
-        <span>✓ Factory Unlocked</span>
-        <span class="notice-red">✕ Not for JV Phones</span>
-        <span>✓ Data Only — No Calls/SMS</span>
-      </div>
-    </section>
-
-    <section class="section" id="packages">
-      <div class="container">
-        <div class="section-title">
-          <div class="eyebrow">Choose Your Plan</div>
-          <h2>eSIM Packages</h2>
-          <p>Select your preferred package and proceed to checkout.</p>
-        </div>
-
-        <div class="tabs">
-          <div class="tab-wrap">
-            <button class="tab active" data-category="nonExpiry">Non-Expiry</button>
-            <button class="tab" data-category="thirtyDays">30 Days</button>
-          </div>
-        </div>
-
-        <div class="package-grid" id="packageGrid"></div>
-      </div>
-    </section>
-
-    <section class="section section-light" id="how">
-      <div class="container">
-        <div class="section-title">
-          <div class="eyebrow">Simple Process</div>
-          <h2>How It Works</h2>
-        </div>
-
-        <div class="steps">
-          <article class="step-card">
-            <div class="step-no">1</div>
-            <h3>Choose Package</h3>
-            <p>Select your required eSIM data package and validity.</p>
-          </article>
-
-          <article class="step-card">
-            <div class="step-no">2</div>
-            <h3>Enter Details</h3>
-            <p>Provide your name, phone number and email.</p>
-          </article>
-
-          <article class="step-card">
-            <div class="step-no">3</div>
-            <h3>Pay by QR</h3>
-            <p>Scan the JazzCash / Raast QR or use the merchant TILL ID.</p>
-          </article>
-
-          <article class="step-card">
-            <div class="step-no">4</div>
-            <h3>Send Payment Proof</h3>
-            <p>Contact us on Instagram with your order number and screenshot.</p>
-          </article>
-        </div>
-      </div>
-    </section>
-
-    <section class="section" id="compatibility">
-      <div class="container">
-        <div class="compat-box">
-          <div>
-            <div class="eyebrow" style="color:#8db0ff;">Before You Buy</div>
-            <h2>Check Your Device Compatibility</h2>
-
-            <ul>
-              <li>Your device must support eSIM.</li>
-              <li>Your device must be factory unlocked.</li>
-              <li>Not compatible with JV phones.</li>
-              <li>Not compatible with SIM-restricted phones.</li>
-              <li>This service is for data only.</li>
-              <li>No standard calls or SMS are included.</li>
-            </ul>
-          </div>
-
-          <div class="help-card">
-            <h3>Not sure about your phone?</h3>
-            <p>
-              Message us on Instagram with your phone model before making payment.
-            </p>
-
-            <a
-              class="btn btn-primary btn-full"
-              href="https://www.instagram.com/esimsolutions.pk/"
-              target="_blank"
-              rel="noopener"
-            >
-              Ask on Instagram
-            </a>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <section class="section section-light" id="faq">
-      <div class="container">
-        <div class="section-title">
-          <div class="eyebrow">FAQ</div>
-          <h2>Common Questions</h2>
-        </div>
-
-        <div class="faq">
-          <details>
-            <summary>Is this a physical SIM?</summary>
-            <p>No. This is a digital eSIM service for compatible phones.</p>
-          </details>
-
-          <details>
-            <summary>Does it work on JV phones?</summary>
-            <p>No. Your phone must be eSIM-compatible and factory unlocked.</p>
-          </details>
-
-          <details>
-            <summary>Are calls or SMS included?</summary>
-            <p>No. These are data-only packages.</p>
-          </details>
-
-          <details>
-            <summary>How do I pay?</summary>
-            <p>
-              Choose a package and pay using the JazzCash / Raast QR code
-              or the merchant TILL ID shown in checkout.
-            </p>
-          </details>
-
-          <details>
-            <summary>What happens after payment?</summary>
-            <p>
-              After payment, copy your order message and send it with your payment screenshot
-              to <strong>@esimsolutions.pk</strong>.
-            </p>
-          </details>
-        </div>
-      </div>
-    </section>
-
-  </main>
-
-  <footer>
-    <div class="container">
-      <div class="footer-grid">
-        <div>
-          <h3>eSIM Solutions Pakistan</h3>
-          <p style="color:#afbacb; margin-top:8px;">Fast • Stable • Reliable</p>
-        </div>
-
-        <div class="footer-links">
-          <a href="#packages">Packages</a>
-          <a href="#compatibility">Compatibility</a>
-          <a href="https://www.instagram.com/esimsolutions.pk/" target="_blank" rel="noopener">Instagram</a>
-        </div>
-      </div>
-
-      <div class="copyright">
-        © <span id="year"></span> eSIM Solutions Pakistan. All rights reserved.
-      </div>
-    </div>
-  </footer>
-
-  <!-- CHECKOUT MODAL -->
-  <div class="modal" id="checkoutModal">
-    <div class="checkout">
-
-      <button class="close-modal" type="button" onclick="closeCheckout()">×</button>
-
-      <div class="checkout-progress">
-        <div class="progress-dot active" id="progress1">1</div>
-        <div class="progress-line"></div>
-        <div class="progress-dot" id="progress2">2</div>
-        <div class="progress-line"></div>
-        <div class="progress-dot" id="progress3">3</div>
-      </div>
-
-      <!-- STEP 1 -->
-      <section class="checkout-step active" id="step1">
-        <div class="eyebrow">Checkout</div>
-        <h2>Your Order</h2>
-
-        <div class="summary-box">
-          <div class="summary-row">
-            <span>Package</span>
-            <strong id="selectedPackage">-</strong>
-          </div>
-          <div class="summary-row">
-            <span>Validity</span>
-            <strong id="selectedValidity">-</strong>
-          </div>
-          <div class="summary-row">
-            <span>Total</span>
-            <strong id="selectedPrice">-</strong>
-          </div>
-        </div>
-
-        <form id="checkoutForm">
-          <div class="form-group">
-            <label for="customerName">Full Name</label>
-            <input id="customerName" type="text" required placeholder="Your full name" autocomplete="name" />
-          </div>
-
-          <div class="form-group">
-            <label for="customerPhone">Phone Number</label>
-            <input id="customerPhone" type="tel" required placeholder="03XX XXXXXXX" autocomplete="tel" />
-          </div>
-
-          <div class="form-group">
-            <label for="customerEmail">Email</label>
-            <input id="customerEmail" type="email" required placeholder="you@example.com" autocomplete="email" />
-          </div>
-
-          <div class="form-group">
-            <label for="customerInstagram">Instagram Username (Optional)</label>
-            <input id="customerInstagram" type="text" placeholder="@username" />
-          </div>
-
-          <label class="checkbox-row">
-            <input type="checkbox" required />
-            <span>
-              I confirm that my phone supports eSIM and is factory unlocked.
-            </span>
-          </label>
-
-          <button class="btn btn-primary btn-full" type="submit">
-            Continue to Payment
-          </button>
-        </form>
-      </section>
-
-      <!-- STEP 2 -->
-      <section class="checkout-step" id="step2">
-        <div class="eyebrow">JazzCash / Raast Payment</div>
-        <h2>Pay <span id="paymentAmount">Rs. 0</span></h2>
-        <p class="checkout-text">
-          Scan the QR code or pay using the merchant TILL ID below.
-        </p>
-
-        <div class="payment-grid">
-          <div class="qr-card">
-            <div class="qr-label">JazzCash / Raast QR</div>
-
-            <div class="qr-wrap">
-              <canvas id="paymentQr" width="610" height="610"></canvas>
-            </div>
-
-            <div class="till-text">TILL ID</div>
-            <div class="till-number">983606109</div>
-          </div>
-
-          <div>
-            <div class="payment-detail">
-              <span>Merchant Name</span>
-              <strong>MOHAMMAD Shop</strong>
-            </div>
-
-            <div class="payment-detail">
-              <span>TILL ID</span>
-              <strong>983606109</strong>
-            </div>
-
-            <button
-              class="btn btn-soft btn-full"
-              type="button"
-              id="copyTillButton"
-              onclick="copyTillId()"
-            >
-              Copy TILL ID
-            </button>
-
-            <div class="payment-detail" style="margin-top:10px;">
-              <span>Order Number</span>
-              <strong id="paymentOrderNumber">-</strong>
-            </div>
-          </div>
-        </div>
-
-        <div class="payment-note">
-          <strong>Important:</strong> After making payment, click
-          <strong>I Have Paid</strong> and send your payment screenshot
-          with your order number on Instagram.
-        </div>
-
-        <button class="btn btn-primary btn-full" type="button" onclick="paymentCompleted()">
-          I Have Paid
-        </button>
-
-        <p class="small-note">
-          Payment is verified manually after you send proof on Instagram.
-        </p>
-      </section>
-
-      <!-- STEP 3 -->
-      <section class="checkout-step success-step" id="step3">
-        <div class="success-icon">✓</div>
-        <div class="eyebrow">Order Created</div>
-        <h2>Send Payment Proof</h2>
-
-        <p>Your order number:</p>
-        <div id="finalOrderNumber" style="font-size:25px; font-weight:900; margin-top:6px;">-</div>
-
-        <div class="order-card" id="finalOrderSummary"></div>
-
-        <button class="btn btn-soft btn-full" type="button" id="copyOrderButton" onclick="copyOrderMessage()">
-          Copy Order Message
-        </button>
-
-        <a
-          class="btn btn-primary btn-full"
-          href="https://www.instagram.com/esimsolutions.pk/"
-          target="_blank"
-          rel="noopener"
-          style="margin-top:10px;"
-        >
-          Open Instagram
-        </a>
-
-        <button class="btn btn-white btn-full" type="button" onclick="newOrder()" style="margin-top:10px;">
-          Buy Another Package
-        </button>
-      </section>
-
-    </div>
   </div>
 
-  <script>
-    const INSTAGRAM_USERNAME = "esimsolutions.pk";
-    const MERCHANT_NAME = "MOHAMMAD Shop";
-    const TILL_ID = "983606109";
+</div>
 
-    const PACKAGES = {
-      nonExpiry: [
-        { id: "NE-3", data: "3 GB", validity: "Non-Expiry", price: 1200 },
-        { id: "NE-5", data: "5 GB", validity: "Non-Expiry", price: 1490 },
-        { id: "NE-10", data: "10 GB", validity: "Non-Expiry", price: 2250, featured: true },
-        { id: "NE-20", data: "20 GB", validity: "Non-Expiry", price: 3599 },
-        { id: "NE-50", data: "50 GB", validity: "Non-Expiry", price: 6999 },
-        { id: "NE-100", data: "100 GB", validity: "Non-Expiry", price: 11000 }
-      ],
-      thirtyDays: [
-        { id: "30-1", data: "1 GB", validity: "30 Days", price: 650 },
-        { id: "30-3", data: "3 GB", validity: "30 Days", price: 850 },
-        { id: "30-5", data: "5 GB", validity: "30 Days", price: 1150, featured: true },
-        { id: "30-10", data: "10 GB", validity: "30 Days", price: 1750 },
-        { id: "30-20", data: "20 GB", validity: "30 Days", price: 2750 }
-      ]
-    };
 
-    let activeCategory = "nonExpiry";
-    let selectedPlan = null;
-    let currentOrder = null;
+<script>
 
-    function formatPrice(price) {
-      return "Rs. " + Number(price).toLocaleString("en-PK");
-    }
+  const INSTAGRAM = "esimsolutions.pk";
 
-    function displayPackages() {
-      const grid = document.getElementById("packageGrid");
-      grid.innerHTML = "";
+  const MERCHANT_NAME = "MOHAMMAD Shop";
 
-      PACKAGES[activeCategory].forEach(plan => {
-        const card = document.createElement("article");
-        card.className = "package-card" + (plan.featured ? " featured" : "");
+  const TILL_ID = "983606109";
 
-        card.innerHTML = `
-          ${plan.featured ? '<div class="package-pill">POPULAR</div>' : ""}
-          <div class="package-type">${plan.validity.toUpperCase()}</div>
-          <div class="package-data">${plan.data}</div>
-          <div class="package-validity">
-            ${plan.validity === "Non-Expiry" ? "Non-expiry data package" : "Valid for 30 days"}
-          </div>
-          <div class="package-price">
-            <small>PKR</small>${Number(plan.price).toLocaleString("en-PK")}
-          </div>
-          <button class="btn btn-primary btn-full" type="button" onclick="startCheckout('${plan.id}')">
-            Buy Now
-          </button>
-        `;
 
-        grid.appendChild(card);
-      });
-    }
+  const PACKAGES = {
 
-    document.querySelectorAll(".tab").forEach(tab => {
-      tab.addEventListener("click", function() {
-        document.querySelectorAll(".tab").forEach(btn => btn.classList.remove("active"));
-        this.classList.add("active");
-        activeCategory = this.dataset.category;
-        displayPackages();
-      });
-    });
+    nonExpiry: [
 
-    function findPackage(id) {
-      return [...PACKAGES.nonExpiry, ...PACKAGES.thirtyDays].find(item => item.id === id);
-    }
+      {
+        id:"NE3",
+        data:"3 GB",
+        validity:"Non-Expiry",
+        price:1200
+      },
 
-    function startCheckout(id) {
-      selectedPlan = findPackage(id);
-      currentOrder = null;
+      {
+        id:"NE5",
+        data:"5 GB",
+        validity:"Non-Expiry",
+        price:1490
+      },
 
-      document.getElementById("selectedPackage").textContent = selectedPlan.data;
-      document.getElementById("selectedValidity").textContent = selectedPlan.validity;
-      document.getElementById("selectedPrice").textContent = formatPrice(selectedPlan.price);
-      document.getElementById("checkoutForm").reset();
+      {
+        id:"NE10",
+        data:"10 GB",
+        validity:"Non-Expiry",
+        price:2250,
+        featured:true
+      },
 
-      showStep(1);
-      document.getElementById("checkoutModal").classList.add("show");
-      document.body.classList.add("modal-open");
-    }
+      {
+        id:"NE20",
+        data:"20 GB",
+        validity:"Non-Expiry",
+        price:3599
+      },
 
-    function closeCheckout() {
-      document.getElementById("checkoutModal").classList.remove("show");
-      document.body.classList.remove("modal-open");
-    }
+      {
+        id:"NE50",
+        data:"50 GB",
+        validity:"Non-Expiry",
+        price:6999
+      },
 
-    function showStep(stepNumber) {
-      document.querySelectorAll(".checkout-step").forEach(step => step.classList.remove("active"));
-      document.getElementById("step" + stepNumber).classList.add("active");
+      {
+        id:"NE100",
+        data:"100 GB",
+        validity:"Non-Expiry",
+        price:11000
+      }
 
-      for (let i = 1; i <= 3; i++) {
-        const dot = document.getElementById("progress" + i);
-        if (i <= stepNumber) {
-          dot.classList.add("active");
-        } else {
-          dot.classList.remove("active");
+    ],
+
+
+    thirtyDays: [
+
+      {
+        id:"D1",
+        data:"1 GB",
+        validity:"30 Days",
+        price:650
+      },
+
+      {
+        id:"D3",
+        data:"3 GB",
+        validity:"30 Days",
+        price:850
+      },
+
+      {
+        id:"D5",
+        data:"5 GB",
+        validity:"30 Days",
+        price:1150,
+        featured:true
+      },
+
+      {
+        id:"D10",
+        data:"10 GB",
+        validity:"30 Days",
+        price:1750
+      },
+
+      {
+        id:"D20",
+        data:"20 GB",
+        validity:"30 Days",
+        price:2750
+      }
+
+    ]
+
+  };
+
+
+  let currentCategory =
+    "nonExpiry";
+
+  let selectedPlan =
+    null;
+
+  let currentOrder =
+    null;
+
+
+  function price(value) {
+
+    return "Rs. " +
+      Number(value)
+      .toLocaleString("en-PK");
+
+  }
+
+
+  function renderPackages() {
+
+    const grid =
+      document.getElementById(
+        "packageGrid"
+      );
+
+
+    grid.innerHTML =
+      "";
+
+
+    PACKAGES[
+      currentCategory
+    ].forEach(plan => {
+
+      const card =
+        document.createElement(
+          "article"
+        );
+
+
+      card.className =
+        "package-card" +
+        (
+          plan.featured
+          ? " featured"
+          : ""
+        );
+
+
+      card.innerHTML = `
+
+        ${
+          plan.featured
+          ? '<div class="popular">POPULAR</div>'
+          : ""
         }
-      }
-    }
 
-    function generateOrderNumber() {
-      const now = new Date();
-      const y = String(now.getFullYear()).slice(-2);
-      const m = String(now.getMonth() + 1).padStart(2, "0");
-      const d = String(now.getDate()).padStart(2, "0");
-      const r = Math.floor(1000 + Math.random() * 9000);
-      return `ESIM-${y}${m}${d}-${r}`;
-    }
+        <div class="package-type">
+          ${plan.validity.toUpperCase()}
+        </div>
 
-    document.getElementById("checkoutForm").addEventListener("submit", function(event) {
-      event.preventDefault();
+        <div class="package-data">
+          ${plan.data}
+        </div>
 
-      currentOrder = {
-        orderNumber: generateOrderNumber(),
-        package: selectedPlan,
-        customer: {
-          name: document.getElementById("customerName").value.trim(),
-          phone: document.getElementById("customerPhone").value.trim(),
-          email: document.getElementById("customerEmail").value.trim(),
-          instagram: document.getElementById("customerInstagram").value.trim()
-        },
-        createdAt: new Date().toISOString()
-      };
+        <div class="package-validity">
+          ${
+            plan.validity === "Non-Expiry"
+            ? "Non-expiry data package"
+            : "Valid for 30 days"
+          }
+        </div>
 
-      document.getElementById("paymentAmount").textContent = formatPrice(selectedPlan.price);
-      document.getElementById("paymentOrderNumber").textContent = currentOrder.orderNumber;
+        <div class="package-price">
 
-      try {
-        const orders = JSON.parse(localStorage.getItem("esimOrders") || "[]");
-        orders.push(currentOrder);
-        localStorage.setItem("esimOrders", JSON.stringify(orders.slice(-50)));
-      } catch (e) {}
+          <small>
+            PKR
+          </small>
 
-      showStep(2);
-    });
+          ${Number(
+            plan.price
+          ).toLocaleString("en-PK")}
 
-    async function copyText(text, button, successText) {
-      try {
-        await navigator.clipboard.writeText(text);
-        const old = button.textContent;
-        button.textContent = successText;
-        setTimeout(() => button.textContent = old, 1500);
-      } catch (error) {
-        window.prompt("Copy this:", text);
-      }
-    }
+        </div>
 
-    function copyTillId() {
-      const button = document.getElementById("copyTillButton");
-      copyText(TILL_ID, button, "TILL ID Copied!");
-    }
+        <button
+          class="btn btn-primary full"
+          type="button"
+          onclick="buy('${plan.id}')"
+        >
+          Buy Now
+        </button>
 
-    function paymentCompleted() {
-      if (!currentOrder) return;
-
-      document.getElementById("finalOrderNumber").textContent = currentOrder.orderNumber;
-
-      document.getElementById("finalOrderSummary").innerHTML = `
-        <strong>${escapeHtml(currentOrder.package.data)} — ${escapeHtml(currentOrder.package.validity)}</strong>
-        <br><br>
-        Amount: <strong>${formatPrice(currentOrder.package.price)}</strong>
-        <br>
-        Customer: ${escapeHtml(currentOrder.customer.name)}
-        <br>
-        Phone: ${escapeHtml(currentOrder.customer.phone)}
-        <br>
-        Merchant: ${MERCHANT_NAME}
-        <br>
-        TILL ID: ${TILL_ID}
       `;
 
-      showStep(3);
+
+      grid.appendChild(
+        card
+      );
+
+    });
+
+  }
+
+
+  document
+    .querySelectorAll(
+      ".tab"
+    )
+    .forEach(tab => {
+
+      tab.addEventListener(
+        "click",
+        function() {
+
+          document
+            .querySelectorAll(
+              ".tab"
+            )
+            .forEach(item => {
+
+              item.classList.remove(
+                "active"
+              );
+
+            });
+
+
+          this.classList.add(
+            "active"
+          );
+
+
+          currentCategory =
+            this.dataset.category;
+
+
+          renderPackages();
+
+        }
+      );
+
+    });
+
+
+  function findPackage(id) {
+
+    return [
+
+      ...PACKAGES.nonExpiry,
+
+      ...PACKAGES.thirtyDays
+
+    ].find(
+      item =>
+        item.id === id
+    );
+
+  }
+
+
+  function buy(id) {
+
+    selectedPlan =
+      findPackage(id);
+
+
+    if (!selectedPlan) {
+      return;
     }
 
-    function createOrderMessage() {
-      if (!currentOrder) return "";
 
-      let message = `Assalam-o-Alaikum,
+    currentOrder =
+      null;
+
+
+    document.getElementById(
+      "selectedPackage"
+    ).textContent =
+      selectedPlan.data;
+
+
+    document.getElementById(
+      "selectedValidity"
+    ).textContent =
+      selectedPlan.validity;
+
+
+    document.getElementById(
+      "selectedPrice"
+    ).textContent =
+      price(
+        selectedPlan.price
+      );
+
+
+    document.getElementById(
+      "checkoutForm"
+    ).reset();
+
+
+    showStep(1);
+
+
+    document.getElementById(
+      "checkoutModal"
+    ).classList.add(
+      "show"
+    );
+
+
+    document.body.classList.add(
+      "lock"
+    );
+
+  }
+
+
+  function closeCheckout() {
+
+    document.getElementById(
+      "checkoutModal"
+    ).classList.remove(
+      "show"
+    );
+
+
+    document.body.classList.remove(
+      "lock"
+    );
+
+  }
+
+
+  function showStep(step) {
+
+    document
+      .querySelectorAll(
+        ".checkout-step"
+      )
+      .forEach(item => {
+
+        item.classList.remove(
+          "active"
+        );
+
+      });
+
+
+    document.getElementById(
+      "step" + step
+    ).classList.add(
+      "active"
+    );
+
+
+    for (
+      let i = 1;
+      i <= 3;
+      i++
+    ) {
+
+      const dot =
+        document.getElementById(
+          "dot" + i
+        );
+
+
+      dot.classList.toggle(
+        "active",
+        i <= step
+      );
+
+    }
+
+  }
+
+
+  function generateOrderNumber() {
+
+    const date =
+      new Date();
+
+
+    const y =
+      String(
+        date.getFullYear()
+      ).slice(-2);
+
+
+    const m =
+      String(
+        date.getMonth() + 1
+      ).padStart(2,"0");
+
+
+    const d =
+      String(
+        date.getDate()
+      ).padStart(2,"0");
+
+
+    const random =
+      Math.floor(
+        1000 +
+        Math.random() *
+        9000
+      );
+
+
+    return `ESIM-${y}${m}${d}-${random}`;
+
+  }
+
+
+  document
+    .getElementById(
+      "checkoutForm"
+    )
+    .addEventListener(
+      "submit",
+      function(event) {
+
+        event.preventDefault();
+
+
+        currentOrder = {
+
+          orderNumber:
+            generateOrderNumber(),
+
+          package:
+            selectedPlan,
+
+          customer: {
+
+            name:
+              document
+                .getElementById(
+                  "customerName"
+                )
+                .value
+                .trim(),
+
+            phone:
+              document
+                .getElementById(
+                  "customerPhone"
+                )
+                .value
+                .trim(),
+
+            email:
+              document
+                .getElementById(
+                  "customerEmail"
+                )
+                .value
+                .trim(),
+
+            instagram:
+              document
+                .getElementById(
+                  "customerInstagram"
+                )
+                .value
+                .trim()
+
+          }
+
+        };
+
+
+        document.getElementById(
+          "paymentAmount"
+        ).textContent =
+          price(
+            selectedPlan.price
+          );
+
+
+        document.getElementById(
+          "paymentAmountSmall"
+        ).textContent =
+          price(
+            selectedPlan.price
+          );
+
+
+        document.getElementById(
+          "paymentOrderNumber"
+        ).textContent =
+          currentOrder.orderNumber;
+
+
+        showStep(2);
+
+      }
+    );
+
+
+  async function copyText(
+    text,
+    button,
+    success
+  ) {
+
+    try {
+
+      await navigator.clipboard
+        .writeText(text);
+
+
+      const original =
+        button.textContent;
+
+
+      button.textContent =
+        success;
+
+
+      setTimeout(
+        () => {
+
+          button.textContent =
+            original;
+
+        },
+        1500
+      );
+
+    }
+
+    catch(error) {
+
+      window.prompt(
+        "Copy:",
+        text
+      );
+
+    }
+
+  }
+
+
+  function copyTill() {
+
+    copyText(
+
+      TILL_ID,
+
+      document.getElementById(
+        "copyTillButton"
+      ),
+
+      "TILL ID Copied!"
+
+    );
+
+  }
+
+
+  function paymentComplete() {
+
+    if (!currentOrder) {
+      return;
+    }
+
+
+    document.getElementById(
+      "finalOrderNumber"
+    ).textContent =
+      currentOrder.orderNumber;
+
+
+    document.getElementById(
+      "finalSummary"
+    ).innerHTML = `
+
+      <strong>
+        ${safe(
+          currentOrder.package.data
+        )}
+        —
+        ${safe(
+          currentOrder.package.validity
+        )}
+      </strong>
+
+      <br><br>
+
+      Amount:
+      <strong>
+        ${price(
+          currentOrder.package.price
+        )}
+      </strong>
+
+      <br>
+
+      Name:
+      ${safe(
+        currentOrder.customer.name
+      )}
+
+      <br>
+
+      Phone:
+      ${safe(
+        currentOrder.customer.phone
+      )}
+
+      <br>
+
+      Merchant:
+      ${MERCHANT_NAME}
+
+      <br>
+
+      TILL ID:
+      ${TILL_ID}
+
+    `;
+
+
+    showStep(3);
+
+  }
+
+
+  function orderMessage() {
+
+    if (!currentOrder) {
+      return "";
+    }
+
+
+    let message = `Assalam-o-Alaikum,
 
 I have made payment for an eSIM order.
 
 Order Number: ${currentOrder.orderNumber}
 Package: ${currentOrder.package.data}
 Validity: ${currentOrder.package.validity}
-Amount: ${formatPrice(currentOrder.package.price)}
+Amount: ${price(currentOrder.package.price)}
 
 Name: ${currentOrder.customer.name}
 Phone: ${currentOrder.customer.phone}
 Email: ${currentOrder.customer.email}`;
 
-      if (currentOrder.customer.instagram) {
-        message += `
 
-Instagram: ${currentOrder.customer.instagram}`;
-      }
+    if (
+      currentOrder
+        .customer
+        .instagram
+    ) {
 
       message += `
+
+Instagram: ${currentOrder.customer.instagram}`;
+
+    }
+
+
+    message += `
 
 Payment Method: JazzCash / Raast
 Merchant Name: ${MERCHANT_NAME}
@@ -1551,82 +2504,116 @@ TILL ID: ${TILL_ID}
 
 I am attaching my payment screenshot for verification.`;
 
-      return message;
-    }
 
-    function copyOrderMessage() {
-      const button = document.getElementById("copyOrderButton");
-      copyText(createOrderMessage(), button, "Order Message Copied!");
-    }
+    return message;
 
-    function newOrder() {
-      closeCheckout();
-      setTimeout(() => {
-        document.getElementById("packages").scrollIntoView({ behavior: "smooth" });
-      }, 150);
-    }
+  }
 
-    function escapeHtml(value) {
-      const div = document.createElement("div");
-      div.textContent = String(value);
-      return div.innerHTML;
-    }
 
-    document.getElementById("checkoutModal").addEventListener("click", function(event) {
-      if (event.target === this) closeCheckout();
-    });
+  function copyOrderMessage() {
 
-    document.addEventListener("keydown", function(event) {
-      if (event.key === "Escape") closeCheckout();
-    });
+    copyText(
 
-    document.getElementById("year").textContent = new Date().getFullYear();
+      orderMessage(),
 
-    /* QR MATRIX */
-    const QR_SIZE = 61;
-    const QR_BINARY =
-      "AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAP5VVhs+o/gEFAfxHCGQQC6ssl1C1LoBdcliXeRV0Auhx4+yHi6AQTxgRcqRBAP6qqqqqq/gABWaceUdAACCsgf+AC5wAsy4gFwwJkAVwPaUHgpkACJ1rVqELUAIatK+2y/3gFoZWIJtIsADXkVeyY2xYBWvCrcE0AAA/mW0ixN0KAelOsak+1NAEOCf88/3vgA5W9kO/NmABvk12aUteIB+Adef5hcEAS6039dCmEAbOL+Si0QSAJ+MEvqez7gHRackaOVEAD6pQipyGr4BEZ1BEQzxUAT4b7+c0/uAUqQsQ0FR8ADan2OxI3vACIkAuFhDAwB7LZWWrSVAAG0PS51mlcAzypx92MgEAJoT87j48LAC9gztfVWbgEjr0Mk0DnABCRmrrSQqAAmpEhMpXeQAxmzSjNUYqAbllQQwQgMAN5It63z7cADBpeLIHDJQASd3v4VO+IAAajxFEgx8A/m0Mq/QqkAQTXSxpZkSALp+Dv/tj/AF0nOgqSxpAC6HJUoWCYQBBA4tmdIEMA/qkxSW0lUAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==";
+      document.getElementById(
+        "copyOrderButton"
+      ),
 
-    function drawPaymentQr() {
-      const canvas = document.getElementById("paymentQr");
-      const ctx = canvas.getContext("2d");
-      const binary = atob(QR_BINARY);
-      const bytes = new Uint8Array(binary.length);
+      "Order Message Copied!"
 
-      for (let i = 0; i < binary.length; i++) {
-        bytes[i] = binary.charCodeAt(i);
-      }
+    );
 
-      const moduleSize = canvas.width / QR_SIZE;
-      ctx.imageSmoothingEnabled = false;
-      ctx.fillStyle = "#fff";
-      ctx.fillRect(0, 0, canvas.width, canvas.height);
-      ctx.fillStyle = "#000";
+  }
 
-      const totalBits = QR_SIZE * QR_SIZE;
 
-      for (let bitIndex = 0; bitIndex < totalBits; bitIndex++) {
-        const byteIndex = Math.floor(bitIndex / 8);
-        const bitPos = 7 - (bitIndex % 8);
-        const bit = (bytes[byteIndex] >> bitPos) & 1;
+  function newOrder() {
 
-        if (bit === 1) {
-          const row = Math.floor(bitIndex / QR_SIZE);
-          const col = bitIndex % QR_SIZE;
+    closeCheckout();
 
-          ctx.fillRect(
-            Math.floor(col * moduleSize),
-            Math.floor(row * moduleSize),
-            Math.ceil(moduleSize),
-            Math.ceil(moduleSize)
-          );
+
+    setTimeout(
+      () => {
+
+        document
+          .getElementById(
+            "packages"
+          )
+          .scrollIntoView({
+            behavior:"smooth"
+          });
+
+      },
+      150
+    );
+
+  }
+
+
+  function safe(value) {
+
+    const div =
+      document.createElement(
+        "div"
+      );
+
+
+    div.textContent =
+      String(value);
+
+
+    return div.innerHTML;
+
+  }
+
+
+  document
+    .getElementById(
+      "checkoutModal"
+    )
+    .addEventListener(
+      "click",
+      function(event) {
+
+        if (
+          event.target === this
+        ) {
+
+          closeCheckout();
+
         }
-      }
-    }
 
-    displayPackages();
-    drawPaymentQr();
-  </script>
+      }
+    );
+
+
+  document.addEventListener(
+    "keydown",
+    function(event) {
+
+      if (
+        event.key ===
+        "Escape"
+      ) {
+
+        closeCheckout();
+
+      }
+
+    }
+  );
+
+
+  document.getElementById(
+    "year"
+  ).textContent =
+    new Date()
+      .getFullYear();
+
+
+  renderPackages();
+
+</script>
 
 </body>
 </html>
