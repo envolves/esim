@@ -11,8 +11,8 @@
 
 const SITE_CONFIG = {
   instagramUsername: "esimsolutions.pk",
-  jazzCashNumber: "03XX XXXXXXX",
-  jazzCashAccountTitle: "YOUR ACCOUNT TITLE",
+  jazzCashNumber: "0318 7151102",
+  jazzCashAccountTitle: "Mohammad Yasin",
   jazzCashQrPath: "assets/jazzcash-qr-placeholder.svg"
 };
 
