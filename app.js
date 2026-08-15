@@ -1,42 +1,30 @@
-/* =========================================================
-   BUSINESS SETTINGS
-========================================================= */
-
 const BUSINESS = {
   instagram: "esimsolutions.pk",
-
-  merchantName:
-    "MOHAMMAD Shop",
-
-  tillId:
-    "983606109"
+  merchant: "MOHAMMAD Shop",
+  tillId: "983606109"
 };
 
-
-/* =========================================================
-   PACKAGE DATA
-========================================================= */
 
 const PACKAGES = {
 
   nonExpiry: [
 
     {
-      id: "NE-3",
+      id: "NE3",
       data: "3 GB",
       validity: "Non-Expiry",
       price: 1200
     },
 
     {
-      id: "NE-5",
+      id: "NE5",
       data: "5 GB",
       validity: "Non-Expiry",
       price: 1490
     },
 
     {
-      id: "NE-10",
+      id: "NE10",
       data: "10 GB",
       validity: "Non-Expiry",
       price: 2250,
@@ -44,21 +32,21 @@ const PACKAGES = {
     },
 
     {
-      id: "NE-20",
+      id: "NE20",
       data: "20 GB",
       validity: "Non-Expiry",
       price: 3599
     },
 
     {
-      id: "NE-50",
+      id: "NE50",
       data: "50 GB",
       validity: "Non-Expiry",
       price: 6999
     },
 
     {
-      id: "NE-100",
+      id: "NE100",
       data: "100 GB",
       validity: "Non-Expiry",
       price: 11000
@@ -70,21 +58,21 @@ const PACKAGES = {
   thirtyDays: [
 
     {
-      id: "30-1",
+      id: "D1",
       data: "1 GB",
       validity: "30 Days",
       price: 650
     },
 
     {
-      id: "30-3",
+      id: "D3",
       data: "3 GB",
       validity: "30 Days",
       price: 850
     },
 
     {
-      id: "30-5",
+      id: "D5",
       data: "5 GB",
       validity: "30 Days",
       price: 1150,
@@ -92,14 +80,14 @@ const PACKAGES = {
     },
 
     {
-      id: "30-10",
+      id: "D10",
       data: "10 GB",
       validity: "30 Days",
       price: 1750
     },
 
     {
-      id: "30-20",
+      id: "D20",
       data: "20 GB",
       validity: "30 Days",
       price: 2750
@@ -110,23 +98,18 @@ const PACKAGES = {
 };
 
 
-/* =========================================================
-   STATE
-========================================================= */
-
 let activeCategory =
   "nonExpiry";
 
-let selectedPackage =
+let selectedPlan =
   null;
 
 let currentOrder =
   null;
 
+let revealObserver =
+  null;
 
-/* =========================================================
-   HELPERS
-========================================================= */
 
 function formatPrice(value) {
 
@@ -135,6 +118,19 @@ function formatPrice(value) {
     Number(value)
       .toLocaleString("en-PK")
   );
+
+}
+
+
+function escapeHTML(value) {
+
+  const element =
+    document.createElement("div");
+
+  element.textContent =
+    String(value);
+
+  return element.innerHTML;
 
 }
 
@@ -148,29 +144,14 @@ function findPackage(id) {
     ...PACKAGES.thirtyDays
 
   ].find(
-    packageItem =>
-      packageItem.id === id
+    item =>
+      item.id === id
   );
 
 }
 
 
-function escapeHTML(value) {
-
-  const div =
-    document.createElement("div");
-
-  div.textContent =
-    String(value);
-
-  return div.innerHTML;
-
-}
-
-
-/* =========================================================
-   PACKAGE DISPLAY
-========================================================= */
+/* PACKAGES */
 
 function renderPackages() {
 
@@ -187,34 +168,31 @@ function renderPackages() {
   PACKAGES[
     activeCategory
   ].forEach(
-    (packageItem, index) => {
+    (plan, index) => {
 
-      const article =
+      const card =
         document.createElement(
           "article"
         );
 
 
-      article.className =
-        "package-card reveal";
+      card.className =
+        "package-card js-reveal";
 
 
-      article.innerHTML = `
+      card.innerHTML = `
 
         <div class="package-meta">
 
           <span>
-            ${
-              String(index + 1)
-                .padStart(2, "0")
-            }
+            ${String(index + 1).padStart(2, "0")}
           </span>
 
           <span>
             ${
-              packageItem.popular
-                ? "Popular"
-                : packageItem.validity
+              plan.popular
+                ? "Most Popular"
+                : plan.validity
             }
           </span>
 
@@ -222,25 +200,24 @@ function renderPackages() {
 
 
         <h3>
-          ${packageItem.data}
+          ${plan.data}
         </h3>
 
 
-        <div class="package-validity">
+        <p class="package-validity">
 
           ${
-            packageItem.validity ===
-            "Non-Expiry"
+            plan.validity === "Non-Expiry"
 
-              ? "Non-expiry data"
+              ? "Non-expiry data package"
 
               : "Valid for 30 days"
           }
 
-        </div>
+        </p>
 
 
-        <div class="package-bottom">
+        <div class="package-footer">
 
           <div class="package-price">
 
@@ -250,12 +227,8 @@ function renderPackages() {
 
             <strong>
               ${
-                Number(
-                  packageItem.price
-                )
-                .toLocaleString(
-                  "en-PK"
-                )
+                Number(plan.price)
+                  .toLocaleString("en-PK")
               }
             </strong>
 
@@ -263,9 +236,9 @@ function renderPackages() {
 
 
           <button
-            class="buy-button"
+            class="package-buy"
             type="button"
-            data-package="${packageItem.id}"
+            data-package="${plan.id}"
           >
             Purchase
           </button>
@@ -276,7 +249,7 @@ function renderPackages() {
 
 
       grid.appendChild(
-        article
+        card
       );
 
     }
@@ -285,7 +258,7 @@ function renderPackages() {
 
   document
     .querySelectorAll(
-      ".buy-button"
+      ".package-buy"
     )
     .forEach(button => {
 
@@ -303,14 +276,12 @@ function renderPackages() {
     });
 
 
-  observeReveals();
+  observeRevealElements();
 
 }
 
 
-/* =========================================================
-   PACKAGE TABS
-========================================================= */
+/* PACKAGE TABS */
 
 document
   .querySelectorAll(
@@ -352,9 +323,7 @@ document
   });
 
 
-/* =========================================================
-   CHECKOUT
-========================================================= */
+/* CHECKOUT */
 
 const modal =
   document.getElementById(
@@ -362,13 +331,13 @@ const modal =
   );
 
 
-function openCheckout(packageId) {
+function openCheckout(id) {
 
-  selectedPackage =
-    findPackage(packageId);
+  selectedPlan =
+    findPackage(id);
 
 
-  if (!selectedPackage) {
+  if (!selectedPlan) {
     return;
   }
 
@@ -380,20 +349,20 @@ function openCheckout(packageId) {
   document.getElementById(
     "selectedPackage"
   ).textContent =
-    selectedPackage.data;
+    selectedPlan.data;
 
 
   document.getElementById(
     "selectedValidity"
   ).textContent =
-    selectedPackage.validity;
+    selectedPlan.validity;
 
 
   document.getElementById(
     "selectedPrice"
   ).textContent =
     formatPrice(
-      selectedPackage.price
+      selectedPlan.price
     );
 
 
@@ -402,7 +371,7 @@ function openCheckout(packageId) {
   ).reset();
 
 
-  showStep(1);
+  showCheckoutStep(1);
 
 
   modal.classList.add(
@@ -443,7 +412,7 @@ function closeCheckout() {
 }
 
 
-function showStep(stepNumber) {
+function showCheckoutStep(stepNumber) {
 
   document
     .querySelectorAll(
@@ -465,16 +434,14 @@ function showStep(stepNumber) {
 
 
   document.getElementById(
-    "stepLabel"
+    "checkoutProgress"
   ).textContent =
     `0${stepNumber} / 03`;
 
 }
 
 
-/* =========================================================
-   CUSTOMER FORM
-========================================================= */
+/* FORM */
 
 document
   .getElementById(
@@ -487,13 +454,18 @@ document
       event.preventDefault();
 
 
+      if (!selectedPlan) {
+        return;
+      }
+
+
       currentOrder = {
 
-        orderNumber:
-          createOrderNumber(),
+        number:
+          generateOrderNumber(),
 
         package:
-          selectedPackage,
+          selectedPlan,
 
         customer: {
 
@@ -542,50 +514,48 @@ document
         "paymentAmount"
       ).textContent =
         formatPrice(
-          selectedPackage.price
+          selectedPlan.price
         );
 
 
       document.getElementById(
         "paymentOrderNumber"
       ).textContent =
-        currentOrder.orderNumber;
+        currentOrder.number;
 
 
-      saveOrderLocally();
+      saveOrder();
 
 
-      showStep(2);
+      showCheckoutStep(2);
 
     }
   );
 
 
-/* =========================================================
-   ORDER NUMBER
-========================================================= */
+/* ORDER NUMBER */
 
-function createOrderNumber() {
+function generateOrderNumber() {
 
-  const date =
+  const now =
     new Date();
 
 
   const year =
     String(
-      date.getFullYear()
+      now.getFullYear()
     ).slice(-2);
 
 
   const month =
     String(
-      date.getMonth() + 1
+      now.getMonth() + 1
     ).padStart(2, "0");
 
 
   const day =
     String(
-      date.getDate()
+      now.getDate()
     ).padStart(2, "0");
 
 
@@ -604,19 +574,19 @@ function createOrderNumber() {
 }
 
 
-/* =========================================================
-   LOCAL ORDER STORAGE
-========================================================= */
+/* LOCAL STORAGE */
 
-function saveOrderLocally() {
+function saveOrder() {
 
   try {
 
     const orders =
       JSON.parse(
+
         localStorage.getItem(
           "esimOrders"
         ) || "[]"
+
       );
 
 
@@ -648,9 +618,52 @@ function saveOrderLocally() {
 }
 
 
-/* =========================================================
-   PAYMENT
-========================================================= */
+/* COPY */
+
+async function copyText(
+  text,
+  button,
+  successMessage
+) {
+
+  try {
+
+    await navigator
+      .clipboard
+      .writeText(text);
+
+
+    const original =
+      button.textContent;
+
+
+    button.textContent =
+      successMessage;
+
+
+    setTimeout(
+      () => {
+
+        button.textContent =
+          original;
+
+      },
+      1500
+    );
+
+  }
+
+  catch(error) {
+
+    window.prompt(
+      "Copy this:",
+      text
+    );
+
+  }
+
+}
+
 
 document
   .getElementById(
@@ -674,6 +687,8 @@ document
   );
 
 
+/* PAYMENT COMPLETE */
+
 document
   .getElementById(
     "paidButton"
@@ -690,7 +705,7 @@ document
       document.getElementById(
         "finalOrderNumber"
       ).textContent =
-        currentOrder.orderNumber;
+        currentOrder.number;
 
 
       document.getElementById(
@@ -698,44 +713,30 @@ document
       ).innerHTML = `
 
         <strong>
-
-          ${escapeHTML(
-            currentOrder.package.data
-          )}
-
+          ${escapeHTML(currentOrder.package.data)}
           ·
-
-          ${escapeHTML(
-            currentOrder.package.validity
-          )}
-
+          ${escapeHTML(currentOrder.package.validity)}
         </strong>
 
         <br><br>
 
         Amount:
-        ${formatPrice(
-          currentOrder.package.price
-        )}
+        ${formatPrice(currentOrder.package.price)}
 
         <br>
 
         Customer:
-        ${escapeHTML(
-          currentOrder.customer.name
-        )}
+        ${escapeHTML(currentOrder.customer.name)}
 
         <br>
 
         Phone:
-        ${escapeHTML(
-          currentOrder.customer.phone
-        )}
+        ${escapeHTML(currentOrder.customer.phone)}
 
         <br>
 
         Merchant:
-        ${BUSINESS.merchantName}
+        ${BUSINESS.merchant}
 
         <br>
 
@@ -745,15 +746,13 @@ document
       `;
 
 
-      showStep(3);
+      showCheckoutStep(3);
 
     }
   );
 
 
-/* =========================================================
-   ORDER MESSAGE
-========================================================= */
+/* ORDER MESSAGE */
 
 function createOrderMessage() {
 
@@ -766,7 +765,7 @@ function createOrderMessage() {
 
 I have made payment for an eSIM order.
 
-Order Number: ${currentOrder.orderNumber}
+Order Number: ${currentOrder.number}
 Package: ${currentOrder.package.data}
 Validity: ${currentOrder.package.validity}
 Amount: ${formatPrice(currentOrder.package.price)}
@@ -790,7 +789,7 @@ Instagram: ${currentOrder.customer.instagram}`;
   message += `
 
 Payment Method: JazzCash / Raast
-Merchant Name: ${BUSINESS.merchantName}
+Merchant Name: ${BUSINESS.merchant}
 TILL ID: ${BUSINESS.tillId}
 
 I am attaching my payment screenshot for verification.`;
@@ -815,7 +814,7 @@ document
 
         event.currentTarget,
 
-        "Message copied"
+        "Message Copied"
 
       );
 
@@ -823,61 +822,11 @@ document
   );
 
 
-/* =========================================================
-   COPY UTILITY
-========================================================= */
-
-async function copyText(
-  text,
-  button,
-  successText
-) {
-
-  try {
-
-    await navigator.clipboard
-      .writeText(text);
-
-
-    const originalText =
-      button.textContent;
-
-
-    button.textContent =
-      successText;
-
-
-    window.setTimeout(
-      () => {
-
-        button.textContent =
-          originalText;
-
-      },
-      1500
-    );
-
-  }
-
-  catch(error) {
-
-    window.prompt(
-      "Copy:",
-      text
-    );
-
-  }
-
-}
-
-
-/* =========================================================
-   MODAL EVENTS
-========================================================= */
+/* CLOSE EVENTS */
 
 document
   .getElementById(
-    "closeModalButton"
+    "closeCheckout"
   )
   .addEventListener(
     "click",
@@ -886,8 +835,8 @@ document
 
 
 document
-  .querySelector(
-    ".modal-backdrop"
+  .getElementById(
+    "modalBackdrop"
   )
   .addEventListener(
     "click",
@@ -900,8 +849,7 @@ document.addEventListener(
   event => {
 
     if (
-      event.key ===
-      "Escape"
+      event.key === "Escape"
     ) {
 
       closeCheckout();
@@ -912,9 +860,7 @@ document.addEventListener(
 );
 
 
-/* =========================================================
-   NEW ORDER
-========================================================= */
+/* NEW ORDER */
 
 document
   .getElementById(
@@ -947,78 +893,132 @@ document
   );
 
 
-/* =========================================================
-   SCROLL REVEALS
-========================================================= */
+/* SAFE SCROLL REVEAL */
 
-let revealObserver;
+function setupRevealAnimations() {
 
+  if (
+    !("IntersectionObserver" in window)
+  ) {
 
-function observeReveals() {
+    document
+      .querySelectorAll(
+        ".js-reveal"
+      )
+      .forEach(element => {
 
-  if (!revealObserver) {
+        element.classList.add(
+          "is-visible"
+        );
 
-    revealObserver =
-      new IntersectionObserver(
-
-        entries => {
-
-          entries.forEach(
-            entry => {
-
-              if (
-                entry.isIntersecting
-              ) {
-
-                entry.target
-                  .classList
-                  .add(
-                    "visible"
-                  );
+      });
 
 
-                revealObserver
-                  .unobserve(
-                    entry.target
-                  );
+    return;
 
-              }
+  }
+
+
+  document.body.classList.add(
+    "motion-ready"
+  );
+
+
+  revealObserver =
+    new IntersectionObserver(
+
+      entries => {
+
+        entries.forEach(
+          entry => {
+
+            if (
+              entry.isIntersecting
+            ) {
+
+              entry.target
+                .classList
+                .add(
+                  "is-visible"
+                );
+
+
+              revealObserver
+                .unobserve(
+                  entry.target
+                );
 
             }
+
+          }
+        );
+
+      },
+
+      {
+        threshold:
+          0.08,
+
+        rootMargin:
+          "0px 0px -20px 0px"
+      }
+
+    );
+
+
+  observeRevealElements();
+
+
+  /*
+    Safety fallback:
+    elements can never stay invisible.
+  */
+
+  setTimeout(
+    () => {
+
+      document
+        .querySelectorAll(
+          ".js-reveal"
+        )
+        .forEach(element => {
+
+          element.classList.add(
+            "is-visible"
           );
 
-        },
+        });
 
-        {
-          threshold:
-            0.12,
+    },
+    1600
+  );
 
-          rootMargin:
-            "0px 0px -35px 0px"
-        }
+}
 
-      );
 
+function observeRevealElements() {
+
+  if (!revealObserver) {
+    return;
   }
 
 
   document
     .querySelectorAll(
-      ".reveal:not(.visible)"
+      ".js-reveal:not(.is-visible)"
     )
     .forEach(element => {
 
-      revealObserver
-        .observe(element);
+      revealObserver.observe(
+        element
+      );
 
     });
 
 }
 
 
-/* =========================================================
-   CURRENT YEAR
-========================================================= */
+/* YEAR */
 
 document.getElementById(
   "year"
@@ -1027,10 +1027,8 @@ document.getElementById(
     .getFullYear();
 
 
-/* =========================================================
-   INITIALIZATION
-========================================================= */
+/* INITIALIZE */
 
 renderPackages();
 
-observeReveals();
+setupRevealAnimations();
