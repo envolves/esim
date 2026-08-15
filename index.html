@@ -1,331 +1,2780 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="description" content="Pakistan data eSIM packages with fast delivery and JazzCash payment." />
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
   <title>eSIM Solutions Pakistan</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="styles.css" />
+
+  <meta
+    name="description"
+    content="Pakistan Data eSIM Packages - Fast, Stable and Reliable."
+  >
+
+  <style>
+    /* ==============================
+       GENERAL
+    ============================== */
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: Arial, Helvetica, sans-serif;
+      background: #ffffff;
+      color: #111827;
+      line-height: 1.5;
+    }
+
+    a {
+      text-decoration: none;
+      color: inherit;
+    }
+
+    button,
+    input {
+      font: inherit;
+    }
+
+    button {
+      cursor: pointer;
+    }
+
+    .container {
+      width: min(1150px, calc(100% - 30px));
+      margin: auto;
+    }
+
+    .section {
+      padding: 80px 0;
+    }
+
+    .section-light {
+      background: #f5f7fb;
+    }
+
+    .section-title {
+      text-align: center;
+      margin-bottom: 40px;
+    }
+
+    .section-title span {
+      color: #1764ff;
+      font-weight: 700;
+      font-size: 13px;
+      letter-spacing: 2px;
+    }
+
+    .section-title h2 {
+      font-size: 40px;
+      margin-top: 8px;
+    }
+
+    .section-title p {
+      color: #667085;
+      margin-top: 8px;
+    }
+
+
+    /* ==============================
+       BUTTONS
+    ============================== */
+
+    .btn {
+      display: inline-flex;
+      justify-content: center;
+      align-items: center;
+
+      border: none;
+      border-radius: 12px;
+
+      padding: 14px 21px;
+
+      font-weight: 700;
+
+      transition: 0.2s;
+    }
+
+    .btn:hover {
+      transform: translateY(-2px);
+    }
+
+    .btn-primary {
+      background: #1764ff;
+      color: white;
+    }
+
+    .btn-primary:hover {
+      background: #0c4ed7;
+    }
+
+    .btn-light {
+      background: white;
+      color: #111827;
+    }
+
+    .btn-outline {
+      background: transparent;
+      border: 1px solid rgba(255,255,255,0.3);
+      color: white;
+    }
+
+    .btn-full {
+      width: 100%;
+    }
+
+
+    /* ==============================
+       HEADER
+    ============================== */
+
+    header {
+      background: #06111f;
+      color: white;
+
+      position: sticky;
+      top: 0;
+
+      z-index: 100;
+    }
+
+    .navbar {
+      height: 74px;
+
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+
+      gap: 25px;
+    }
+
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .logo-circle {
+      width: 48px;
+      height: 48px;
+
+      border-radius: 50%;
+
+      background: white;
+
+      border: 4px solid #1764ff;
+
+      display: flex;
+      align-items: center;
+      justify-content: center;
+
+      color: #e31d1d;
+      font-weight: 900;
+    }
+
+    .logo-text strong {
+      display: block;
+    }
+
+    .logo-text small {
+      color: #aab6c5;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 28px;
+    }
+
+    .nav-links a {
+      color: #d3dbe6;
+      font-size: 14px;
+      font-weight: 600;
+    }
+
+    .nav-links a:hover {
+      color: white;
+    }
+
+
+    /* ==============================
+       HERO
+    ============================== */
+
+    .hero {
+      min-height: 620px;
+
+      background:
+        radial-gradient(circle at 85% 25%, rgba(23,100,255,0.3), transparent 28%),
+        linear-gradient(135deg, #06101c, #0c1c30);
+
+      color: white;
+
+      display: flex;
+      align-items: center;
+    }
+
+    .hero-grid {
+      display: grid;
+      grid-template-columns: 1.2fr 0.8fr;
+
+      gap: 70px;
+
+      align-items: center;
+    }
+
+    .tag {
+      color: #7da8ff;
+
+      font-weight: 800;
+
+      font-size: 13px;
+
+      letter-spacing: 2px;
+
+      margin-bottom: 15px;
+    }
+
+    .hero h1 {
+      font-size: clamp(42px, 6vw, 70px);
+
+      line-height: 1.05;
+
+      max-width: 720px;
+    }
+
+    .hero-description {
+      max-width: 650px;
+
+      color: #bbc7d8;
+
+      font-size: 18px;
+
+      margin-top: 22px;
+    }
+
+    .hero-buttons {
+      display: flex;
+      flex-wrap: wrap;
+
+      gap: 12px;
+
+      margin-top: 30px;
+    }
+
+    .hero-points {
+      display: flex;
+      flex-wrap: wrap;
+
+      gap: 20px;
+
+      color: #aebbd0;
+
+      font-size: 13px;
+
+      margin-top: 30px;
+    }
+
+
+    /* ==============================
+       PHONE VISUAL
+    ============================== */
+
+    .phone-wrap {
+      display: flex;
+      justify-content: center;
+    }
+
+    .phone {
+      width: 310px;
+
+      background: #02060c;
+
+      border: 1px solid rgba(255,255,255,0.15);
+
+      padding: 12px;
+
+      border-radius: 42px;
+
+      box-shadow: 0 30px 80px rgba(0,0,0,0.4);
+    }
+
+    .phone-screen {
+      min-height: 465px;
+
+      border-radius: 32px;
+
+      background:
+        radial-gradient(circle at center, rgba(23,100,255,0.25), transparent 35%),
+        #0b1b2d;
+
+      display: flex;
+      flex-direction: column;
+
+      justify-content: center;
+      align-items: center;
+
+      text-align: center;
+
+      padding: 25px;
+    }
+
+    .chip {
+      width: 120px;
+      height: 120px;
+
+      border-radius: 25px;
+
+      border: 3px solid #3e83ff;
+
+      display: flex;
+      justify-content: center;
+      align-items: center;
+
+      font-size: 25px;
+      font-weight: 800;
+
+      box-shadow: 0 0 45px rgba(23,100,255,0.5);
+
+      margin-bottom: 30px;
+    }
+
+    .phone-screen h3 {
+      font-size: 25px;
+    }
+
+    .phone-screen p {
+      color: #b7c3d4;
+
+      font-size: 14px;
+
+      margin-top: 10px;
+    }
+
+
+    /* ==============================
+       WARNING BAR
+    ============================== */
+
+    .warning-bar {
+      border-bottom: 1px solid #e5e7eb;
+    }
+
+    .warning-items {
+      min-height: 65px;
+
+      display: flex;
+      justify-content: center;
+      align-items: center;
+
+      flex-wrap: wrap;
+
+      gap: 28px;
+
+      font-size: 13px;
+      font-weight: 600;
+    }
+
+    .warning-red {
+      color: #d51b1b;
+    }
+
+
+    /* ==============================
+       PACKAGE TABS
+    ============================== */
+
+    .tabs {
+      display: flex;
+      justify-content: center;
+
+      margin-bottom: 30px;
+    }
+
+    .tab-box {
+      background: #eef1f6;
+
+      padding: 5px;
+
+      border-radius: 14px;
+
+      display: inline-flex;
+    }
+
+    .tab {
+      border: 0;
+
+      padding: 12px 22px;
+
+      border-radius: 10px;
+
+      background: transparent;
+
+      color: #667085;
+
+      font-weight: 700;
+    }
+
+    .tab.active {
+      background: white;
+
+      color: #111827;
+
+      box-shadow: 0 5px 18px rgba(0,0,0,0.08);
+    }
+
+
+    /* ==============================
+       PACKAGES
+    ============================== */
+
+    .packages {
+      display: grid;
+
+      grid-template-columns: repeat(3, 1fr);
+
+      gap: 20px;
+    }
+
+    .package {
+      background: white;
+
+      border: 1px solid #e0e5ed;
+
+      border-radius: 20px;
+
+      padding: 25px;
+
+      transition: 0.2s;
+
+      position: relative;
+    }
+
+    .package:hover {
+      transform: translateY(-5px);
+
+      box-shadow: 0 20px 45px rgba(0,0,0,0.08);
+    }
+
+    .package.popular {
+      border: 2px solid #1764ff;
+    }
+
+    .popular-label {
+      position: absolute;
+
+      right: 15px;
+      top: 15px;
+
+      background: #e8f0ff;
+
+      color: #1764ff;
+
+      font-size: 11px;
+
+      font-weight: 800;
+
+      padding: 5px 9px;
+
+      border-radius: 30px;
+    }
+
+    .package-category {
+      color: #667085;
+
+      font-size: 12px;
+
+      font-weight: 800;
+
+      letter-spacing: 1px;
+    }
+
+    .package-data {
+      font-size: 38px;
+
+      font-weight: 900;
+
+      margin-top: 25px;
+    }
+
+    .package-validity {
+      color: #667085;
+
+      margin-top: 3px;
+    }
+
+    .price {
+      margin: 25px 0;
+
+      font-size: 28px;
+
+      font-weight: 900;
+    }
+
+    .price small {
+      font-size: 13px;
+
+      color: #667085;
+
+      font-weight: normal;
+    }
+
+
+    /* ==============================
+       HOW IT WORKS
+    ============================== */
+
+    .steps {
+      display: grid;
+
+      grid-template-columns: repeat(4, 1fr);
+
+      gap: 18px;
+    }
+
+    .step {
+      background: white;
+
+      border: 1px solid #e1e5ec;
+
+      padding: 25px;
+
+      border-radius: 18px;
+    }
+
+    .step-number {
+      width: 42px;
+      height: 42px;
+
+      background: #e8f0ff;
+
+      color: #1764ff;
+
+      border-radius: 12px;
+
+      display: flex;
+      justify-content: center;
+      align-items: center;
+
+      font-weight: 900;
+
+      margin-bottom: 25px;
+    }
+
+    .step p {
+      color: #667085;
+
+      margin-top: 8px;
+
+      font-size: 14px;
+    }
+
+
+    /* ==============================
+       COMPATIBILITY
+    ============================== */
+
+    .compatibility {
+      background: #06111f;
+
+      color: white;
+
+      border-radius: 28px;
+
+      padding: 45px;
+
+      display: grid;
+
+      grid-template-columns: 1fr 0.7fr;
+
+      gap: 50px;
+
+      align-items: center;
+    }
+
+    .compatibility h2 {
+      font-size: 38px;
+
+      margin-bottom: 20px;
+    }
+
+    .compatibility ul {
+      padding-left: 20px;
+
+      color: #c6d0df;
+    }
+
+    .compatibility li {
+      margin: 9px 0;
+    }
+
+    .compat-card {
+      background: white;
+
+      color: #111827;
+
+      padding: 25px;
+
+      border-radius: 18px;
+    }
+
+    .compat-card p {
+      color: #667085;
+
+      margin: 10px 0 20px;
+    }
+
+
+    /* ==============================
+       FAQ
+    ============================== */
+
+    .faq {
+      max-width: 850px;
+
+      margin: auto;
+    }
+
+    details {
+      background: white;
+
+      border: 1px solid #e2e6ed;
+
+      border-radius: 14px;
+
+      padding: 18px 20px;
+
+      margin-bottom: 12px;
+    }
+
+    summary {
+      cursor: pointer;
+
+      font-weight: 700;
+    }
+
+    details p {
+      color: #667085;
+
+      margin-top: 12px;
+    }
+
+
+    /* ==============================
+       FOOTER
+    ============================== */
+
+    footer {
+      background: #06101c;
+
+      color: white;
+
+      padding: 50px 0 25px;
+    }
+
+    .footer-content {
+      display: flex;
+
+      justify-content: space-between;
+
+      gap: 30px;
+
+      flex-wrap: wrap;
+    }
+
+    .footer-links {
+      display: flex;
+
+      flex-direction: column;
+
+      gap: 8px;
+
+      color: #b7c2d2;
+    }
+
+    .copyright {
+      border-top: 1px solid rgba(255,255,255,0.1);
+
+      margin-top: 35px;
+
+      padding-top: 20px;
+
+      color: #7c899d;
+
+      font-size: 13px;
+    }
+
+
+    /* ==============================
+       CHECKOUT MODAL
+    ============================== */
+
+    .modal {
+      position: fixed;
+
+      inset: 0;
+
+      background: rgba(0,0,0,0.7);
+
+      z-index: 999;
+
+      display: none;
+
+      justify-content: center;
+      align-items: center;
+
+      padding: 20px;
+    }
+
+    .modal.show {
+      display: flex;
+    }
+
+    .checkout {
+      width: min(650px, 100%);
+
+      max-height: 92vh;
+
+      overflow-y: auto;
+
+      background: white;
+
+      border-radius: 24px;
+
+      padding: 30px;
+
+      position: relative;
+    }
+
+    .close {
+      position: absolute;
+
+      right: 15px;
+      top: 15px;
+
+      width: 40px;
+      height: 40px;
+
+      border: none;
+
+      border-radius: 50%;
+
+      background: #f0f2f5;
+
+      font-size: 24px;
+    }
+
+    .checkout-step {
+      display: none;
+    }
+
+    .checkout-step.active {
+      display: block;
+    }
+
+    .checkout h2 {
+      font-size: 30px;
+
+      margin-bottom: 20px;
+    }
+
+    .checkout-tag {
+      color: #1764ff;
+
+      font-size: 12px;
+
+      font-weight: 900;
+
+      letter-spacing: 2px;
+
+      margin-bottom: 8px;
+    }
+
+
+    /* ==============================
+       ORDER SUMMARY
+    ============================== */
+
+    .summary {
+      border: 1px solid #e0e5ed;
+
+      border-radius: 15px;
+
+      margin-bottom: 20px;
+
+      overflow: hidden;
+    }
+
+    .summary-row {
+      display: flex;
+
+      justify-content: space-between;
+
+      gap: 20px;
+
+      padding: 14px;
+
+      border-bottom: 1px solid #e0e5ed;
+    }
+
+    .summary-row:last-child {
+      border-bottom: 0;
+    }
+
+    .summary-row span {
+      color: #667085;
+    }
+
+
+    /* ==============================
+       FORMS
+    ============================== */
+
+    .form-group {
+      margin-bottom: 15px;
+    }
+
+    .form-group label {
+      display: block;
+
+      font-size: 13px;
+
+      font-weight: 700;
+
+      margin-bottom: 7px;
+    }
+
+    .form-group input {
+      width: 100%;
+
+      padding: 13px 14px;
+
+      border: 1px solid #ccd3df;
+
+      border-radius: 10px;
+
+      outline: none;
+    }
+
+    .form-group input:focus {
+      border-color: #1764ff;
+
+      box-shadow: 0 0 0 3px rgba(23,100,255,0.1);
+    }
+
+    .checkbox {
+      display: flex;
+
+      gap: 10px;
+
+      align-items: start;
+
+      margin-bottom: 18px;
+
+      font-size: 13px;
+    }
+
+    .checkbox input {
+      margin-top: 3px;
+    }
+
+
+    /* ==============================
+       PAYMENT
+    ============================== */
+
+    .payment-grid {
+      display: grid;
+
+      grid-template-columns: 220px 1fr;
+
+      gap: 20px;
+
+      align-items: start;
+    }
+
+    .qr-box {
+      border: 1px solid #e0e5ed;
+
+      border-radius: 15px;
+
+      padding: 12px;
+
+      text-align: center;
+    }
+
+    .qr-box img {
+      width: 100%;
+
+      display: block;
+
+      border-radius: 8px;
+    }
+
+    .qr-placeholder {
+      padding: 45px 10px;
+
+      background: #f4f6fa;
+
+      color: #667085;
+
+      font-size: 13px;
+
+      border-radius: 10px;
+    }
+
+    .payment-detail {
+      border: 1px solid #e0e5ed;
+
+      border-radius: 12px;
+
+      padding: 13px;
+
+      margin-bottom: 10px;
+    }
+
+    .payment-detail span {
+      display: block;
+
+      color: #667085;
+
+      font-size: 12px;
+    }
+
+    .payment-detail strong {
+      display: block;
+
+      margin-top: 3px;
+
+      font-size: 17px;
+    }
+
+    .payment-note {
+      background: #fff6df;
+
+      border: 1px solid #ffe09b;
+
+      color: #6e4a00;
+
+      padding: 14px;
+
+      border-radius: 12px;
+
+      font-size: 13px;
+
+      margin: 20px 0;
+    }
+
+
+    /* ==============================
+       SUCCESS
+    ============================== */
+
+    .success {
+      text-align: center;
+    }
+
+    .success-icon {
+      width: 70px;
+      height: 70px;
+
+      border-radius: 50%;
+
+      margin: 0 auto 20px;
+
+      display: flex;
+      justify-content: center;
+      align-items: center;
+
+      background: #e8f8ef;
+
+      color: #149447;
+
+      font-size: 35px;
+
+      font-weight: 900;
+    }
+
+    .order-message {
+      background: #f5f7fa;
+
+      border-radius: 12px;
+
+      padding: 16px;
+
+      text-align: left;
+
+      margin: 20px 0;
+
+      font-size: 14px;
+    }
+
+    .success .btn {
+      margin-top: 10px;
+    }
+
+
+    /* ==============================
+       MOBILE
+    ============================== */
+
+    @media (max-width: 900px) {
+
+      .nav-links {
+        display: none;
+      }
+
+      .hero-grid {
+        grid-template-columns: 1fr;
+
+        text-align: center;
+
+        padding: 60px 0;
+      }
+
+      .hero-description {
+        margin-left: auto;
+        margin-right: auto;
+      }
+
+      .hero-buttons,
+      .hero-points {
+        justify-content: center;
+      }
+
+      .packages {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      .steps {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      .compatibility {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    @media (max-width: 600px) {
+
+      .section {
+        padding: 60px 0;
+      }
+
+      .section-title h2 {
+        font-size: 32px;
+      }
+
+      .hero h1 {
+        font-size: 42px;
+      }
+
+      .packages,
+      .steps {
+        grid-template-columns: 1fr;
+      }
+
+      .payment-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .qr-box {
+        max-width: 240px;
+
+        margin: auto;
+      }
+
+      .compatibility {
+        padding: 25px 20px;
+      }
+
+      .checkout {
+        padding: 28px 18px;
+      }
+
+      .logo-text {
+        display: none;
+      }
+    }
+  </style>
 </head>
+
 <body>
-  <header class="site-header">
-    <div class="container nav">
-      <a class="brand" href="#home" aria-label="eSIM Solutions home">
-        <div class="brand-mark">eSIM</div>
-        <div>
-          <strong>eSIM Solutions</strong>
-          <span>Pakistan</span>
+
+  <!-- ==============================
+       HEADER
+  ============================== -->
+
+  <header>
+    <div class="container navbar">
+
+      <a href="#" class="logo">
+
+        <div class="logo-circle">
+          eSIM
         </div>
+
+        <div class="logo-text">
+          <strong>eSIM Solutions</strong>
+          <small>Pakistan</small>
+        </div>
+
       </a>
 
-      <nav class="desktop-nav" aria-label="Primary navigation">
+      <nav class="nav-links">
         <a href="#packages">Packages</a>
-        <a href="#how-it-works">How it works</a>
+        <a href="#how">How It Works</a>
         <a href="#compatibility">Compatibility</a>
         <a href="#faq">FAQ</a>
       </nav>
 
-      <a id="topInstagramLink" class="btn btn-outline" href="#" target="_blank" rel="noopener">Instagram</a>
+      <a
+        href="https://www.instagram.com/esimsolutions.pk/"
+        target="_blank"
+        class="btn btn-outline"
+      >
+        Instagram
+      </a>
+
     </div>
   </header>
 
-  <main>
-    <section id="home" class="hero">
-      <div class="container hero-grid">
-        <div class="hero-copy">
-          <div class="eyebrow">PAKISTAN DATA eSIM</div>
-          <h1>Stay connected without carrying two phones.</h1>
-          <p>
-            Fast, stable and reliable data-only eSIM packages with simple JazzCash payment.
-          </p>
 
-          <div class="hero-actions">
-            <a class="btn btn-primary" href="#packages">View Packages</a>
-            <a id="heroInstagramLink" class="btn btn-secondary" href="#" target="_blank" rel="noopener">Message on Instagram</a>
-          </div>
+  <!-- ==============================
+       HERO
+  ============================== -->
 
-          <div class="trust-row">
-            <span>⚡ Instant delivery</span>
-            <span>🛡️ Secure payment instructions</span>
-            <span>🌍 Data-only eSIM</span>
-          </div>
-        </div>
+  <section class="hero">
 
-        <div class="hero-card">
-          <div class="phone-shell">
-            <div class="phone-top"></div>
-            <div class="phone-screen">
-              <div class="signal">▮▮▮▮</div>
-              <div class="esim-chip">eSIM</div>
-              <h3>Activate. Connect. Go.</h3>
-              <p>Choose a package, pay with JazzCash, then contact us with your order number.</p>
-              <div class="mini-badge">FAST • STABLE • RELIABLE</div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <section class="notice-strip">
-      <div class="container notice-items">
-        <span>✓ Factory-unlocked phones only</span>
-        <span>✓ eSIM-compatible devices</span>
-        <span>✕ Not for JV / SIM-restricted phones</span>
-        <span>✓ Data only — no calls/SMS</span>
-      </div>
-    </section>
-
-    <section id="packages" class="section">
-      <div class="container">
-        <div class="section-heading">
-          <div>
-            <div class="eyebrow">CHOOSE YOUR PLAN</div>
-            <h2>eSIM Packages</h2>
-            <p>Select a category, then tap Buy Now.</p>
-          </div>
-        </div>
-
-        <div class="tabs" role="tablist">
-          <button class="tab active" data-category="nonExpiry" role="tab">Non-Expiry</button>
-          <button class="tab" data-category="thirtyDays" role="tab">30 Days</button>
-        </div>
-
-        <div id="packageGrid" class="package-grid"></div>
-      </div>
-    </section>
-
-    <section id="how-it-works" class="section section-muted">
-      <div class="container">
-        <div class="section-heading centered">
-          <div class="eyebrow">SIMPLE PROCESS</div>
-          <h2>How it works</h2>
-        </div>
-
-        <div class="steps">
-          <article class="step">
-            <div class="step-number">1</div>
-            <h3>Choose a package</h3>
-            <p>Select the data amount and validity that fits your needs.</p>
-          </article>
-          <article class="step">
-            <div class="step-number">2</div>
-            <h3>Enter your details</h3>
-            <p>Add your name, phone number, email and optional Instagram username.</p>
-          </article>
-          <article class="step">
-            <div class="step-number">3</div>
-            <h3>Pay via JazzCash</h3>
-            <p>Scan the QR code or use the displayed JazzCash account number.</p>
-          </article>
-          <article class="step">
-            <div class="step-number">4</div>
-            <h3>Send payment proof</h3>
-            <p>Use your order number when contacting us on Instagram.</p>
-          </article>
-        </div>
-      </div>
-    </section>
-
-    <section id="compatibility" class="section">
-      <div class="container">
-        <div class="split-card">
-          <div>
-            <div class="eyebrow">BEFORE YOU BUY</div>
-            <h2>Compatibility requirements</h2>
-            <ul class="check-list">
-              <li>Phone must support eSIM.</li>
-              <li>Phone must be factory unlocked.</li>
-              <li>Not compatible with JV or SIM-restricted phones.</li>
-              <li>Service is data only — no calls or SMS.</li>
-              <li>Confirm your device compatibility before paying.</li>
-            </ul>
-          </div>
-          <div class="warning-box">
-            <strong>Important</strong>
-            <p>
-              If you are unsure whether your phone is compatible, contact us on Instagram before making payment.
-            </p>
-            <a id="compatInstagramLink" class="btn btn-secondary full" href="#" target="_blank" rel="noopener">Ask on Instagram</a>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <section id="faq" class="section section-muted">
-      <div class="container faq-wrap">
-        <div class="section-heading">
-          <div>
-            <div class="eyebrow">FAQ</div>
-            <h2>Common questions</h2>
-          </div>
-        </div>
-
-        <details>
-          <summary>Is this a physical SIM?</summary>
-          <p>No. This is a digital eSIM. You activate it using the instructions/QR provided after payment verification.</p>
-        </details>
-        <details>
-          <summary>Can I use it on a JV phone?</summary>
-          <p>No. These packages are intended for compatible, factory-unlocked phones.</p>
-        </details>
-        <details>
-          <summary>Does it include calls or SMS?</summary>
-          <p>No. These are data-only packages.</p>
-        </details>
-        <details>
-          <summary>How do I receive my eSIM?</summary>
-          <p>After payment, contact us on Instagram with your order number and payment proof.</p>
-        </details>
-      </div>
-    </section>
-  </main>
-
-  <footer class="site-footer">
-    <div class="container footer-grid">
-      <div>
-        <div class="brand brand-footer">
-          <div class="brand-mark">eSIM</div>
-          <div>
-            <strong>eSIM Solutions</strong>
-            <span>Pakistan</span>
-          </div>
-        </div>
-        <p>Fast • Stable • Reliable data eSIM packages.</p>
-      </div>
+    <div class="container hero-grid">
 
       <div>
-        <strong>Quick links</strong>
-        <a href="#packages">Packages</a>
-        <a href="#compatibility">Compatibility</a>
-        <a id="footerInstagramLink" href="#" target="_blank" rel="noopener">Instagram</a>
-      </div>
-    </div>
-    <div class="container copyright">
-      © <span id="year"></span> eSIM Solutions Pakistan. All rights reserved.
-    </div>
-  </footer>
 
-  <!-- Checkout modal -->
-  <div id="checkoutModal" class="modal" aria-hidden="true">
-    <div class="modal-backdrop" data-close-modal></div>
-    <div class="modal-dialog" role="dialog" aria-modal="true" aria-labelledby="checkoutTitle">
-      <button class="modal-close" data-close-modal aria-label="Close">×</button>
-
-      <div class="checkout-progress">
-        <span class="progress-dot active" data-step-dot="1">1</span>
-        <span class="progress-line"></span>
-        <span class="progress-dot" data-step-dot="2">2</span>
-        <span class="progress-line"></span>
-        <span class="progress-dot" data-step-dot="3">3</span>
-      </div>
-
-      <section class="checkout-step active" data-step="1">
-        <div class="eyebrow">CHECKOUT</div>
-        <h2 id="checkoutTitle">Your order</h2>
-
-        <div class="order-summary">
-          <div>
-            <span>Package</span>
-            <strong id="selectedPackageName">—</strong>
-          </div>
-          <div>
-            <span>Validity</span>
-            <strong id="selectedValidity">—</strong>
-          </div>
-          <div>
-            <span>Total</span>
-            <strong id="selectedPrice">—</strong>
-          </div>
+        <div class="tag">
+          PAKISTAN DATA eSIM
         </div>
 
-        <form id="customerForm" class="form-grid">
-          <label>
-            Full name
-            <input id="customerName" type="text" required autocomplete="name" placeholder="Your name" />
-          </label>
+        <h1>
+          Stay connected without carrying two phones.
+        </h1>
 
-          <label>
-            Phone number
-            <input id="customerPhone" type="tel" required autocomplete="tel" placeholder="03XX XXXXXXX" />
-          </label>
-
-          <label>
-            Email
-            <input id="customerEmail" type="email" required autocomplete="email" placeholder="you@example.com" />
-          </label>
-
-          <label>
-            Instagram username <span class="optional">(optional)</span>
-            <input id="customerInstagram" type="text" placeholder="@username" />
-          </label>
-
-          <label class="checkbox-row">
-            <input id="compatibilityCheck" type="checkbox" required />
-            <span>I confirm my phone supports eSIM and is factory unlocked.</span>
-          </label>
-
-          <button class="btn btn-primary full" type="submit">Continue to Payment</button>
-        </form>
-      </section>
-
-      <section class="checkout-step" data-step="2">
-        <div class="eyebrow">JAZZCASH PAYMENT</div>
-        <h2>Pay <span id="paymentAmount">—</span></h2>
-        <p class="muted">Scan the QR code or transfer to the JazzCash account below.</p>
-
-        <div class="payment-layout">
-          <div class="qr-card">
-            <img id="jazzCashQr" src="assets/jazzcash-qr-placeholder.svg" alt="JazzCash payment QR code" />
-          </div>
-
-          <div class="payment-info">
-            <div class="payment-row">
-              <span>Account title</span>
-              <strong id="jazzCashTitle">YOUR ACCOUNT TITLE</strong>
-            </div>
-
-            <div class="payment-row">
-              <span>JazzCash number</span>
-              <strong id="jazzCashNumber">03XX XXXXXXX</strong>
-            </div>
-
-            <button id="copyNumberBtn" class="btn btn-secondary full" type="button">Copy Account Number</button>
-
-            <div class="payment-row">
-              <span>Order number</span>
-              <strong id="orderNumber">—</strong>
-            </div>
-          </div>
-        </div>
-
-        <div class="alert">
-          Send the exact amount. After payment, continue below and contact us on Instagram with the order number and payment screenshot.
-        </div>
-
-        <button id="paidButton" class="btn btn-primary full" type="button">I Have Paid</button>
-      </section>
-
-      <section class="checkout-step" data-step="3">
-        <div class="success-icon">✓</div>
-        <div class="eyebrow">ORDER CREATED</div>
-        <h2>Payment proof required</h2>
-        <p>
-          Your order number is <strong id="finalOrderNumber">—</strong>. Tap the button below to open Instagram,
-          then send your order number and payment screenshot.
+        <p class="hero-description">
+          Fast, stable and reliable data-only eSIM packages.
+          Select your package, pay through JazzCash and receive
+          your eSIM after payment verification.
         </p>
 
-        <div id="finalSummary" class="final-summary"></div>
+        <div class="hero-buttons">
 
-        <button id="copyOrderMessageBtn" class="btn btn-secondary full" type="button">Copy Order Message</button>
-        <a id="finalInstagramLink" class="btn btn-primary full" href="#" target="_blank" rel="noopener">Open Instagram</a>
-        <button id="newOrderBtn" class="btn btn-ghost full" type="button">Make Another Order</button>
-      </section>
+          <a
+            href="#packages"
+            class="btn btn-primary"
+          >
+            View Packages
+          </a>
+
+          <a
+            href="https://www.instagram.com/esimsolutions.pk/"
+            target="_blank"
+            class="btn btn-light"
+          >
+            Message on Instagram
+          </a>
+
+        </div>
+
+        <div class="hero-points">
+
+          <span>⚡ Instant Delivery</span>
+
+          <span>🛡 Secure</span>
+
+          <span>🌍 Data Only</span>
+
+          <span>📱 eSIM Compatible Devices</span>
+
+        </div>
+
+      </div>
+
+
+      <div class="phone-wrap">
+
+        <div class="phone">
+
+          <div class="phone-screen">
+
+            <div class="chip">
+              eSIM
+            </div>
+
+            <h3>
+              Activate. Connect. Go.
+            </h3>
+
+            <p>
+              Choose your package and stay connected wherever you go.
+            </p>
+
+          </div>
+
+        </div>
+
+      </div>
+
     </div>
+
+  </section>
+
+
+  <!-- ==============================
+       IMPORTANT NOTICE
+  ============================== -->
+
+  <section class="warning-bar">
+
+    <div class="container warning-items">
+
+      <span>✓ Factory Unlocked Phones</span>
+
+      <span>✓ eSIM Compatible</span>
+
+      <span class="warning-red">
+        ✕ Not for JV Phones
+      </span>
+
+      <span>
+        ✓ Data Only — No Calls/SMS
+      </span>
+
+    </div>
+
+  </section>
+
+
+  <!-- ==============================
+       PACKAGES
+  ============================== -->
+
+  <section
+    class="section"
+    id="packages"
+  >
+
+    <div class="container">
+
+      <div class="section-title">
+
+        <span>
+          CHOOSE YOUR PLAN
+        </span>
+
+        <h2>
+          eSIM Packages
+        </h2>
+
+        <p>
+          Select a category and choose your preferred data package.
+        </p>
+
+      </div>
+
+
+      <div class="tabs">
+
+        <div class="tab-box">
+
+          <button
+            class="tab active"
+            data-category="nonExpiry"
+          >
+            Non-Expiry
+          </button>
+
+          <button
+            class="tab"
+            data-category="thirtyDays"
+          >
+            30 Days
+          </button>
+
+        </div>
+
+      </div>
+
+
+      <div
+        class="packages"
+        id="packageGrid"
+      ></div>
+
+    </div>
+
+  </section>
+
+
+  <!-- ==============================
+       HOW IT WORKS
+  ============================== -->
+
+  <section
+    class="section section-light"
+    id="how"
+  >
+
+    <div class="container">
+
+      <div class="section-title">
+
+        <span>
+          SIMPLE PROCESS
+        </span>
+
+        <h2>
+          How It Works
+        </h2>
+
+      </div>
+
+
+      <div class="steps">
+
+        <div class="step">
+
+          <div class="step-number">
+            1
+          </div>
+
+          <h3>
+            Choose Package
+          </h3>
+
+          <p>
+            Select your preferred data package and validity.
+          </p>
+
+        </div>
+
+
+        <div class="step">
+
+          <div class="step-number">
+            2
+          </div>
+
+          <h3>
+            Enter Details
+          </h3>
+
+          <p>
+            Add your name, mobile number and email.
+          </p>
+
+        </div>
+
+
+        <div class="step">
+
+          <div class="step-number">
+            3
+          </div>
+
+          <h3>
+            Pay JazzCash
+          </h3>
+
+          <p>
+            Transfer payment using our QR code or JazzCash number.
+          </p>
+
+        </div>
+
+
+        <div class="step">
+
+          <div class="step-number">
+            4
+          </div>
+
+          <h3>
+            Receive eSIM
+          </h3>
+
+          <p>
+            Contact us on Instagram with your order number and payment proof.
+          </p>
+
+        </div>
+
+      </div>
+
+    </div>
+
+  </section>
+
+
+  <!-- ==============================
+       COMPATIBILITY
+  ============================== -->
+
+  <section
+    class="section"
+    id="compatibility"
+  >
+
+    <div class="container">
+
+      <div class="compatibility">
+
+        <div>
+
+          <div class="tag">
+            BEFORE YOU BUY
+          </div>
+
+          <h2>
+            Device Compatibility
+          </h2>
+
+          <ul>
+
+            <li>
+              Your phone must support eSIM.
+            </li>
+
+            <li>
+              Device must be factory unlocked.
+            </li>
+
+            <li>
+              Not compatible with JV phones.
+            </li>
+
+            <li>
+              Not compatible with SIM-restricted phones.
+            </li>
+
+            <li>
+              Data only — no calls or SMS.
+            </li>
+
+            <li>
+              Confirm compatibility before payment.
+            </li>
+
+          </ul>
+
+        </div>
+
+
+        <div class="compat-card">
+
+          <h3>
+            Not Sure?
+          </h3>
+
+          <p>
+            Contact us on Instagram before paying and tell us your phone model.
+          </p>
+
+          <a
+            href="https://www.instagram.com/esimsolutions.pk/"
+            target="_blank"
+            class="btn btn-primary btn-full"
+          >
+            Ask on Instagram
+          </a>
+
+        </div>
+
+      </div>
+
+    </div>
+
+  </section>
+
+
+  <!-- ==============================
+       FAQ
+  ============================== -->
+
+  <section
+    class="section section-light"
+    id="faq"
+  >
+
+    <div class="container">
+
+      <div class="section-title">
+
+        <span>
+          FAQ
+        </span>
+
+        <h2>
+          Common Questions
+        </h2>
+
+      </div>
+
+
+      <div class="faq">
+
+        <details>
+
+          <summary>
+            Is this a physical SIM?
+          </summary>
+
+          <p>
+            No. This is a digital eSIM that is activated electronically.
+          </p>
+
+        </details>
+
+
+        <details>
+
+          <summary>
+            Can I use this on a JV phone?
+          </summary>
+
+          <p>
+            No. These packages require a compatible factory-unlocked phone.
+          </p>
+
+        </details>
+
+
+        <details>
+
+          <summary>
+            Do the packages include calls or SMS?
+          </summary>
+
+          <p>
+            No. The packages are data-only.
+          </p>
+
+        </details>
+
+
+        <details>
+
+          <summary>
+            How will I receive my eSIM?
+          </summary>
+
+          <p>
+            After payment verification, contact us on Instagram with your
+            order number and payment screenshot.
+          </p>
+
+        </details>
+
+
+        <details>
+
+          <summary>
+            What payment method do you accept?
+          </summary>
+
+          <p>
+            JazzCash payment is currently displayed on the website.
+          </p>
+
+        </details>
+
+      </div>
+
+    </div>
+
+  </section>
+
+
+  <!-- ==============================
+       FOOTER
+  ============================== -->
+
+  <footer>
+
+    <div class="container">
+
+      <div class="footer-content">
+
+        <div>
+
+          <h3>
+            eSIM Solutions Pakistan
+          </h3>
+
+          <p>
+            Fast • Stable • Reliable
+          </p>
+
+        </div>
+
+
+        <div class="footer-links">
+
+          <a href="#packages">
+            Packages
+          </a>
+
+          <a href="#compatibility">
+            Compatibility
+          </a>
+
+          <a
+            href="https://www.instagram.com/esimsolutions.pk/"
+            target="_blank"
+          >
+            Instagram
+          </a>
+
+        </div>
+
+      </div>
+
+
+      <div class="copyright">
+
+        © <span id="year"></span>
+        eSIM Solutions Pakistan.
+        All rights reserved.
+
+      </div>
+
+    </div>
+
+  </footer>
+
+
+  <!-- ==============================
+       CHECKOUT MODAL
+  ============================== -->
+
+  <div
+    class="modal"
+    id="checkoutModal"
+  >
+
+    <div class="checkout">
+
+      <button
+        class="close"
+        onclick="closeCheckout()"
+      >
+        ×
+      </button>
+
+
+      <!-- STEP 1 -->
+
+      <div
+        class="checkout-step active"
+        id="step1"
+      >
+
+        <div class="checkout-tag">
+          CHECKOUT
+        </div>
+
+        <h2>
+          Your Order
+        </h2>
+
+
+        <div class="summary">
+
+          <div class="summary-row">
+
+            <span>
+              Package
+            </span>
+
+            <strong id="selectedPackage">
+              -
+            </strong>
+
+          </div>
+
+
+          <div class="summary-row">
+
+            <span>
+              Validity
+            </span>
+
+            <strong id="selectedValidity">
+              -
+            </strong>
+
+          </div>
+
+
+          <div class="summary-row">
+
+            <span>
+              Total
+            </span>
+
+            <strong id="selectedPrice">
+              -
+            </strong>
+
+          </div>
+
+        </div>
+
+
+        <form id="checkoutForm">
+
+          <div class="form-group">
+
+            <label>
+              Full Name
+            </label>
+
+            <input
+              id="customerName"
+              type="text"
+              required
+              placeholder="Your full name"
+            >
+
+          </div>
+
+
+          <div class="form-group">
+
+            <label>
+              Phone Number
+            </label>
+
+            <input
+              id="customerPhone"
+              type="tel"
+              required
+              placeholder="03XX XXXXXXX"
+            >
+
+          </div>
+
+
+          <div class="form-group">
+
+            <label>
+              Email
+            </label>
+
+            <input
+              id="customerEmail"
+              type="email"
+              required
+              placeholder="example@email.com"
+            >
+
+          </div>
+
+
+          <div class="form-group">
+
+            <label>
+              Instagram Username (Optional)
+            </label>
+
+            <input
+              id="customerInstagram"
+              type="text"
+              placeholder="@username"
+            >
+
+          </div>
+
+
+          <label class="checkbox">
+
+            <input
+              type="checkbox"
+              required
+            >
+
+            <span>
+              I confirm that my phone supports eSIM and is factory unlocked.
+            </span>
+
+          </label>
+
+
+          <button
+            type="submit"
+            class="btn btn-primary btn-full"
+          >
+            Continue to JazzCash
+          </button>
+
+        </form>
+
+      </div>
+
+
+      <!-- STEP 2 PAYMENT -->
+
+      <div
+        class="checkout-step"
+        id="step2"
+      >
+
+        <div class="checkout-tag">
+          JAZZCASH PAYMENT
+        </div>
+
+        <h2>
+          Pay <span id="payAmount"></span>
+        </h2>
+
+        <p style="color:#667085;margin-bottom:20px;">
+          Scan the QR code or send payment to the JazzCash number below.
+        </p>
+
+
+        <div class="payment-grid">
+
+
+          <div class="qr-box">
+
+            <!--
+              Put your JazzCash QR image in the same GitHub folder
+              and name it:
+
+              jazzcash-qr.png
+            -->
+
+            <img
+              id="qrImage"
+              src="jazzcash-qr.png"
+              alt="JazzCash QR Code"
+            >
+
+            <div
+              class="qr-placeholder"
+              id="qrPlaceholder"
+              style="display:none;"
+            >
+              Upload your JazzCash QR image as
+              <strong>jazzcash-qr.png</strong>
+            </div>
+
+          </div>
+
+
+          <div>
+
+            <div class="payment-detail">
+
+              <span>
+                Account Title
+              </span>
+
+              <strong>
+                Mohammad Yasin
+              </strong>
+
+            </div>
+
+
+            <div class="payment-detail">
+
+              <span>
+                JazzCash Number
+              </span>
+
+              <strong>
+                0318 7151102
+              </strong>
+
+            </div>
+
+
+            <button
+              onclick="copyJazzCash()"
+              class="btn btn-light btn-full"
+              style="border:1px solid #d9dee7;"
+              type="button"
+              id="copyJazzButton"
+            >
+              Copy JazzCash Number
+            </button>
+
+
+            <div
+              class="payment-detail"
+              style="margin-top:10px;"
+            >
+
+              <span>
+                Order Number
+              </span>
+
+              <strong id="paymentOrderNumber">
+                -
+              </strong>
+
+            </div>
+
+          </div>
+
+        </div>
+
+
+        <div class="payment-note">
+
+          Send the exact amount shown above.
+          After sending payment, click
+          <strong>I Have Paid</strong>
+          and send your payment screenshot to us on Instagram.
+
+        </div>
+
+
+        <button
+          onclick="paymentDone()"
+          class="btn btn-primary btn-full"
+        >
+          I Have Paid
+        </button>
+
+      </div>
+
+
+      <!-- STEP 3 SUCCESS -->
+
+      <div
+        class="checkout-step success"
+        id="step3"
+      >
+
+        <div class="success-icon">
+          ✓
+        </div>
+
+        <h2>
+          Order Created
+        </h2>
+
+        <p>
+          Your order number is:
+        </p>
+
+        <h3
+          id="finalOrder"
+          style="font-size:25px;margin-top:8px;"
+        >
+          -
+        </h3>
+
+
+        <div
+          class="order-message"
+          id="orderSummary"
+        ></div>
+
+
+        <p style="color:#667085;">
+          Copy your order message, open Instagram and send us your
+          payment screenshot.
+        </p>
+
+
+        <button
+          id="copyOrderButton"
+          onclick="copyOrderMessage()"
+          class="btn btn-light btn-full"
+          style="border:1px solid #d9dee7;"
+        >
+          Copy Order Message
+        </button>
+
+
+        <a
+          href="https://www.instagram.com/esimsolutions.pk/"
+          target="_blank"
+          class="btn btn-primary btn-full"
+        >
+          Open Instagram
+        </a>
+
+
+        <button
+          onclick="closeCheckout()"
+          class="btn btn-light btn-full"
+          style="border:1px solid #d9dee7;"
+        >
+          Close
+        </button>
+
+      </div>
+
+    </div>
+
   </div>
 
-  <script src="app.js"></script>
+
+  <!-- ==============================
+       JAVASCRIPT
+  ============================== -->
+
+  <script>
+
+    /*
+      ===================================
+      WEBSITE SETTINGS
+      ===================================
+    */
+
+    const instagramUsername = "esimsolutions.pk";
+
+    const jazzCashNumber = "0318 7151102";
+
+    const jazzCashAccountTitle = "Mohammad Yasin";
+
+
+    /*
+      ===================================
+      PACKAGE LIST
+      ===================================
+    */
+
+    const packages = {
+
+      nonExpiry: [
+
+        {
+          id: "NE3",
+          data: "3 GB",
+          price: 1200,
+          validity: "Non-Expiry"
+        },
+
+        {
+          id: "NE5",
+          data: "5 GB",
+          price: 1490,
+          validity: "Non-Expiry"
+        },
+
+        {
+          id: "NE10",
+          data: "10 GB",
+          price: 2250,
+          validity: "Non-Expiry",
+          popular: true
+        },
+
+        {
+          id: "NE20",
+          data: "20 GB",
+          price: 3599,
+          validity: "Non-Expiry"
+        },
+
+        {
+          id: "NE50",
+          data: "50 GB",
+          price: 6999,
+          validity: "Non-Expiry"
+        },
+
+        {
+          id: "NE100",
+          data: "100 GB",
+          price: 11000,
+          validity: "Non-Expiry"
+        }
+
+      ],
+
+
+      thirtyDays: [
+
+        {
+          id: "D1",
+          data: "1 GB",
+          price: 650,
+          validity: "30 Days"
+        },
+
+        {
+          id: "D3",
+          data: "3 GB",
+          price: 850,
+          validity: "30 Days"
+        },
+
+        {
+          id: "D5",
+          data: "5 GB",
+          price: 1150,
+          validity: "30 Days",
+          popular: true
+        },
+
+        {
+          id: "D10",
+          data: "10 GB",
+          price: 1750,
+          validity: "30 Days"
+        },
+
+        {
+          id: "D20",
+          data: "20 GB",
+          price: 2750,
+          validity: "30 Days"
+        }
+
+      ]
+
+    };
+
+
+    /*
+      ===================================
+      VARIABLES
+      ===================================
+    */
+
+    let currentCategory = "nonExpiry";
+
+    let selectedPlan = null;
+
+    let currentOrder = null;
+
+
+    /*
+      ===================================
+      PRICE FORMAT
+      ===================================
+    */
+
+    function formatPrice(price) {
+
+      return "Rs. " + Number(price).toLocaleString("en-PK");
+
+    }
+
+
+    /*
+      ===================================
+      DISPLAY PACKAGES
+      ===================================
+    */
+
+    function displayPackages() {
+
+      const grid = document.getElementById("packageGrid");
+
+      grid.innerHTML = "";
+
+
+      packages[currentCategory].forEach(plan => {
+
+        const card = document.createElement("div");
+
+        card.className =
+          "package" +
+          (plan.popular ? " popular" : "");
+
+
+        card.innerHTML = `
+
+          ${plan.popular
+            ? '<div class="popular-label">POPULAR</div>'
+            : ""
+          }
+
+          <div class="package-category">
+            ${plan.validity.toUpperCase()}
+          </div>
+
+          <div class="package-data">
+            ${plan.data}
+          </div>
+
+          <div class="package-validity">
+            ${
+              plan.validity === "Non-Expiry"
+              ? "No fixed expiry period"
+              : "Valid for 30 days"
+            }
+          </div>
+
+          <div class="price">
+
+            <small>PKR</small>
+
+            ${formatPrice(plan.price).replace("Rs. ", "")}
+
+          </div>
+
+          <button
+            class="btn btn-primary btn-full"
+            onclick="buyPackage('${plan.id}')"
+          >
+            Buy Now
+          </button>
+
+        `;
+
+
+        grid.appendChild(card);
+
+      });
+
+    }
+
+
+    /*
+      ===================================
+      CATEGORY BUTTONS
+      ===================================
+    */
+
+    document
+      .querySelectorAll(".tab")
+      .forEach(button => {
+
+        button.addEventListener(
+          "click",
+          function() {
+
+            document
+              .querySelectorAll(".tab")
+              .forEach(tab => {
+                tab.classList.remove("active");
+              });
+
+
+            this.classList.add("active");
+
+
+            currentCategory =
+              this.dataset.category;
+
+
+            displayPackages();
+
+          }
+        );
+
+      });
+
+
+    /*
+      ===================================
+      FIND PACKAGE
+      ===================================
+    */
+
+    function findPackage(id) {
+
+      const all = [
+        ...packages.nonExpiry,
+        ...packages.thirtyDays
+      ];
+
+
+      return all.find(
+        plan => plan.id === id
+      );
+
+    }
+
+
+    /*
+      ===================================
+      BUY BUTTON
+      ===================================
+    */
+
+    function buyPackage(id) {
+
+      selectedPlan = findPackage(id);
+
+
+      document.getElementById(
+        "selectedPackage"
+      ).textContent =
+        selectedPlan.data;
+
+
+      document.getElementById(
+        "selectedValidity"
+      ).textContent =
+        selectedPlan.validity;
+
+
+      document.getElementById(
+        "selectedPrice"
+      ).textContent =
+        formatPrice(selectedPlan.price);
+
+
+      document.getElementById(
+        "checkoutForm"
+      ).reset();
+
+
+      showStep(1);
+
+
+      document.getElementById(
+        "checkoutModal"
+      ).classList.add("show");
+
+
+      document.body.style.overflow = "hidden";
+
+    }
+
+
+    /*
+      ===================================
+      CLOSE CHECKOUT
+      ===================================
+    */
+
+    function closeCheckout() {
+
+      document.getElementById(
+        "checkoutModal"
+      ).classList.remove("show");
+
+
+      document.body.style.overflow = "";
+
+    }
+
+
+    /*
+      ===================================
+      SHOW CHECKOUT STEP
+      ===================================
+    */
+
+    function showStep(step) {
+
+      document
+        .querySelectorAll(".checkout-step")
+        .forEach(element => {
+
+          element.classList.remove("active");
+
+        });
+
+
+      document.getElementById(
+        "step" + step
+      ).classList.add("active");
+
+    }
+
+
+    /*
+      ===================================
+      GENERATE ORDER NUMBER
+      ===================================
+    */
+
+    function generateOrderNumber() {
+
+      const date = new Date();
+
+
+      const year =
+        String(date.getFullYear()).slice(-2);
+
+
+      const month =
+        String(date.getMonth() + 1)
+        .padStart(2, "0");
+
+
+      const day =
+        String(date.getDate())
+        .padStart(2, "0");
+
+
+      const random =
+        Math.floor(
+          1000 +
+          Math.random() * 9000
+        );
+
+
+      return `ESIM-${year}${month}${day}-${random}`;
+
+    }
+
+
+    /*
+      ===================================
+      CUSTOMER FORM
+      ===================================
+    */
+
+    document
+      .getElementById("checkoutForm")
+      .addEventListener(
+        "submit",
+        function(event) {
+
+          event.preventDefault();
+
+
+          currentOrder = {
+
+            number: generateOrderNumber(),
+
+            package: selectedPlan,
+
+            name:
+              document.getElementById(
+                "customerName"
+              ).value.trim(),
+
+            phone:
+              document.getElementById(
+                "customerPhone"
+              ).value.trim(),
+
+            email:
+              document.getElementById(
+                "customerEmail"
+              ).value.trim(),
+
+            instagram:
+              document.getElementById(
+                "customerInstagram"
+              ).value.trim()
+
+          };
+
+
+          document.getElementById(
+            "payAmount"
+          ).textContent =
+            formatPrice(
+              currentOrder.package.price
+            );
+
+
+          document.getElementById(
+            "paymentOrderNumber"
+          ).textContent =
+            currentOrder.number;
+
+
+          saveOrder();
+
+
+          showStep(2);
+
+        }
+      );
+
+
+    /*
+      ===================================
+      SAVE ORDER TO CUSTOMER'S BROWSER
+      ===================================
+
+      IMPORTANT:
+      GitHub Pages does NOT provide
+      a server/database.
+
+      This is only stored in the
+      customer's browser.
+    */
+
+    function saveOrder() {
+
+      let orders = JSON.parse(
+        localStorage.getItem(
+          "esimOrders"
+        ) || "[]"
+      );
+
+
+      orders.push(currentOrder);
+
+
+      localStorage.setItem(
+        "esimOrders",
+        JSON.stringify(orders)
+      );
+
+    }
+
+
+    /*
+      ===================================
+      COPY JAZZCASH NUMBER
+      ===================================
+    */
+
+    async function copyJazzCash() {
+
+      try {
+
+        await navigator.clipboard.writeText(
+          jazzCashNumber.replace(/\s/g, "")
+        );
+
+
+        const button =
+          document.getElementById(
+            "copyJazzButton"
+          );
+
+
+        const original =
+          button.innerText;
+
+
+        button.innerText =
+          "Copied!";
+
+
+        setTimeout(() => {
+
+          button.innerText =
+            original;
+
+        }, 1500);
+
+
+      } catch (error) {
+
+        alert(
+          "JazzCash Number: " +
+          jazzCashNumber
+        );
+
+      }
+
+    }
+
+
+    /*
+      ===================================
+      PAYMENT COMPLETED BUTTON
+      ===================================
+    */
+
+    function paymentDone() {
+
+      if (!currentOrder) {
+        return;
+      }
+
+
+      document.getElementById(
+        "finalOrder"
+      ).textContent =
+        currentOrder.number;
+
+
+      document.getElementById(
+        "orderSummary"
+      ).innerHTML = `
+
+        <strong>
+          ${currentOrder.package.data}
+          —
+          ${currentOrder.package.validity}
+        </strong>
+
+        <br><br>
+
+        Amount:
+        ${formatPrice(
+          currentOrder.package.price
+        )}
+
+        <br>
+
+        Name:
+        ${escapeHTML(currentOrder.name)}
+
+        <br>
+
+        Phone:
+        ${escapeHTML(currentOrder.phone)}
+
+      `;
+
+
+      showStep(3);
+
+    }
+
+
+    /*
+      ===================================
+      CREATE ORDER MESSAGE
+      ===================================
+    */
+
+    function createOrderMessage() {
+
+      return `Assalam-o-Alaikum,
+
+I have paid for an eSIM order.
+
+Order Number: ${currentOrder.number}
+Package: ${currentOrder.package.data}
+Validity: ${currentOrder.package.validity}
+Amount: ${formatPrice(currentOrder.package.price)}
+Name: ${currentOrder.name}
+Phone: ${currentOrder.phone}
+Email: ${currentOrder.email}
+
+I will attach my JazzCash payment screenshot.`;
+
+    }
+
+
+    /*
+      ===================================
+      COPY ORDER MESSAGE
+      ===================================
+    */
+
+    async function copyOrderMessage() {
+
+      if (!currentOrder) {
+        return;
+      }
+
+
+      try {
+
+        await navigator.clipboard.writeText(
+          createOrderMessage()
+        );
+
+
+        const button =
+          document.getElementById(
+            "copyOrderButton"
+          );
+
+
+        const original =
+          button.innerText;
+
+
+        button.innerText =
+          "Order Message Copied!";
+
+
+        setTimeout(() => {
+
+          button.innerText =
+            original;
+
+        }, 1700);
+
+
+      } catch (error) {
+
+        alert(
+          createOrderMessage()
+        );
+
+      }
+
+    }
+
+
+    /*
+      ===================================
+      PREVENT HTML INJECTION
+      ===================================
+    */
+
+    function escapeHTML(text) {
+
+      const div =
+        document.createElement("div");
+
+
+      div.textContent = text;
+
+
+      return div.innerHTML;
+
+    }
+
+
+    /*
+      ===================================
+      QR CODE FALLBACK
+      ===================================
+    */
+
+    const qrImage =
+      document.getElementById(
+        "qrImage"
+      );
+
+
+    qrImage.addEventListener(
+      "error",
+      function() {
+
+        qrImage.style.display =
+          "none";
+
+
+        document.getElementById(
+          "qrPlaceholder"
+        ).style.display =
+          "block";
+
+      }
+    );
+
+
+    /*
+      ===================================
+      CURRENT YEAR
+      ===================================
+    */
+
+    document.getElementById(
+      "year"
+    ).textContent =
+      new Date().getFullYear();
+
+
+    /*
+      ===================================
+      START WEBSITE
+      ===================================
+    */
+
+    displayPackages();
+
+  </script>
+
 </body>
 </html>
