@@ -1,96 +1,205 @@
+/* =========================================================
+   BUSINESS INFORMATION
+========================================================= */
+
 const BUSINESS = {
-  instagram: "esimsolutions.pk",
-  merchant: "MOHAMMAD Shop",
-  tillId: "983606109"
+
+  instagram:
+    "esimsolutions.pk",
+
+  merchant:
+    "MOHAMMAD Shop",
+
+  tillId:
+    "983606109"
+
 };
 
 
+/* =========================================================
+   PACKAGE INFORMATION
+========================================================= */
+
 const PACKAGES = {
+
 
   nonExpiry: [
 
-    {
-      id: "NE3",
-      data: "3 GB",
-      validity: "Non-Expiry",
-      price: 1200
-    },
 
     {
-      id: "NE5",
-      data: "5 GB",
-      validity: "Non-Expiry",
-      price: 1490
+      id:
+        "NE3",
+
+      data:
+        "3 GB",
+
+      validity:
+        "Non-Expiry",
+
+      price:
+        1200
     },
 
-    {
-      id: "NE10",
-      data: "10 GB",
-      validity: "Non-Expiry",
-      price: 2250,
-      popular: true
-    },
 
     {
-      id: "NE20",
-      data: "20 GB",
-      validity: "Non-Expiry",
-      price: 3599
+      id:
+        "NE5",
+
+      data:
+        "5 GB",
+
+      validity:
+        "Non-Expiry",
+
+      price:
+        1490
     },
 
-    {
-      id: "NE50",
-      data: "50 GB",
-      validity: "Non-Expiry",
-      price: 6999
-    },
 
     {
-      id: "NE100",
-      data: "100 GB",
-      validity: "Non-Expiry",
-      price: 11000
+      id:
+        "NE10",
+
+      data:
+        "10 GB",
+
+      validity:
+        "Non-Expiry",
+
+      price:
+        2250,
+
+      popular:
+        true
+    },
+
+
+    {
+      id:
+        "NE20",
+
+      data:
+        "20 GB",
+
+      validity:
+        "Non-Expiry",
+
+      price:
+        3599
+    },
+
+
+    {
+      id:
+        "NE50",
+
+      data:
+        "50 GB",
+
+      validity:
+        "Non-Expiry",
+
+      price:
+        6999
+    },
+
+
+    {
+      id:
+        "NE100",
+
+      data:
+        "100 GB",
+
+      validity:
+        "Non-Expiry",
+
+      price:
+        11000
     }
 
   ],
 
 
+
   thirtyDays: [
 
-    {
-      id: "D1",
-      data: "1 GB",
-      validity: "30 Days",
-      price: 650
-    },
 
     {
-      id: "D3",
-      data: "3 GB",
-      validity: "30 Days",
-      price: 850
+      id:
+        "D1",
+
+      data:
+        "1 GB",
+
+      validity:
+        "30 Days",
+
+      price:
+        650
     },
 
-    {
-      id: "D5",
-      data: "5 GB",
-      validity: "30 Days",
-      price: 1150,
-      popular: true
-    },
 
     {
-      id: "D10",
-      data: "10 GB",
-      validity: "30 Days",
-      price: 1750
+      id:
+        "D3",
+
+      data:
+        "3 GB",
+
+      validity:
+        "30 Days",
+
+      price:
+        850
     },
 
+
     {
-      id: "D20",
-      data: "20 GB",
-      validity: "30 Days",
-      price: 2750
+      id:
+        "D5",
+
+      data:
+        "5 GB",
+
+      validity:
+        "30 Days",
+
+      price:
+        1150,
+
+      popular:
+        true
+    },
+
+
+    {
+      id:
+        "D10",
+
+      data:
+        "10 GB",
+
+      validity:
+        "30 Days",
+
+      price:
+        1750
+    },
+
+
+    {
+      id:
+        "D20",
+
+      data:
+        "20 GB",
+
+      validity:
+        "30 Days",
+
+      price:
+        2750
     }
 
   ]
@@ -98,25 +207,38 @@ const PACKAGES = {
 };
 
 
+/* =========================================================
+   STATE
+========================================================= */
+
 let activeCategory =
   "nonExpiry";
+
 
 let selectedPlan =
   null;
 
+
 let currentOrder =
   null;
+
 
 let revealObserver =
   null;
 
+
+/* =========================================================
+   HELPERS
+========================================================= */
 
 function formatPrice(value) {
 
   return (
     "Rs. " +
     Number(value)
-      .toLocaleString("en-PK")
+      .toLocaleString(
+        "en-PK"
+      )
   );
 
 }
@@ -125,10 +247,14 @@ function formatPrice(value) {
 function escapeHTML(value) {
 
   const element =
-    document.createElement("div");
+    document.createElement(
+      "div"
+    );
+
 
   element.textContent =
     String(value);
+
 
   return element.innerHTML;
 
@@ -151,7 +277,9 @@ function findPackage(id) {
 }
 
 
-/* PACKAGES */
+/* =========================================================
+   PACKAGE RENDERING
+========================================================= */
 
 function renderPackages() {
 
@@ -170,6 +298,7 @@ function renderPackages() {
   ].forEach(
     (plan, index) => {
 
+
       const card =
         document.createElement(
           "article"
@@ -185,15 +314,26 @@ function renderPackages() {
         <div class="package-meta">
 
           <span>
-            ${String(index + 1).padStart(2, "0")}
+            ${
+              String(
+                index + 1
+              )
+              .padStart(
+                2,
+                "0"
+              )
+            }
           </span>
 
+
           <span>
+
             ${
               plan.popular
                 ? "Most Popular"
                 : plan.validity
             }
+
           </span>
 
         </div>
@@ -207,17 +347,19 @@ function renderPackages() {
         <p class="package-validity">
 
           ${
-            plan.validity === "Non-Expiry"
+            plan.validity ===
+            "Non-Expiry"
 
-              ? "Non-expiry data package"
+              ? "Premium non-expiry data package"
 
-              : "Valid for 30 days"
+              : "Data package valid for 30 days"
           }
 
         </p>
 
 
         <div class="package-footer">
+
 
           <div class="package-price">
 
@@ -226,10 +368,16 @@ function renderPackages() {
             </span>
 
             <strong>
+
               ${
-                Number(plan.price)
-                  .toLocaleString("en-PK")
+                Number(
+                  plan.price
+                )
+                .toLocaleString(
+                  "en-PK"
+                )
               }
+
             </strong>
 
           </div>
@@ -262,9 +410,11 @@ function renderPackages() {
     )
     .forEach(button => {
 
+
       button.addEventListener(
         "click",
         () => {
+
 
           openCheckout(
             button.dataset.package
@@ -281,7 +431,9 @@ function renderPackages() {
 }
 
 
-/* PACKAGE TABS */
+/* =========================================================
+   PACKAGE TABS
+========================================================= */
 
 document
   .querySelectorAll(
@@ -289,15 +441,18 @@ document
   )
   .forEach(tab => {
 
+
     tab.addEventListener(
       "click",
       function() {
+
 
         document
           .querySelectorAll(
             ".package-tab"
           )
           .forEach(item => {
+
 
             item.classList.remove(
               "active"
@@ -323,7 +478,9 @@ document
   });
 
 
-/* CHECKOUT */
+/* =========================================================
+   CHECKOUT
+========================================================= */
 
 const modal =
   document.getElementById(
@@ -412,7 +569,13 @@ function closeCheckout() {
 }
 
 
-function showCheckoutStep(stepNumber) {
+/* =========================================================
+   CHECKOUT STEPS
+========================================================= */
+
+function showCheckoutStep(
+  stepNumber
+) {
 
   document
     .querySelectorAll(
@@ -420,13 +583,15 @@ function showCheckoutStep(stepNumber) {
     )
     .forEach(step => {
 
+
       step.classList.toggle(
 
         "active",
 
         Number(
           step.dataset.step
-        ) === stepNumber
+        ) ===
+        stepNumber
 
       );
 
@@ -441,7 +606,9 @@ function showCheckoutStep(stepNumber) {
 }
 
 
-/* FORM */
+/* =========================================================
+   CUSTOMER FORM
+========================================================= */
 
 document
   .getElementById(
@@ -450,6 +617,7 @@ document
   .addEventListener(
     "submit",
     event => {
+
 
       event.preventDefault();
 
@@ -461,15 +629,20 @@ document
 
       currentOrder = {
 
+
         number:
           generateOrderNumber(),
+
 
         package:
           selectedPlan,
 
+
         customer: {
 
+
           name:
+
             document
               .getElementById(
                 "customerName"
@@ -477,7 +650,9 @@ document
               .value
               .trim(),
 
+
           phone:
+
             document
               .getElementById(
                 "customerPhone"
@@ -485,7 +660,9 @@ document
               .value
               .trim(),
 
+
           email:
+
             document
               .getElementById(
                 "customerEmail"
@@ -493,7 +670,9 @@ document
               .value
               .trim(),
 
+
           instagram:
+
             document
               .getElementById(
                 "customerInstagram"
@@ -503,7 +682,9 @@ document
 
         },
 
+
         createdAt:
+
           new Date()
             .toISOString()
 
@@ -533,7 +714,9 @@ document
   );
 
 
-/* ORDER NUMBER */
+/* =========================================================
+   ORDER NUMBER
+========================================================= */
 
 function generateOrderNumber() {
 
@@ -544,19 +727,30 @@ function generateOrderNumber() {
   const year =
     String(
       now.getFullYear()
-    ).slice(-2);
+    )
+    .slice(
+      -2
+    );
 
 
   const month =
     String(
       now.getMonth() + 1
-    ).padStart(2, "0");
+    )
+    .padStart(
+      2,
+      "0"
+    );
 
 
   const day =
     String(
       now.getDate()
-    ).padStart(2, "0");
+    )
+    .padStart(
+      2,
+      "0"
+    );
 
 
   const random =
@@ -574,11 +768,14 @@ function generateOrderNumber() {
 }
 
 
-/* LOCAL STORAGE */
+/* =========================================================
+   SAVE ORDER LOCALLY
+========================================================= */
 
 function saveOrder() {
 
   try {
+
 
     const orders =
       JSON.parse(
@@ -600,17 +797,20 @@ function saveOrder() {
       "esimOrders",
 
       JSON.stringify(
-        orders.slice(-50)
+        orders.slice(
+          -50
+        )
       )
 
     );
 
   }
 
+
   catch(error) {
 
     console.warn(
-      "Local order storage unavailable."
+      "Order could not be saved locally."
     );
 
   }
@@ -618,7 +818,9 @@ function saveOrder() {
 }
 
 
-/* COPY */
+/* =========================================================
+   COPY FUNCTION
+========================================================= */
 
 async function copyText(
   text,
@@ -628,9 +830,12 @@ async function copyText(
 
   try {
 
+
     await navigator
       .clipboard
-      .writeText(text);
+      .writeText(
+        text
+      );
 
 
     const original =
@@ -653,7 +858,9 @@ async function copyText(
 
   }
 
+
   catch(error) {
+
 
     window.prompt(
       "Copy this:",
@@ -665,6 +872,10 @@ async function copyText(
 }
 
 
+/* =========================================================
+   COPY TILL
+========================================================= */
+
 document
   .getElementById(
     "copyTillButton"
@@ -673,13 +884,14 @@ document
     "click",
     event => {
 
+
       copyText(
 
         BUSINESS.tillId,
 
         event.currentTarget,
 
-        "Copied"
+        "TILL ID Copied"
 
       );
 
@@ -687,7 +899,9 @@ document
   );
 
 
-/* PAYMENT COMPLETE */
+/* =========================================================
+   PAYMENT COMPLETED
+========================================================= */
 
 document
   .getElementById(
@@ -696,6 +910,7 @@ document
   .addEventListener(
     "click",
     () => {
+
 
       if (!currentOrder) {
         return;
@@ -713,25 +928,41 @@ document
       ).innerHTML = `
 
         <strong>
-          ${escapeHTML(currentOrder.package.data)}
+
+          ${escapeHTML(
+            currentOrder.package.data
+          )}
+
           ·
-          ${escapeHTML(currentOrder.package.validity)}
+
+          ${escapeHTML(
+            currentOrder.package.validity
+          )}
+
         </strong>
 
         <br><br>
 
         Amount:
-        ${formatPrice(currentOrder.package.price)}
+        <strong>
+          ${formatPrice(
+            currentOrder.package.price
+          )}
+        </strong>
 
         <br>
 
         Customer:
-        ${escapeHTML(currentOrder.customer.name)}
+        ${escapeHTML(
+          currentOrder.customer.name
+        )}
 
         <br>
 
         Phone:
-        ${escapeHTML(currentOrder.customer.phone)}
+        ${escapeHTML(
+          currentOrder.customer.phone
+        )}
 
         <br>
 
@@ -752,7 +983,9 @@ document
   );
 
 
-/* ORDER MESSAGE */
+/* =========================================================
+   CREATE ORDER MESSAGE
+========================================================= */
 
 function createOrderMessage() {
 
@@ -776,8 +1009,11 @@ Email: ${currentOrder.customer.email}`;
 
 
   if (
-    currentOrder.customer.instagram
+    currentOrder
+      .customer
+      .instagram
   ) {
+
 
     message += `
 
@@ -800,6 +1036,10 @@ I am attaching my payment screenshot for verification.`;
 }
 
 
+/* =========================================================
+   COPY ORDER MESSAGE
+========================================================= */
+
 document
   .getElementById(
     "copyOrderButton"
@@ -808,13 +1048,14 @@ document
     "click",
     event => {
 
+
       copyText(
 
         createOrderMessage(),
 
         event.currentTarget,
 
-        "Message Copied"
+        "Order Message Copied"
 
       );
 
@@ -822,7 +1063,9 @@ document
   );
 
 
-/* CLOSE EVENTS */
+/* =========================================================
+   CLOSE MODAL
+========================================================= */
 
 document
   .getElementById(
@@ -848,9 +1091,12 @@ document.addEventListener(
   "keydown",
   event => {
 
+
     if (
-      event.key === "Escape"
+      event.key ===
+      "Escape"
     ) {
+
 
       closeCheckout();
 
@@ -860,7 +1106,9 @@ document.addEventListener(
 );
 
 
-/* NEW ORDER */
+/* =========================================================
+   NEW ORDER
+========================================================= */
 
 document
   .getElementById(
@@ -870,19 +1118,23 @@ document
     "click",
     () => {
 
+
       closeCheckout();
 
 
       setTimeout(
         () => {
 
+
           document
             .getElementById(
               "packages"
             )
             .scrollIntoView({
+
               behavior:
                 "smooth"
+
             });
 
         },
@@ -893,19 +1145,27 @@ document
   );
 
 
-/* SAFE SCROLL REVEAL */
+/* =========================================================
+   SAFE SCROLL ANIMATION
+========================================================= */
 
 function setupRevealAnimations() {
 
+
   if (
-    !("IntersectionObserver" in window)
+    !(
+      "IntersectionObserver"
+      in window
+    )
   ) {
+
 
     document
       .querySelectorAll(
         ".js-reveal"
       )
       .forEach(element => {
+
 
         element.classList.add(
           "is-visible"
@@ -919,6 +1179,14 @@ function setupRevealAnimations() {
   }
 
 
+  /*
+    This class is only added after JS
+    successfully loads.
+
+    Therefore the page can never remain
+    blank if JS fails.
+  */
+
   document.body.classList.add(
     "motion-ready"
   );
@@ -929,12 +1197,15 @@ function setupRevealAnimations() {
 
       entries => {
 
+
         entries.forEach(
           entry => {
+
 
             if (
               entry.isIntersecting
             ) {
+
 
               entry.target
                 .classList
@@ -955,12 +1226,16 @@ function setupRevealAnimations() {
 
       },
 
+
       {
+
         threshold:
           0.08,
 
+
         rootMargin:
           "0px 0px -20px 0px"
+
       }
 
     );
@@ -970,18 +1245,22 @@ function setupRevealAnimations() {
 
 
   /*
-    Safety fallback:
-    elements can never stay invisible.
+    Safety fallback.
+
+    No content can remain invisible
+    longer than 1.8 seconds.
   */
 
   setTimeout(
     () => {
+
 
       document
         .querySelectorAll(
           ".js-reveal"
         )
         .forEach(element => {
+
 
           element.classList.add(
             "is-visible"
@@ -990,13 +1269,18 @@ function setupRevealAnimations() {
         });
 
     },
-    1600
+    1800
   );
 
 }
 
 
+/* =========================================================
+   OBSERVE NEW ELEMENTS
+========================================================= */
+
 function observeRevealElements() {
+
 
   if (!revealObserver) {
     return;
@@ -1009,6 +1293,7 @@ function observeRevealElements() {
     )
     .forEach(element => {
 
+
       revealObserver.observe(
         element
       );
@@ -1018,17 +1303,24 @@ function observeRevealElements() {
 }
 
 
-/* YEAR */
+/* =========================================================
+   YEAR
+========================================================= */
 
-document.getElementById(
-  "year"
-).textContent =
-  new Date()
-    .getFullYear();
+document
+  .getElementById(
+    "year"
+  )
+  .textContent =
+    new Date()
+      .getFullYear();
 
 
-/* INITIALIZE */
+/* =========================================================
+   INITIALIZE
+========================================================= */
 
 renderPackages();
+
 
 setupRevealAnimations();
