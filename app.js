@@ -16,16 +16,13 @@ const BUSINESS = {
 };
 
 
-
 /* ==================================================
    PACKAGES
 ================================================== */
 
 const PACKAGES = {
 
-
   nonExpiry: [
-
 
     {
       id: "NE3",
@@ -34,14 +31,12 @@ const PACKAGES = {
       price: 1200
     },
 
-
     {
       id: "NE5",
       data: "5 GB",
       validity: "Non-Expiry",
       price: 1490
     },
-
 
     {
       id: "NE10",
@@ -51,7 +46,6 @@ const PACKAGES = {
       popular: true
     },
 
-
     {
       id: "NE20",
       data: "20 GB",
@@ -59,14 +53,12 @@ const PACKAGES = {
       price: 3599
     },
 
-
     {
       id: "NE50",
       data: "50 GB",
       validity: "Non-Expiry",
       price: 6999
     },
-
 
     {
       id: "NE100",
@@ -78,9 +70,7 @@ const PACKAGES = {
   ],
 
 
-
   thirtyDays: [
-
 
     {
       id: "D1",
@@ -89,14 +79,12 @@ const PACKAGES = {
       price: 650
     },
 
-
     {
       id: "D3",
       data: "3 GB",
       validity: "30 Days",
       price: 850
     },
-
 
     {
       id: "D5",
@@ -106,14 +94,12 @@ const PACKAGES = {
       popular: true
     },
 
-
     {
       id: "D10",
       data: "10 GB",
       validity: "30 Days",
       price: 1750
     },
-
 
     {
       id: "D20",
@@ -127,7 +113,6 @@ const PACKAGES = {
 };
 
 
-
 /* ==================================================
    STATE
 ================================================== */
@@ -135,18 +120,14 @@ const PACKAGES = {
 let currentCategory =
   "nonExpiry";
 
-
 let selectedPlan =
   null;
-
 
 let currentOrder =
   null;
 
-
 let revealObserver =
   null;
-
 
 
 /* ==================================================
@@ -166,7 +147,6 @@ function formatPrice(value) {
 }
 
 
-
 function escapeHTML(value) {
 
   const element =
@@ -174,15 +154,12 @@ function escapeHTML(value) {
       "div"
     );
 
-
   element.textContent =
     String(value);
-
 
   return element.innerHTML;
 
 }
-
 
 
 function findPackage(id) {
@@ -201,19 +178,16 @@ function findPackage(id) {
 }
 
 
-
 /* ==================================================
    DISPLAY PACKAGES
 ================================================== */
 
 function renderPackages() {
 
-
   const grid =
     document.getElementById(
       "packageGrid"
     );
-
 
   grid.innerHTML =
     "";
@@ -222,7 +196,6 @@ function renderPackages() {
   PACKAGES[
     currentCategory
   ].forEach(plan => {
-
 
     const card =
       document.createElement(
@@ -251,16 +224,13 @@ function renderPackages() {
           : ""
       }
 
-
       <div class="package-category">
         ${plan.validity.toUpperCase()}
       </div>
 
-
       <div class="package-data">
         ${plan.data}
       </div>
-
 
       <div class="package-validity">
 
@@ -274,7 +244,6 @@ function renderPackages() {
         }
 
       </div>
-
 
       <div class="package-price">
 
@@ -292,7 +261,6 @@ function renderPackages() {
         }
 
       </div>
-
 
       <button
         class="btn btn-primary btn-full buy-button"
@@ -312,18 +280,15 @@ function renderPackages() {
   });
 
 
-
   document
     .querySelectorAll(
       ".buy-button"
     )
     .forEach(button => {
 
-
       button.addEventListener(
         "click",
         () => {
-
 
           openCheckout(
             button.dataset.package
@@ -335,11 +300,9 @@ function renderPackages() {
     });
 
 
-
   observeRevealElements();
 
 }
-
 
 
 /* ==================================================
@@ -352,18 +315,15 @@ document
   )
   .forEach(tab => {
 
-
     tab.addEventListener(
       "click",
       function() {
-
 
         document
           .querySelectorAll(
             ".tab"
           )
           .forEach(item => {
-
 
             item.classList.remove(
               "active"
@@ -389,7 +349,6 @@ document
   });
 
 
-
 /* ==================================================
    CHECKOUT
 ================================================== */
@@ -400,9 +359,7 @@ const checkoutModal =
   );
 
 
-
 function openCheckout(id) {
-
 
   selectedPlan =
     findPackage(id);
@@ -468,9 +425,11 @@ function openCheckout(id) {
 }
 
 
+/* ==================================================
+   CLOSE CHECKOUT
+================================================== */
 
 function closeCheckout() {
-
 
   checkoutModal
     .classList
@@ -495,20 +454,17 @@ function closeCheckout() {
 }
 
 
-
 /* ==================================================
    CHECKOUT STEPS
 ================================================== */
 
 function showStep(stepNumber) {
 
-
   document
     .querySelectorAll(
       ".checkout-step"
     )
     .forEach(step => {
-
 
       const thisStep =
         Number(
@@ -527,13 +483,11 @@ function showStep(stepNumber) {
     });
 
 
-
   for (
     let index = 1;
     index <= 3;
     index++
   ) {
-
 
     const progress =
       document.getElementById(
@@ -555,13 +509,11 @@ function showStep(stepNumber) {
 }
 
 
-
 /* ==================================================
    ORDER NUMBER
 ================================================== */
 
 function generateOrderNumber() {
-
 
   const date =
     new Date();
@@ -611,7 +563,6 @@ function generateOrderNumber() {
 }
 
 
-
 /* ==================================================
    CHECKOUT FORM
 ================================================== */
@@ -624,7 +575,6 @@ document
     "submit",
     event => {
 
-
       event.preventDefault();
 
 
@@ -633,23 +583,17 @@ document
       }
 
 
-
       currentOrder = {
-
 
         number:
           generateOrderNumber(),
 
-
         package:
           selectedPlan,
 
-
         customer: {
 
-
           name:
-
             document
               .getElementById(
                 "customerName"
@@ -657,9 +601,7 @@ document
               .value
               .trim(),
 
-
           phone:
-
             document
               .getElementById(
                 "customerPhone"
@@ -667,19 +609,7 @@ document
               .value
               .trim(),
 
-
-          email:
-
-            document
-              .getElementById(
-                "customerEmail"
-              )
-              .value
-              .trim(),
-
-
           instagram:
-
             document
               .getElementById(
                 "customerInstagram"
@@ -689,13 +619,11 @@ document
 
         },
 
-
         createdAt:
           new Date()
             .toISOString()
 
       };
-
 
 
       document.getElementById(
@@ -712,7 +640,6 @@ document
         currentOrder.number;
 
 
-
       saveOrderLocally();
 
 
@@ -722,16 +649,13 @@ document
   );
 
 
-
 /* ==================================================
    SAVE ORDER
 ================================================== */
 
 function saveOrderLocally() {
 
-
   try {
-
 
     const orders =
       JSON.parse(
@@ -762,9 +686,7 @@ function saveOrderLocally() {
 
   }
 
-
   catch(error) {
-
 
     console.warn(
       "Local storage is not available."
@@ -773,7 +695,6 @@ function saveOrderLocally() {
   }
 
 }
-
 
 
 /* ==================================================
@@ -786,9 +707,7 @@ async function copyText(
   successMessage
 ) {
 
-
   try {
-
 
     await navigator
       .clipboard
@@ -808,7 +727,6 @@ async function copyText(
     setTimeout(
       () => {
 
-
         button.textContent =
           original;
 
@@ -818,9 +736,7 @@ async function copyText(
 
   }
 
-
   catch(error) {
-
 
     window.prompt(
       "Copy this:",
@@ -830,7 +746,6 @@ async function copyText(
   }
 
 }
-
 
 
 /* ==================================================
@@ -844,7 +759,6 @@ document
   .addEventListener(
     "click",
     event => {
-
 
       copyText(
 
@@ -860,7 +774,6 @@ document
   );
 
 
-
 /* ==================================================
    PAYMENT COMPLETED
 ================================================== */
@@ -873,11 +786,9 @@ document
     "click",
     () => {
 
-
       if (!currentOrder) {
         return;
       }
-
 
 
       document.getElementById(
@@ -886,11 +797,9 @@ document
         currentOrder.number;
 
 
-
       document.getElementById(
         "finalOrderSummary"
       ).innerHTML = `
-
 
         <strong>
 
@@ -906,9 +815,7 @@ document
 
         </strong>
 
-
         <br><br>
-
 
         Amount:
 
@@ -918,9 +825,7 @@ document
           )}
         </strong>
 
-
         <br>
-
 
         Name:
 
@@ -928,9 +833,7 @@ document
           currentOrder.customer.name
         )}
 
-
         <br>
-
 
         Phone:
 
@@ -938,17 +841,13 @@ document
           currentOrder.customer.phone
         )}
 
-
         <br>
-
 
         Merchant:
 
         ${BUSINESS.merchant}
 
-
         <br>
-
 
         TILL ID:
 
@@ -957,12 +856,10 @@ document
       `;
 
 
-
       showStep(3);
 
     }
   );
-
 
 
 /* ==================================================
@@ -971,11 +868,9 @@ document
 
 function createOrderMessage() {
 
-
   if (!currentOrder) {
     return "";
   }
-
 
 
   let message = `Assalam-o-Alaikum,
@@ -988,9 +883,7 @@ Validity: ${currentOrder.package.validity}
 Amount: ${formatPrice(currentOrder.package.price)}
 
 Name: ${currentOrder.customer.name}
-Phone: ${currentOrder.customer.phone}
-Email: ${currentOrder.customer.email}`;
-
+Phone: ${currentOrder.customer.phone}`;
 
 
   if (
@@ -999,13 +892,11 @@ Email: ${currentOrder.customer.email}`;
       .instagram
   ) {
 
-
     message += `
 
 Instagram: ${currentOrder.customer.instagram}`;
 
   }
-
 
 
   message += `
@@ -1022,7 +913,6 @@ I am attaching my payment screenshot for verification.`;
 }
 
 
-
 /* ==================================================
    COPY ORDER MESSAGE
 ================================================== */
@@ -1034,7 +924,6 @@ document
   .addEventListener(
     "click",
     event => {
-
 
       copyText(
 
@@ -1050,9 +939,8 @@ document
   );
 
 
-
 /* ==================================================
-   CLOSE MODAL
+   CLOSE MODAL EVENTS
 ================================================== */
 
 document
@@ -1080,12 +968,10 @@ document
     "keydown",
     event => {
 
-
       if (
         event.key ===
         "Escape"
       ) {
-
 
         closeCheckout();
 
@@ -1093,7 +979,6 @@ document
 
     }
   );
-
 
 
 /* ==================================================
@@ -1108,13 +993,11 @@ document
     "click",
     () => {
 
-
       closeCheckout();
 
 
       setTimeout(
         () => {
-
 
           document
             .getElementById(
@@ -1135,13 +1018,11 @@ document
   );
 
 
-
 /* ==================================================
    SAFE SCROLL ANIMATIONS
 ================================================== */
 
 function setupAnimations() {
-
 
   if (
     !(
@@ -1150,13 +1031,11 @@ function setupAnimations() {
     )
   ) {
 
-
     document
       .querySelectorAll(
         ".reveal"
       )
       .forEach(element => {
-
 
         element
           .classList
@@ -1172,16 +1051,6 @@ function setupAnimations() {
   }
 
 
-
-  /*
-    Only now do we allow CSS to hide
-    reveal elements.
-
-    If JS fails, everything remains
-    visible instead of showing a blank page.
-  */
-
-
   document.body
     .classList
     .add(
@@ -1189,21 +1058,17 @@ function setupAnimations() {
     );
 
 
-
   revealObserver =
     new IntersectionObserver(
 
       entries => {
 
-
         entries.forEach(
           entry => {
-
 
             if (
               entry.isIntersecting
             ) {
-
 
               entry.target
                 .classList
@@ -1224,12 +1089,10 @@ function setupAnimations() {
 
       },
 
-
       {
 
         threshold:
           0.08,
-
 
         rootMargin:
           "0px 0px -20px 0px"
@@ -1239,29 +1102,17 @@ function setupAnimations() {
     );
 
 
-
   observeRevealElements();
-
-
-
-  /*
-    Safety fallback.
-
-    Even if the observer behaves strangely,
-    everything becomes visible.
-  */
 
 
   setTimeout(
     () => {
-
 
       document
         .querySelectorAll(
           ".reveal"
         )
         .forEach(element => {
-
 
           element
             .classList
@@ -1278,13 +1129,11 @@ function setupAnimations() {
 }
 
 
-
 /* ==================================================
-   OBSERVE NEW PACKAGE CARDS
+   OBSERVE REVEAL ELEMENTS
 ================================================== */
 
 function observeRevealElements() {
-
 
   if (!revealObserver) {
     return;
@@ -1297,7 +1146,6 @@ function observeRevealElements() {
     )
     .forEach(element => {
 
-
       revealObserver
         .observe(
           element
@@ -1306,7 +1154,6 @@ function observeRevealElements() {
     });
 
 }
-
 
 
 /* ==================================================
@@ -1322,12 +1169,10 @@ document
       .getFullYear();
 
 
-
 /* ==================================================
-   INITIALIZE WEBSITE
+   START WEBSITE
 ================================================== */
 
 renderPackages();
-
 
 setupAnimations();
