@@ -1,6 +1,6 @@
-/* =========================================================
-   BUSINESS INFORMATION
-========================================================= */
+/* ==================================================
+   BUSINESS SETTINGS
+================================================== */
 
 const BUSINESS = {
 
@@ -16,9 +16,10 @@ const BUSINESS = {
 };
 
 
-/* =========================================================
-   PACKAGE INFORMATION
-========================================================= */
+
+/* ==================================================
+   PACKAGES
+================================================== */
 
 const PACKAGES = {
 
@@ -27,95 +28,51 @@ const PACKAGES = {
 
 
     {
-      id:
-        "NE3",
-
-      data:
-        "3 GB",
-
-      validity:
-        "Non-Expiry",
-
-      price:
-        1200
+      id: "NE3",
+      data: "3 GB",
+      validity: "Non-Expiry",
+      price: 1200
     },
 
 
     {
-      id:
-        "NE5",
-
-      data:
-        "5 GB",
-
-      validity:
-        "Non-Expiry",
-
-      price:
-        1490
+      id: "NE5",
+      data: "5 GB",
+      validity: "Non-Expiry",
+      price: 1490
     },
 
 
     {
-      id:
-        "NE10",
-
-      data:
-        "10 GB",
-
-      validity:
-        "Non-Expiry",
-
-      price:
-        2250,
-
-      popular:
-        true
+      id: "NE10",
+      data: "10 GB",
+      validity: "Non-Expiry",
+      price: 2250,
+      popular: true
     },
 
 
     {
-      id:
-        "NE20",
-
-      data:
-        "20 GB",
-
-      validity:
-        "Non-Expiry",
-
-      price:
-        3599
+      id: "NE20",
+      data: "20 GB",
+      validity: "Non-Expiry",
+      price: 3599
     },
 
 
     {
-      id:
-        "NE50",
-
-      data:
-        "50 GB",
-
-      validity:
-        "Non-Expiry",
-
-      price:
-        6999
+      id: "NE50",
+      data: "50 GB",
+      validity: "Non-Expiry",
+      price: 6999
     },
 
 
     {
-      id:
-        "NE100",
-
-      data:
-        "100 GB",
-
-      validity:
-        "Non-Expiry",
-
-      price:
-        11000
+      id: "NE100",
+      data: "100 GB",
+      validity: "Non-Expiry",
+      price: 11000
     }
 
   ],
@@ -126,80 +83,43 @@ const PACKAGES = {
 
 
     {
-      id:
-        "D1",
-
-      data:
-        "1 GB",
-
-      validity:
-        "30 Days",
-
-      price:
-        650
+      id: "D1",
+      data: "1 GB",
+      validity: "30 Days",
+      price: 650
     },
 
 
     {
-      id:
-        "D3",
-
-      data:
-        "3 GB",
-
-      validity:
-        "30 Days",
-
-      price:
-        850
+      id: "D3",
+      data: "3 GB",
+      validity: "30 Days",
+      price: 850
     },
 
 
     {
-      id:
-        "D5",
-
-      data:
-        "5 GB",
-
-      validity:
-        "30 Days",
-
-      price:
-        1150,
-
-      popular:
-        true
+      id: "D5",
+      data: "5 GB",
+      validity: "30 Days",
+      price: 1150,
+      popular: true
     },
 
 
     {
-      id:
-        "D10",
-
-      data:
-        "10 GB",
-
-      validity:
-        "30 Days",
-
-      price:
-        1750
+      id: "D10",
+      data: "10 GB",
+      validity: "30 Days",
+      price: 1750
     },
 
 
     {
-      id:
-        "D20",
-
-      data:
-        "20 GB",
-
-      validity:
-        "30 Days",
-
-      price:
-        2750
+      id: "D20",
+      data: "20 GB",
+      validity: "30 Days",
+      price: 2750
     }
 
   ]
@@ -207,11 +127,12 @@ const PACKAGES = {
 };
 
 
-/* =========================================================
-   STATE
-========================================================= */
 
-let activeCategory =
+/* ==================================================
+   STATE
+================================================== */
+
+let currentCategory =
   "nonExpiry";
 
 
@@ -227,9 +148,10 @@ let revealObserver =
   null;
 
 
-/* =========================================================
+
+/* ==================================================
    HELPERS
-========================================================= */
+================================================== */
 
 function formatPrice(value) {
 
@@ -242,6 +164,7 @@ function formatPrice(value) {
   );
 
 }
+
 
 
 function escapeHTML(value) {
@@ -261,6 +184,7 @@ function escapeHTML(value) {
 }
 
 
+
 function findPackage(id) {
 
   return [
@@ -277,11 +201,13 @@ function findPackage(id) {
 }
 
 
-/* =========================================================
-   PACKAGE RENDERING
-========================================================= */
+
+/* ==================================================
+   DISPLAY PACKAGES
+================================================== */
 
 function renderPackages() {
+
 
   const grid =
     document.getElementById(
@@ -294,119 +220,102 @@ function renderPackages() {
 
 
   PACKAGES[
-    activeCategory
-  ].forEach(
-    (plan, index) => {
+    currentCategory
+  ].forEach(plan => {
 
 
-      const card =
-        document.createElement(
-          "article"
-        );
-
-
-      card.className =
-        "package-card js-reveal";
-
-
-      card.innerHTML = `
-
-        <div class="package-meta">
-
-          <span>
-            ${
-              String(
-                index + 1
-              )
-              .padStart(
-                2,
-                "0"
-              )
-            }
-          </span>
-
-
-          <span>
-
-            ${
-              plan.popular
-                ? "Most Popular"
-                : plan.validity
-            }
-
-          </span>
-
-        </div>
-
-
-        <h3>
-          ${plan.data}
-        </h3>
-
-
-        <p class="package-validity">
-
-          ${
-            plan.validity ===
-            "Non-Expiry"
-
-              ? "Premium non-expiry data package"
-
-              : "Data package valid for 30 days"
-          }
-
-        </p>
-
-
-        <div class="package-footer">
-
-
-          <div class="package-price">
-
-            <span>
-              PKR
-            </span>
-
-            <strong>
-
-              ${
-                Number(
-                  plan.price
-                )
-                .toLocaleString(
-                  "en-PK"
-                )
-              }
-
-            </strong>
-
-          </div>
-
-
-          <button
-            class="package-buy"
-            type="button"
-            data-package="${plan.id}"
-          >
-            Purchase
-          </button>
-
-        </div>
-
-      `;
-
-
-      grid.appendChild(
-        card
+    const card =
+      document.createElement(
+        "article"
       );
 
-    }
-  );
+
+    card.className =
+      "package-card reveal" +
+      (
+        plan.popular
+          ? " popular-package"
+          : ""
+      );
+
+
+    card.innerHTML = `
+
+      ${
+        plan.popular
+          ? `
+            <div class="popular-label">
+              POPULAR
+            </div>
+          `
+          : ""
+      }
+
+
+      <div class="package-category">
+        ${plan.validity.toUpperCase()}
+      </div>
+
+
+      <div class="package-data">
+        ${plan.data}
+      </div>
+
+
+      <div class="package-validity">
+
+        ${
+          plan.validity ===
+          "Non-Expiry"
+
+            ? "Non-expiry data package"
+
+            : "Valid for 30 days"
+        }
+
+      </div>
+
+
+      <div class="package-price">
+
+        <small>
+          PKR
+        </small>
+
+        ${
+          Number(
+            plan.price
+          )
+          .toLocaleString(
+            "en-PK"
+          )
+        }
+
+      </div>
+
+
+      <button
+        class="btn btn-primary btn-full buy-button"
+        type="button"
+        data-package="${plan.id}"
+      >
+        Buy Now
+      </button>
+
+    `;
+
+
+    grid.appendChild(
+      card
+    );
+
+  });
+
 
 
   document
     .querySelectorAll(
-      ".package-buy"
+      ".buy-button"
     )
     .forEach(button => {
 
@@ -426,18 +335,20 @@ function renderPackages() {
     });
 
 
+
   observeRevealElements();
 
 }
 
 
-/* =========================================================
-   PACKAGE TABS
-========================================================= */
+
+/* ==================================================
+   CATEGORY TABS
+================================================== */
 
 document
   .querySelectorAll(
-    ".package-tab"
+    ".tab"
   )
   .forEach(tab => {
 
@@ -449,7 +360,7 @@ document
 
         document
           .querySelectorAll(
-            ".package-tab"
+            ".tab"
           )
           .forEach(item => {
 
@@ -466,7 +377,7 @@ document
         );
 
 
-        activeCategory =
+        currentCategory =
           this.dataset.category;
 
 
@@ -478,17 +389,20 @@ document
   });
 
 
-/* =========================================================
-   CHECKOUT
-========================================================= */
 
-const modal =
+/* ==================================================
+   CHECKOUT
+================================================== */
+
+const checkoutModal =
   document.getElementById(
     "checkoutModal"
   );
 
 
+
 function openCheckout(id) {
+
 
   selectedPlan =
     findPackage(id);
@@ -528,54 +442,66 @@ function openCheckout(id) {
   ).reset();
 
 
-  showCheckoutStep(1);
+  showStep(1);
 
 
-  modal.classList.add(
-    "open"
-  );
+  checkoutModal
+    .classList
+    .add(
+      "show"
+    );
 
 
-  modal.setAttribute(
-    "aria-hidden",
-    "false"
-  );
+  checkoutModal
+    .setAttribute(
+      "aria-hidden",
+      "false"
+    );
 
 
-  document.body.classList.add(
-    "modal-open"
-  );
+  document.body
+    .classList
+    .add(
+      "modal-open"
+    );
 
 }
+
 
 
 function closeCheckout() {
 
-  modal.classList.remove(
-    "open"
-  );
+
+  checkoutModal
+    .classList
+    .remove(
+      "show"
+    );
 
 
-  modal.setAttribute(
-    "aria-hidden",
-    "true"
-  );
+  checkoutModal
+    .setAttribute(
+      "aria-hidden",
+      "true"
+    );
 
 
-  document.body.classList.remove(
-    "modal-open"
-  );
+  document.body
+    .classList
+    .remove(
+      "modal-open"
+    );
 
 }
 
 
-/* =========================================================
-   CHECKOUT STEPS
-========================================================= */
 
-function showCheckoutStep(
-  stepNumber
-) {
+/* ==================================================
+   CHECKOUT STEPS
+================================================== */
+
+function showStep(stepNumber) {
+
 
   document
     .querySelectorAll(
@@ -584,31 +510,111 @@ function showCheckoutStep(
     .forEach(step => {
 
 
-      step.classList.toggle(
-
-        "active",
-
+      const thisStep =
         Number(
           step.dataset.step
-        ) ===
-        stepNumber
+        );
 
-      );
+
+      step
+        .classList
+        .toggle(
+          "active",
+          thisStep ===
+          stepNumber
+        );
 
     });
 
 
-  document.getElementById(
-    "checkoutProgress"
-  ).textContent =
-    `0${stepNumber} / 03`;
+
+  for (
+    let index = 1;
+    index <= 3;
+    index++
+  ) {
+
+
+    const progress =
+      document.getElementById(
+        "progress" +
+        index
+      );
+
+
+    progress
+      .classList
+      .toggle(
+        "active",
+        index <=
+        stepNumber
+      );
+
+  }
 
 }
 
 
-/* =========================================================
-   CUSTOMER FORM
-========================================================= */
+
+/* ==================================================
+   ORDER NUMBER
+================================================== */
+
+function generateOrderNumber() {
+
+
+  const date =
+    new Date();
+
+
+  const year =
+    String(
+      date.getFullYear()
+    )
+    .slice(
+      -2
+    );
+
+
+  const month =
+    String(
+      date.getMonth() + 1
+    )
+    .padStart(
+      2,
+      "0"
+    );
+
+
+  const day =
+    String(
+      date.getDate()
+    )
+    .padStart(
+      2,
+      "0"
+    );
+
+
+  const random =
+    Math.floor(
+      1000 +
+      Math.random() *
+      9000
+    );
+
+
+  return (
+    `ESIM-${year}${month}${day}-${random}`
+  );
+
+}
+
+
+
+/* ==================================================
+   CHECKOUT FORM
+================================================== */
 
 document
   .getElementById(
@@ -625,6 +631,7 @@ document
       if (!selectedPlan) {
         return;
       }
+
 
 
       currentOrder = {
@@ -684,11 +691,11 @@ document
 
 
         createdAt:
-
           new Date()
             .toISOString()
 
       };
+
 
 
       document.getElementById(
@@ -705,74 +712,23 @@ document
         currentOrder.number;
 
 
-      saveOrder();
+
+      saveOrderLocally();
 
 
-      showCheckoutStep(2);
+      showStep(2);
 
     }
   );
 
 
-/* =========================================================
-   ORDER NUMBER
-========================================================= */
 
-function generateOrderNumber() {
+/* ==================================================
+   SAVE ORDER
+================================================== */
 
-  const now =
-    new Date();
+function saveOrderLocally() {
 
-
-  const year =
-    String(
-      now.getFullYear()
-    )
-    .slice(
-      -2
-    );
-
-
-  const month =
-    String(
-      now.getMonth() + 1
-    )
-    .padStart(
-      2,
-      "0"
-    );
-
-
-  const day =
-    String(
-      now.getDate()
-    )
-    .padStart(
-      2,
-      "0"
-    );
-
-
-  const random =
-    Math.floor(
-      1000 +
-      Math.random() *
-      9000
-    );
-
-
-  return (
-    `ESIM-${year}${month}${day}-${random}`
-  );
-
-}
-
-
-/* =========================================================
-   SAVE ORDER LOCALLY
-========================================================= */
-
-function saveOrder() {
 
   try {
 
@@ -809,8 +765,9 @@ function saveOrder() {
 
   catch(error) {
 
+
     console.warn(
-      "Order could not be saved locally."
+      "Local storage is not available."
     );
 
   }
@@ -818,15 +775,17 @@ function saveOrder() {
 }
 
 
-/* =========================================================
-   COPY FUNCTION
-========================================================= */
+
+/* ==================================================
+   COPY TEXT
+================================================== */
 
 async function copyText(
   text,
   button,
   successMessage
 ) {
+
 
   try {
 
@@ -848,6 +807,7 @@ async function copyText(
 
     setTimeout(
       () => {
+
 
         button.textContent =
           original;
@@ -872,9 +832,10 @@ async function copyText(
 }
 
 
-/* =========================================================
-   COPY TILL
-========================================================= */
+
+/* ==================================================
+   COPY TILL ID
+================================================== */
 
 document
   .getElementById(
@@ -891,7 +852,7 @@ document
 
         event.currentTarget,
 
-        "TILL ID Copied"
+        "TILL ID Copied!"
 
       );
 
@@ -899,9 +860,10 @@ document
   );
 
 
-/* =========================================================
+
+/* ==================================================
    PAYMENT COMPLETED
-========================================================= */
+================================================== */
 
 document
   .getElementById(
@@ -917,15 +879,18 @@ document
       }
 
 
+
       document.getElementById(
         "finalOrderNumber"
       ).textContent =
         currentOrder.number;
 
 
+
       document.getElementById(
         "finalOrderSummary"
       ).innerHTML = `
+
 
         <strong>
 
@@ -933,7 +898,7 @@ document
             currentOrder.package.data
           )}
 
-          ·
+          —
 
           ${escapeHTML(
             currentOrder.package.validity
@@ -941,57 +906,76 @@ document
 
         </strong>
 
+
         <br><br>
 
+
         Amount:
+
         <strong>
           ${formatPrice(
             currentOrder.package.price
           )}
         </strong>
 
+
         <br>
 
-        Customer:
+
+        Name:
+
         ${escapeHTML(
           currentOrder.customer.name
         )}
 
+
         <br>
 
+
         Phone:
+
         ${escapeHTML(
           currentOrder.customer.phone
         )}
 
+
         <br>
+
 
         Merchant:
+
         ${BUSINESS.merchant}
+
 
         <br>
 
+
         TILL ID:
+
         ${BUSINESS.tillId}
 
       `;
 
 
-      showCheckoutStep(3);
+
+      showStep(3);
 
     }
   );
 
 
-/* =========================================================
-   CREATE ORDER MESSAGE
-========================================================= */
+
+/* ==================================================
+   ORDER MESSAGE
+================================================== */
 
 function createOrderMessage() {
+
 
   if (!currentOrder) {
     return "";
   }
+
 
 
   let message = `Assalam-o-Alaikum,
@@ -1008,6 +992,7 @@ Phone: ${currentOrder.customer.phone}
 Email: ${currentOrder.customer.email}`;
 
 
+
   if (
     currentOrder
       .customer
@@ -1020,6 +1005,7 @@ Email: ${currentOrder.customer.email}`;
 Instagram: ${currentOrder.customer.instagram}`;
 
   }
+
 
 
   message += `
@@ -1036,9 +1022,10 @@ I am attaching my payment screenshot for verification.`;
 }
 
 
-/* =========================================================
+
+/* ==================================================
    COPY ORDER MESSAGE
-========================================================= */
+================================================== */
 
 document
   .getElementById(
@@ -1055,7 +1042,7 @@ document
 
         event.currentTarget,
 
-        "Order Message Copied"
+        "Order Message Copied!"
 
       );
 
@@ -1063,9 +1050,10 @@ document
   );
 
 
-/* =========================================================
+
+/* ==================================================
    CLOSE MODAL
-========================================================= */
+================================================== */
 
 document
   .getElementById(
@@ -1079,7 +1067,7 @@ document
 
 document
   .getElementById(
-    "modalBackdrop"
+    "modalOverlay"
   )
   .addEventListener(
     "click",
@@ -1087,28 +1075,30 @@ document
   );
 
 
-document.addEventListener(
-  "keydown",
-  event => {
+document
+  .addEventListener(
+    "keydown",
+    event => {
 
 
-    if (
-      event.key ===
-      "Escape"
-    ) {
+      if (
+        event.key ===
+        "Escape"
+      ) {
 
 
-      closeCheckout();
+        closeCheckout();
+
+      }
 
     }
-
-  }
-);
+  );
 
 
-/* =========================================================
+
+/* ==================================================
    NEW ORDER
-========================================================= */
+================================================== */
 
 document
   .getElementById(
@@ -1145,11 +1135,12 @@ document
   );
 
 
-/* =========================================================
-   SAFE SCROLL ANIMATION
-========================================================= */
 
-function setupRevealAnimations() {
+/* ==================================================
+   SAFE SCROLL ANIMATIONS
+================================================== */
+
+function setupAnimations() {
 
 
   if (
@@ -1162,14 +1153,16 @@ function setupRevealAnimations() {
 
     document
       .querySelectorAll(
-        ".js-reveal"
+        ".reveal"
       )
       .forEach(element => {
 
 
-        element.classList.add(
-          "is-visible"
-        );
+        element
+          .classList
+          .add(
+            "visible"
+          );
 
       });
 
@@ -1179,17 +1172,22 @@ function setupRevealAnimations() {
   }
 
 
-  /*
-    This class is only added after JS
-    successfully loads.
 
-    Therefore the page can never remain
-    blank if JS fails.
+  /*
+    Only now do we allow CSS to hide
+    reveal elements.
+
+    If JS fails, everything remains
+    visible instead of showing a blank page.
   */
 
-  document.body.classList.add(
-    "motion-ready"
-  );
+
+  document.body
+    .classList
+    .add(
+      "animations-ready"
+    );
+
 
 
   revealObserver =
@@ -1210,7 +1208,7 @@ function setupRevealAnimations() {
               entry.target
                 .classList
                 .add(
-                  "is-visible"
+                  "visible"
                 );
 
 
@@ -1241,15 +1239,18 @@ function setupRevealAnimations() {
     );
 
 
+
   observeRevealElements();
+
 
 
   /*
     Safety fallback.
 
-    No content can remain invisible
-    longer than 1.8 seconds.
+    Even if the observer behaves strangely,
+    everything becomes visible.
   */
+
 
   setTimeout(
     () => {
@@ -1257,14 +1258,16 @@ function setupRevealAnimations() {
 
       document
         .querySelectorAll(
-          ".js-reveal"
+          ".reveal"
         )
         .forEach(element => {
 
 
-          element.classList.add(
-            "is-visible"
-          );
+          element
+            .classList
+            .add(
+              "visible"
+            );
 
         });
 
@@ -1275,9 +1278,10 @@ function setupRevealAnimations() {
 }
 
 
-/* =========================================================
-   OBSERVE NEW ELEMENTS
-========================================================= */
+
+/* ==================================================
+   OBSERVE NEW PACKAGE CARDS
+================================================== */
 
 function observeRevealElements() {
 
@@ -1289,23 +1293,25 @@ function observeRevealElements() {
 
   document
     .querySelectorAll(
-      ".js-reveal:not(.is-visible)"
+      ".reveal:not(.visible)"
     )
     .forEach(element => {
 
 
-      revealObserver.observe(
-        element
-      );
+      revealObserver
+        .observe(
+          element
+        );
 
     });
 
 }
 
 
-/* =========================================================
+
+/* ==================================================
    YEAR
-========================================================= */
+================================================== */
 
 document
   .getElementById(
@@ -1316,11 +1322,12 @@ document
       .getFullYear();
 
 
-/* =========================================================
-   INITIALIZE
-========================================================= */
+
+/* ==================================================
+   INITIALIZE WEBSITE
+================================================== */
 
 renderPackages();
 
 
-setupRevealAnimations();
+setupAnimations();
