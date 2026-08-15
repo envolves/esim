@@ -2,35 +2,26 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-
-  <meta
-    name="viewport"
-    content="width=device-width, initial-scale=1.0"
-  />
-
-  <meta
-    name="description"
-    content="eSIM Solutions Pakistan - Fast, stable and reliable data eSIM packages."
-  />
-
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="eSIM Solutions Pakistan - Fast, stable and reliable data eSIM packages." />
   <title>eSIM Solutions Pakistan</title>
 
   <style>
     :root {
-      --navy: #06111f;
-      --navy-light: #0d1e33;
-      --blue: #1764ff;
-      --blue-dark: #0c4ed8;
-      --red: #e22020;
-      --green: #159447;
-      --yellow: #ffd900;
+      --bg: #071220;
+      --bg2: #0d1c32;
+      --card: #ffffff;
       --text: #111827;
       --muted: #667085;
-      --border: #e2e7ef;
-      --light: #f5f7fb;
-      --white: #ffffff;
+      --line: #e4e8f0;
+      --blue: #2962ff;
+      --blue-dark: #1648d8;
+      --red: #e32727;
+      --green: #179953;
+      --light: #f6f8fc;
+      --yellow: #ffde17;
       --shadow: 0 20px 60px rgba(0, 0, 0, 0.12);
-      --radius: 20px;
+      --radius: 22px;
     }
 
     * {
@@ -45,13 +36,18 @@
 
     body {
       font-family: Arial, Helvetica, sans-serif;
-      background: var(--white);
+      background: #fff;
       color: var(--text);
       line-height: 1.5;
     }
 
     body.modal-open {
       overflow: hidden;
+    }
+
+    a {
+      text-decoration: none;
+      color: inherit;
     }
 
     button,
@@ -61,63 +57,57 @@
 
     button {
       cursor: pointer;
-    }
-
-    a {
-      color: inherit;
-      text-decoration: none;
+      border: none;
     }
 
     .container {
-      width: min(1160px, calc(100% - 30px));
+      width: min(1160px, calc(100% - 28px));
       margin: 0 auto;
     }
 
     .section {
-      padding: 82px 0;
+      padding: 85px 0;
     }
 
     .section-light {
       background: var(--light);
     }
 
-    .section-heading {
-      text-align: center;
-      margin-bottom: 38px;
-    }
-
     .eyebrow {
-      color: var(--blue);
       font-size: 12px;
       font-weight: 900;
-      letter-spacing: 2px;
       text-transform: uppercase;
-      margin-bottom: 8px;
+      letter-spacing: 2px;
+      color: var(--blue);
+      margin-bottom: 10px;
     }
 
-    .section-heading h2 {
-      font-size: clamp(32px, 5vw, 46px);
-      letter-spacing: -1.5px;
+    .section-title {
+      text-align: center;
+      margin-bottom: 40px;
+    }
+
+    .section-title h2 {
+      font-size: clamp(32px, 4vw, 48px);
       line-height: 1.1;
+      letter-spacing: -1px;
     }
 
-    .section-heading p {
+    .section-title p {
       color: var(--muted);
       margin-top: 10px;
       font-size: 16px;
     }
 
     .btn {
-      border: 0;
-      border-radius: 12px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      border-radius: 14px;
       padding: 14px 20px;
       font-weight: 800;
-      display: inline-flex;
-      justify-content: center;
-      align-items: center;
-      gap: 8px;
       transition: 0.2s ease;
-      text-align: center;
     }
 
     .btn:hover {
@@ -133,62 +123,63 @@
       background: var(--blue-dark);
     }
 
-    .btn-secondary {
-      background: #edf3ff;
-      color: #164bb8;
+    .btn-white {
+      background: white;
+      color: var(--text);
+      border: 1px solid var(--line);
     }
 
     .btn-outline {
       background: transparent;
+      border: 1px solid rgba(255,255,255,0.22);
       color: white;
-      border: 1px solid rgba(255, 255, 255, 0.28);
     }
 
-    .btn-light {
-      background: white;
-      color: var(--text);
-      border: 1px solid var(--border);
+    .btn-soft {
+      background: #eef3ff;
+      color: #1749bb;
     }
 
     .btn-full {
       width: 100%;
     }
 
+    /* HEADER */
     header {
       position: sticky;
       top: 0;
       z-index: 100;
-      background: rgba(6, 17, 31, 0.96);
-      backdrop-filter: blur(14px);
-      border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+      background: rgba(7, 18, 32, 0.95);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid rgba(255,255,255,0.08);
     }
 
     .navbar {
-      min-height: 74px;
+      min-height: 76px;
       display: flex;
       align-items: center;
       justify-content: space-between;
-      gap: 25px;
+      gap: 20px;
     }
 
     .brand {
-      color: white;
       display: flex;
       align-items: center;
       gap: 11px;
+      color: white;
     }
 
     .brand-logo {
-      width: 49px;
-      height: 49px;
+      width: 50px;
+      height: 50px;
       border-radius: 50%;
       background: white;
-      color: var(--red);
       border: 4px solid var(--blue);
       display: grid;
       place-items: center;
-      font-size: 13px;
+      color: var(--red);
       font-weight: 900;
+      font-size: 14px;
     }
 
     .brand-text strong,
@@ -201,18 +192,18 @@
     }
 
     .brand-text span {
-      color: #9daabd;
-      font-size: 11px;
+      color: #a9b5c8;
+      font-size: 12px;
     }
 
     .nav-links {
       display: flex;
+      gap: 28px;
       align-items: center;
-      gap: 27px;
     }
 
     .nav-links a {
-      color: #c5d0df;
+      color: #d1d8e4;
       font-size: 14px;
       font-weight: 700;
     }
@@ -221,52 +212,54 @@
       color: white;
     }
 
+    /* HERO */
     .hero {
-      color: white;
       background:
-        radial-gradient(circle at 80% 20%, rgba(23, 100, 255, 0.35), transparent 30%),
-        radial-gradient(circle at 10% 90%, rgba(226, 32, 32, 0.14), transparent 25%),
-        linear-gradient(140deg, #05101c, #0b1d32);
+        radial-gradient(circle at 80% 15%, rgba(41,98,255,0.28), transparent 28%),
+        radial-gradient(circle at 15% 95%, rgba(227,39,39,0.10), transparent 25%),
+        linear-gradient(135deg, #05101c, #0d1d33);
+      color: white;
       overflow: hidden;
     }
 
     .hero-grid {
-      min-height: 630px;
+      min-height: 640px;
       display: grid;
       grid-template-columns: 1.1fr 0.9fr;
       gap: 60px;
       align-items: center;
-      padding: 70px 0;
+      padding: 72px 0;
     }
 
     .hero h1 {
-      font-size: clamp(44px, 6vw, 72px);
+      font-size: clamp(44px, 6vw, 74px);
       line-height: 1.02;
-      letter-spacing: -3px;
-      max-width: 750px;
+      letter-spacing: -2px;
+      max-width: 700px;
     }
 
-    .hero-description {
-      color: #b9c6d8;
+    .hero p {
+      margin-top: 20px;
+      max-width: 640px;
+      color: #bcc7d7;
       font-size: 18px;
-      margin-top: 22px;
-      max-width: 650px;
     }
 
-    .hero-buttons {
+    .hero-actions {
       display: flex;
-      gap: 12px;
       flex-wrap: wrap;
+      gap: 12px;
       margin-top: 30px;
     }
 
     .hero-features {
       display: flex;
       flex-wrap: wrap;
-      gap: 12px 22px;
-      color: #aebbd0;
+      gap: 12px 20px;
+      margin-top: 28px;
+      color: #b2bfd2;
       font-size: 13px;
-      margin-top: 30px;
+      font-weight: 600;
     }
 
     .phone-wrap {
@@ -275,71 +268,72 @@
     }
 
     .phone {
-      width: min(340px, 90vw);
+      width: min(345px, 90vw);
       background: #02060c;
-      border-radius: 44px;
       padding: 12px;
-      border: 1px solid rgba(255, 255, 255, 0.15);
-      box-shadow: 0 35px 90px rgba(0, 0, 0, 0.4);
-      transform: rotate(3deg);
+      border-radius: 42px;
+      border: 1px solid rgba(255,255,255,0.12);
+      box-shadow: 0 35px 90px rgba(0,0,0,0.4);
+      transform: rotate(4deg);
     }
 
     .phone-notch {
-      width: 38%;
+      width: 40%;
       height: 22px;
-      border-radius: 20px;
       margin: 0 auto 8px;
-      background: #101721;
+      border-radius: 20px;
+      background: #0f1621;
     }
 
     .phone-screen {
-      min-height: 475px;
+      min-height: 500px;
       border-radius: 32px;
       background:
-        radial-gradient(circle at center, rgba(23, 100, 255, 0.32), transparent 30%),
-        linear-gradient(180deg, #10233c, #071321);
+        radial-gradient(circle at 50% 30%, rgba(41,98,255,0.25), transparent 28%),
+        linear-gradient(180deg, #12233b, #071320);
       display: flex;
       flex-direction: column;
       align-items: center;
       justify-content: center;
       text-align: center;
-      padding: 28px;
+      padding: 30px;
     }
 
     .esim-chip {
-      width: 125px;
-      height: 125px;
-      border-radius: 27px;
-      border: 3px solid #5792ff;
-      box-shadow: 0 0 55px rgba(23, 100, 255, 0.5);
+      width: 130px;
+      height: 130px;
+      border-radius: 28px;
+      border: 3px solid #5d8fff;
       display: grid;
       place-items: center;
-      font-size: 26px;
+      box-shadow: 0 0 55px rgba(41,98,255,0.45);
+      font-size: 28px;
       font-weight: 900;
       margin-bottom: 28px;
     }
 
     .phone-screen h3 {
       font-size: 27px;
-      margin-bottom: 10px;
+      line-height: 1.3;
     }
 
     .phone-screen p {
-      color: #bcc7d6;
+      margin-top: 10px;
       font-size: 14px;
+      color: #c0cad9;
     }
 
     .phone-badge {
-      margin-top: 35px;
+      margin-top: 32px;
+      font-size: 11px;
+      letter-spacing: 3px;
       color: #8eb3ff;
-      letter-spacing: 2px;
-      font-size: 10px;
       font-weight: 900;
     }
 
     .notice-bar {
-      border-bottom: 1px solid var(--border);
       background: white;
+      border-bottom: 1px solid var(--line);
     }
 
     .notice-items {
@@ -348,113 +342,117 @@
       flex-wrap: wrap;
       justify-content: center;
       align-items: center;
-      gap: 12px 28px;
+      gap: 12px 26px;
       font-size: 13px;
       font-weight: 700;
-      color: #465164;
+      color: #435065;
     }
 
     .notice-red {
       color: var(--red);
     }
 
+    /* PACKAGES */
     .tabs {
       display: flex;
       justify-content: center;
-      margin-bottom: 30px;
+      margin-bottom: 28px;
     }
 
     .tab-wrap {
-      background: #edf0f5;
+      background: #edf1f7;
       padding: 5px;
       border-radius: 14px;
       display: inline-flex;
     }
 
     .tab {
-      border: 0;
       background: transparent;
       color: var(--muted);
-      padding: 12px 22px;
       border-radius: 10px;
+      padding: 12px 22px;
       font-weight: 800;
     }
 
     .tab.active {
       background: white;
       color: var(--text);
-      box-shadow: 0 5px 18px rgba(0, 0, 0, 0.08);
+      box-shadow: 0 5px 18px rgba(0,0,0,0.08);
     }
 
     .package-grid {
       display: grid;
       grid-template-columns: repeat(3, 1fr);
-      gap: 19px;
+      gap: 20px;
     }
 
     .package-card {
-      position: relative;
-      border: 1px solid var(--border);
-      border-radius: var(--radius);
-      padding: 25px;
       background: white;
-      transition: 0.2s;
-      box-shadow: 0 10px 35px rgba(7, 26, 52, 0.05);
+      border: 1px solid var(--line);
+      border-radius: 22px;
+      padding: 24px;
+      box-shadow: 0 10px 30px rgba(10, 25, 52, 0.05);
+      position: relative;
+      transition: 0.2s ease;
     }
 
     .package-card:hover {
-      transform: translateY(-5px);
-      box-shadow: 0 18px 45px rgba(7, 26, 52, 0.1);
+      transform: translateY(-4px);
+      box-shadow: 0 20px 45px rgba(10, 25, 52, 0.09);
     }
 
-    .package-card.popular {
+    .package-card.featured {
       border: 2px solid var(--blue);
     }
 
-    .popular {
+    .package-pill {
       position: absolute;
-      top: 15px;
-      right: 15px;
-      background: #e9f1ff;
+      top: 16px;
+      right: 16px;
+      background: #eaf0ff;
       color: var(--blue);
       font-size: 10px;
-      font-weight: 900;
       padding: 6px 9px;
       border-radius: 999px;
+      font-weight: 900;
+      letter-spacing: 0.5px;
     }
 
-    .package-category {
+    .package-type {
       color: var(--muted);
       font-size: 11px;
       font-weight: 900;
-      letter-spacing: 1.4px;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
     }
 
     .package-data {
-      margin-top: 28px;
-      font-size: 39px;
+      font-size: 40px;
       font-weight: 900;
-      letter-spacing: -1.5px;
+      margin-top: 28px;
+      letter-spacing: -1px;
     }
 
     .package-validity {
       color: var(--muted);
-      margin-top: 3px;
       font-size: 14px;
+      margin-top: 4px;
     }
 
     .package-price {
-      font-size: 29px;
+      font-size: 28px;
       font-weight: 900;
-      margin: 26px 0 22px;
+      margin: 25px 0 20px;
     }
 
     .package-price small {
       font-size: 12px;
+      font-weight: 700;
       color: var(--muted);
-      font-weight: 600;
+      margin-right: 5px;
     }
 
+    /* HOW */
     .steps {
       display: grid;
       grid-template-columns: repeat(4, 1fr);
@@ -463,21 +461,21 @@
 
     .step-card {
       background: white;
-      border: 1px solid var(--border);
+      border: 1px solid var(--line);
       border-radius: 18px;
-      padding: 25px;
+      padding: 24px;
     }
 
-    .step-number {
+    .step-no {
       width: 42px;
       height: 42px;
       border-radius: 12px;
-      background: #e9f1ff;
+      background: #eaf0ff;
       color: var(--blue);
       display: grid;
       place-items: center;
       font-weight: 900;
-      margin-bottom: 25px;
+      margin-bottom: 22px;
     }
 
     .step-card h3 {
@@ -487,33 +485,34 @@
     .step-card p {
       color: var(--muted);
       font-size: 14px;
-      margin-top: 7px;
+      margin-top: 8px;
     }
 
-    .compatibility-box {
-      background: var(--navy);
-      border-radius: 28px;
-      padding: 48px;
+    /* COMPAT */
+    .compat-box {
+      background: var(--bg);
       color: white;
+      border-radius: 28px;
+      padding: 46px;
       display: grid;
-      grid-template-columns: 1.15fr 0.85fr;
-      gap: 45px;
+      grid-template-columns: 1.1fr 0.9fr;
+      gap: 42px;
       align-items: center;
     }
 
-    .compatibility-box h2 {
-      font-size: clamp(32px, 5vw, 44px);
-      margin-bottom: 22px;
+    .compat-box h2 {
+      font-size: clamp(32px, 4vw, 44px);
       line-height: 1.1;
+      margin-bottom: 22px;
     }
 
-    .compatibility-box ul {
-      padding-left: 20px;
-      color: #c4d0df;
+    .compat-box ul {
+      padding-left: 18px;
+      color: #c5d0df;
     }
 
-    .compatibility-box li {
-      margin: 9px 0;
+    .compat-box li {
+      margin: 10px 0;
     }
 
     .help-card {
@@ -528,16 +527,17 @@
       margin: 10px 0 20px;
     }
 
+    /* FAQ */
     .faq {
       max-width: 860px;
-      margin: auto;
+      margin: 0 auto;
     }
 
     details {
-      border: 1px solid var(--border);
       background: white;
-      padding: 19px 20px;
+      border: 1px solid var(--line);
       border-radius: 14px;
+      padding: 18px 20px;
       margin-bottom: 12px;
     }
 
@@ -551,10 +551,11 @@
       margin-top: 12px;
     }
 
+    /* FOOTER */
     footer {
-      background: #05101c;
+      background: #06111f;
       color: white;
-      padding: 55px 0 25px;
+      padding: 55px 0 26px;
     }
 
     .footer-grid {
@@ -565,24 +566,23 @@
 
     .footer-links {
       display: grid;
-      gap: 9px;
-      color: #bdc8d7;
+      gap: 8px;
+      color: #b7c3d3;
     }
 
     .copyright {
-      border-top: 1px solid rgba(255, 255, 255, 0.1);
-      margin-top: 35px;
-      padding-top: 20px;
-      color: #78869a;
+      margin-top: 34px;
+      border-top: 1px solid rgba(255,255,255,0.1);
+      padding-top: 18px;
       font-size: 12px;
+      color: #7f8a9a;
     }
 
-    /* CHECKOUT */
-
+    /* MODAL */
     .modal {
       position: fixed;
       inset: 0;
-      background: rgba(1, 7, 15, 0.78);
+      background: rgba(1, 7, 15, 0.76);
       backdrop-filter: blur(6px);
       z-index: 999;
       display: none;
@@ -596,41 +596,26 @@
     }
 
     .checkout {
-      position: relative;
-      background: white;
-      width: min(690px, 100%);
+      width: min(720px, 100%);
       max-height: calc(100vh - 40px);
       overflow-y: auto;
+      background: white;
       border-radius: 24px;
       padding: 30px;
+      position: relative;
       box-shadow: var(--shadow);
     }
 
-    .close-button {
+    .close-modal {
       position: absolute;
       top: 14px;
       right: 14px;
-      border: 0;
       width: 40px;
       height: 40px;
       border-radius: 50%;
-      background: #f0f3f7;
+      background: #f0f3f8;
       font-size: 24px;
       line-height: 1;
-    }
-
-    .checkout-step {
-      display: none;
-    }
-
-    .checkout-step.active {
-      display: block;
-    }
-
-    .checkout h2 {
-      font-size: 31px;
-      line-height: 1.1;
-      margin-bottom: 20px;
     }
 
     .checkout-progress {
@@ -645,12 +630,12 @@
       width: 31px;
       height: 31px;
       border-radius: 50%;
-      background: #e8ecf2;
-      color: #7e8998;
-      font-size: 12px;
-      font-weight: 900;
+      background: #e8edf4;
+      color: #7c8697;
       display: grid;
       place-items: center;
+      font-size: 12px;
+      font-weight: 900;
     }
 
     .progress-dot.active {
@@ -661,12 +646,31 @@
     .progress-line {
       width: 70px;
       height: 2px;
-      background: #e0e5ed;
+      background: #dbe2ec;
     }
 
-    .order-summary {
-      border: 1px solid var(--border);
-      border-radius: 15px;
+    .checkout-step {
+      display: none;
+    }
+
+    .checkout-step.active {
+      display: block;
+    }
+
+    .checkout h2 {
+      font-size: 31px;
+      line-height: 1.1;
+      margin-bottom: 18px;
+    }
+
+    .checkout-text {
+      color: var(--muted);
+      margin-bottom: 20px;
+    }
+
+    .summary-box {
+      border: 1px solid var(--line);
+      border-radius: 16px;
       overflow: hidden;
       margin-bottom: 22px;
     }
@@ -676,7 +680,7 @@
       justify-content: space-between;
       gap: 20px;
       padding: 14px 16px;
-      border-bottom: 1px solid var(--border);
+      border-bottom: 1px solid var(--line);
     }
 
     .summary-row:last-child {
@@ -701,7 +705,7 @@
 
     .form-group input {
       width: 100%;
-      border: 1px solid #ccd4df;
+      border: 1px solid #cfd7e3;
       border-radius: 11px;
       padding: 13px 14px;
       outline: none;
@@ -709,15 +713,15 @@
 
     .form-group input:focus {
       border-color: var(--blue);
-      box-shadow: 0 0 0 3px rgba(23, 100, 255, 0.1);
+      box-shadow: 0 0 0 3px rgba(41,98,255,0.10);
     }
 
     .checkbox-row {
       display: flex;
       align-items: flex-start;
       gap: 10px;
-      margin: 17px 0;
-      color: #3f4b5e;
+      margin: 16px 0 18px;
+      color: #3d4a5c;
       font-size: 13px;
       font-weight: 600;
     }
@@ -726,50 +730,47 @@
       margin-top: 3px;
     }
 
-    .payment-heading {
-      color: var(--muted);
-      margin-bottom: 20px;
-    }
-
     .payment-grid {
       display: grid;
       grid-template-columns: 260px 1fr;
       gap: 20px;
       align-items: start;
+      margin-top: 20px;
     }
 
-    .qr-area {
+    .qr-card {
       background: var(--yellow);
+      border: 1px solid #e5bf00;
       border-radius: 18px;
-      padding: 17px;
+      padding: 16px;
       text-align: center;
-      border: 1px solid #e4bf00;
     }
 
-    .qr-area .merchant {
+    .qr-label {
+      font-size: 14px;
       font-weight: 900;
-      font-size: 17px;
       margin-bottom: 10px;
     }
 
-    .qr-canvas-wrap {
+    .qr-wrap {
       background: white;
       border-radius: 12px;
       padding: 10px;
     }
 
     #paymentQr {
-      display: block;
       width: 100%;
       height: auto;
+      display: block;
       image-rendering: pixelated;
     }
 
-    .till-label {
+    .till-text {
+      margin-top: 10px;
       color: var(--red);
       font-weight: 900;
-      margin-top: 10px;
       font-size: 12px;
+      letter-spacing: 1px;
     }
 
     .till-number {
@@ -778,15 +779,11 @@
       letter-spacing: 2px;
     }
 
-    .payment-details {
-      display: grid;
-      gap: 10px;
-    }
-
     .payment-detail {
-      border: 1px solid var(--border);
+      border: 1px solid var(--line);
       border-radius: 12px;
-      padding: 12px 14px;
+      padding: 13px 14px;
+      margin-bottom: 10px;
     }
 
     .payment-detail span,
@@ -797,80 +794,69 @@
     .payment-detail span {
       color: var(--muted);
       font-size: 11px;
-      margin-bottom: 3px;
-    }
-
-    .payment-detail strong {
-      font-size: 16px;
+      margin-bottom: 4px;
     }
 
     .payment-note {
-      background: #fff7e3;
-      color: #654800;
-      border: 1px solid #ffe09b;
+      background: #fff8e5;
+      color: #6c4d00;
+      border: 1px solid #ffe1a4;
       border-radius: 12px;
       padding: 14px;
+      margin: 18px 0 14px;
       font-size: 13px;
-      margin: 20px 0 15px;
-    }
-
-    .success {
-      text-align: center;
     }
 
     .success-icon {
       width: 72px;
       height: 72px;
-      background: #e7f8ee;
+      border-radius: 50%;
+      background: #e9f8ef;
       color: var(--green);
       font-size: 34px;
       font-weight: 900;
-      border-radius: 50%;
       display: grid;
       place-items: center;
-      margin: 0 auto 20px;
+      margin: 0 auto 18px;
     }
 
-    .order-message {
+    .success-step {
+      text-align: center;
+    }
+
+    .order-card {
       text-align: left;
-      background: #f6f8fb;
-      border: 1px solid var(--border);
+      background: #f6f8fc;
+      border: 1px solid var(--line);
       border-radius: 14px;
       padding: 16px;
       margin: 20px 0;
       font-size: 14px;
     }
 
-    .success .btn {
-      margin-top: 10px;
-    }
-
     .small-note {
       color: var(--muted);
       font-size: 12px;
-      margin-top: 12px;
+      margin-top: 10px;
     }
 
-    @media (max-width: 900px) {
+    @media (max-width: 920px) {
       .nav-links {
         display: none;
       }
 
       .hero-grid,
-      .compatibility-box {
+      .compat-box {
         grid-template-columns: 1fr;
-      }
-
-      .hero-grid {
         text-align: center;
       }
 
-      .hero-description {
+      .hero p {
         margin-left: auto;
         margin-right: auto;
       }
 
-      .hero-buttons,
+      .hero-actions,
       .hero-features {
         justify-content: center;
       }
@@ -885,83 +871,70 @@
     }
 
     @media (max-width: 620px) {
-      .container {
-        width: min(100% - 22px, 1160px);
-      }
-
       .brand-text {
         display: none;
       }
 
       .navbar {
-        min-height: 66px;
+        min-height: 68px;
       }
 
       .hero-grid {
         min-height: auto;
-        padding: 55px 0;
-        gap: 45px;
+        padding: 56px 0;
+        gap: 42px;
       }
 
       .hero h1 {
         font-size: 42px;
-        letter-spacing: -2px;
       }
 
-      .hero-description {
+      .hero p {
         font-size: 16px;
       }
 
       .section {
-        padding: 62px 0;
+        padding: 64px 0;
       }
 
       .package-grid,
-      .steps {
-        grid-template-columns: 1fr;
-      }
-
-      .compatibility-box {
-        padding: 27px 20px;
-      }
-
+      .steps,
       .footer-grid {
         grid-template-columns: 1fr;
       }
 
+      .compat-box {
+        padding: 28px 20px;
+      }
+
       .modal {
-        padding: 0;
         align-items: flex-end;
+        padding: 0;
       }
 
       .checkout {
         border-radius: 24px 24px 0 0;
         max-height: 94vh;
-        padding: 27px 18px 22px;
+        padding: 26px 18px 22px;
       }
 
       .payment-grid {
         grid-template-columns: 1fr;
       }
 
-      .qr-area {
+      .qr-card {
         max-width: 300px;
         margin: auto;
       }
     }
   </style>
 </head>
-
 <body>
-
-  <!-- HEADER -->
 
   <header>
     <div class="container navbar">
-
       <a href="#home" class="brand">
         <div class="brand-logo">eSIM</div>
-
         <div class="brand-text">
           <strong>eSIM Solutions</strong>
           <span>Pakistan</span>
@@ -983,348 +956,150 @@
       >
         Instagram
       </a>
-
     </div>
   </header>
-
-
-  <!-- HERO -->
 
   <main>
 
     <section class="hero" id="home">
-
       <div class="container hero-grid">
 
         <div>
-
-          <div class="eyebrow" style="color:#7fa9ff;">
-            Pakistan Data eSIM
-          </div>
+          <div class="eyebrow" style="color:#89aeff;">Pakistan Data eSIM</div>
 
           <h1>
             Stay connected without carrying two phones.
           </h1>
 
-          <p class="hero-description">
+          <p>
             Fast, stable and reliable data-only eSIM packages.
-            Select your plan, pay with JazzCash or Raast and contact
-            us on Instagram after payment.
+            Choose your plan, pay using JazzCash/Raast QR and send
+            your payment proof on Instagram for order confirmation.
           </p>
 
-          <div class="hero-buttons">
+          <div class="hero-actions">
+            <a class="btn btn-primary" href="#packages">View Packages</a>
 
             <a
-              class="btn btn-primary"
-              href="#packages"
-            >
-              View Packages
-            </a>
-
-            <a
-              class="btn btn-light"
+              class="btn btn-white"
               href="https://www.instagram.com/esimsolutions.pk/"
               target="_blank"
               rel="noopener"
             >
               Message on Instagram
             </a>
-
           </div>
 
           <div class="hero-features">
-
             <span>⚡ Instant Delivery</span>
-
             <span>📶 Fast Data</span>
-
             <span>🌍 Data Only</span>
-
-            <span>🔒 Factory-Unlocked Phones</span>
-
+            <span>🔓 Factory-Unlocked Phones</span>
           </div>
-
         </div>
 
-
         <div class="phone-wrap">
-
           <div class="phone">
-
             <div class="phone-notch"></div>
 
             <div class="phone-screen">
-
-              <div class="esim-chip">
-                eSIM
-              </div>
-
-              <h3>
-                Activate. Connect. Go.
-              </h3>
-
+              <div class="esim-chip">eSIM</div>
+              <h3>Activate. Connect.<br>Go.</h3>
               <p>
-                Choose your package and get connected with a simple
-                digital eSIM setup.
+                Choose your package and get connected with a simple digital eSIM setup.
               </p>
-
-              <div class="phone-badge">
-                FAST • STABLE • RELIABLE
-              </div>
-
+              <div class="phone-badge">FAST • STABLE • RELIABLE</div>
             </div>
-
           </div>
-
         </div>
 
       </div>
-
     </section>
-
-
-    <!-- NOTICE -->
 
     <section class="notice-bar">
-
       <div class="container notice-items">
-
         <span>✓ eSIM-Compatible Phones</span>
-
         <span>✓ Factory Unlocked</span>
-
-        <span class="notice-red">
-          ✕ Not for JV Phones
-        </span>
-
+        <span class="notice-red">✕ Not for JV Phones</span>
         <span>✓ Data Only — No Calls/SMS</span>
-
       </div>
-
     </section>
 
-
-    <!-- PACKAGES -->
-
-    <section
-      class="section"
-      id="packages"
-    >
-
+    <section class="section" id="packages">
       <div class="container">
-
-        <div class="section-heading">
-
-          <div class="eyebrow">
-            Choose Your Plan
-          </div>
-
-          <h2>
-            eSIM Packages
-          </h2>
-
-          <p>
-            Select Non-Expiry or 30-Day packages.
-          </p>
-
+        <div class="section-title">
+          <div class="eyebrow">Choose Your Plan</div>
+          <h2>eSIM Packages</h2>
+          <p>Select your preferred package and proceed to checkout.</p>
         </div>
-
 
         <div class="tabs">
-
           <div class="tab-wrap">
-
-            <button
-              class="tab active"
-              data-category="nonExpiry"
-            >
-              Non-Expiry
-            </button>
-
-            <button
-              class="tab"
-              data-category="thirtyDays"
-            >
-              30 Days
-            </button>
-
+            <button class="tab active" data-category="nonExpiry">Non-Expiry</button>
+            <button class="tab" data-category="thirtyDays">30 Days</button>
           </div>
-
         </div>
 
-
-        <div
-          class="package-grid"
-          id="packageGrid"
-        ></div>
-
+        <div class="package-grid" id="packageGrid"></div>
       </div>
-
     </section>
 
-
-    <!-- HOW IT WORKS -->
-
-    <section
-      class="section section-light"
-      id="how"
-    >
-
+    <section class="section section-light" id="how">
       <div class="container">
-
-        <div class="section-heading">
-
-          <div class="eyebrow">
-            Simple Process
-          </div>
-
-          <h2>
-            How It Works
-          </h2>
-
+        <div class="section-title">
+          <div class="eyebrow">Simple Process</div>
+          <h2>How It Works</h2>
         </div>
-
 
         <div class="steps">
-
           <article class="step-card">
-
-            <div class="step-number">
-              1
-            </div>
-
-            <h3>
-              Choose Package
-            </h3>
-
-            <p>
-              Select your required data package and validity.
-            </p>
-
+            <div class="step-no">1</div>
+            <h3>Choose Package</h3>
+            <p>Select your required eSIM data package and validity.</p>
           </article>
 
-
           <article class="step-card">
-
-            <div class="step-number">
-              2
-            </div>
-
-            <h3>
-              Enter Details
-            </h3>
-
-            <p>
-              Enter your name, phone number and email.
-            </p>
-
+            <div class="step-no">2</div>
+            <h3>Enter Details</h3>
+            <p>Provide your name, phone number and email.</p>
           </article>
 
-
           <article class="step-card">
-
-            <div class="step-number">
-              3
-            </div>
-
-            <h3>
-              Pay JazzCash
-            </h3>
-
-            <p>
-              Scan the JazzCash/Raast QR or use the payment details.
-            </p>
-
+            <div class="step-no">3</div>
+            <h3>Pay by QR</h3>
+            <p>Scan the JazzCash / Raast QR or use the merchant TILL ID.</p>
           </article>
 
-
           <article class="step-card">
-
-            <div class="step-number">
-              4
-            </div>
-
-            <h3>
-              Contact Us
-            </h3>
-
-            <p>
-              Send your order number and payment screenshot on Instagram.
-            </p>
-
+            <div class="step-no">4</div>
+            <h3>Send Payment Proof</h3>
+            <p>Contact us on Instagram with your order number and screenshot.</p>
           </article>
-
         </div>
-
       </div>
-
     </section>
 
-
-    <!-- COMPATIBILITY -->
-
-    <section
-      class="section"
-      id="compatibility"
-    >
-
+    <section class="section" id="compatibility">
       <div class="container">
-
-        <div class="compatibility-box">
-
+        <div class="compat-box">
           <div>
-
-            <div
-              class="eyebrow"
-              style="color:#80aaff;"
-            >
-              Before You Buy
-            </div>
-
-            <h2>
-              Check Your Phone Compatibility
-            </h2>
+            <div class="eyebrow" style="color:#8db0ff;">Before You Buy</div>
+            <h2>Check Your Device Compatibility</h2>
 
             <ul>
-
-              <li>
-                Your phone must support eSIM.
-              </li>
-
-              <li>
-                Your phone must be factory unlocked.
-              </li>
-
-              <li>
-                Not compatible with JV phones.
-              </li>
-
-              <li>
-                Not compatible with SIM-restricted phones.
-              </li>
-
-              <li>
-                Packages are for data only.
-              </li>
-
-              <li>
-                No standard calls or SMS are included.
-              </li>
-
+              <li>Your device must support eSIM.</li>
+              <li>Your device must be factory unlocked.</li>
+              <li>Not compatible with JV phones.</li>
+              <li>Not compatible with SIM-restricted phones.</li>
+              <li>This service is for data only.</li>
+              <li>No standard calls or SMS are included.</li>
             </ul>
-
           </div>
 
-
           <div class="help-card">
-
-            <h3>
-              Not sure about your phone?
-            </h3>
-
+            <h3>Not sure about your phone?</h3>
             <p>
-              Message us on Instagram with your phone model before
-              making payment.
+              Message us on Instagram with your phone model before making payment.
             </p>
 
             <a
@@ -1335,503 +1110,177 @@
             >
               Ask on Instagram
             </a>
-
           </div>
-
         </div>
-
       </div>
-
     </section>
 
-
-    <!-- FAQ -->
-
-    <section
-      class="section section-light"
-      id="faq"
-    >
-
+    <section class="section section-light" id="faq">
       <div class="container">
-
-        <div class="section-heading">
-
-          <div class="eyebrow">
-            FAQ
-          </div>
-
-          <h2>
-            Common Questions
-          </h2>
-
+        <div class="section-title">
+          <div class="eyebrow">FAQ</div>
+          <h2>Common Questions</h2>
         </div>
-
 
         <div class="faq">
-
           <details>
-
-            <summary>
-              Is this a physical SIM?
-            </summary>
-
-            <p>
-              No. This is a digital eSIM and requires an
-              eSIM-compatible phone.
-            </p>
-
+            <summary>Is this a physical SIM?</summary>
+            <p>No. This is a digital eSIM service for compatible phones.</p>
           </details>
 
-
           <details>
-
-            <summary>
-              Does it work on JV phones?
-            </summary>
-
-            <p>
-              No. The phone should be factory unlocked and compatible
-              with eSIM.
-            </p>
-
+            <summary>Does it work on JV phones?</summary>
+            <p>No. Your phone must be eSIM-compatible and factory unlocked.</p>
           </details>
 
-
           <details>
-
-            <summary>
-              Are calls or SMS included?
-            </summary>
-
-            <p>
-              No. These packages are for mobile data only.
-            </p>
-
+            <summary>Are calls or SMS included?</summary>
+            <p>No. These are data-only packages.</p>
           </details>
 
-
           <details>
-
-            <summary>
-              How do I pay?
-            </summary>
-
+            <summary>How do I pay?</summary>
             <p>
-              Choose a package and the checkout will display the
-              JazzCash/Raast QR code, TILL ID and JazzCash account
-              details.
+              Choose a package and pay using the JazzCash / Raast QR code
+              or the merchant TILL ID shown in checkout.
             </p>
-
           </details>
 
-
           <details>
-
-            <summary>
-              What happens after payment?
-            </summary>
-
+            <summary>What happens after payment?</summary>
             <p>
-              Copy your generated order message and send it with your
-              payment screenshot to @esimsolutions.pk on Instagram.
+              After payment, copy your order message and send it with your payment screenshot
+              to <strong>@esimsolutions.pk</strong>.
             </p>
-
           </details>
-
         </div>
-
       </div>
-
     </section>
 
   </main>
 
-
-  <!-- FOOTER -->
-
   <footer>
-
     <div class="container">
-
       <div class="footer-grid">
-
         <div>
-
-          <h3>
-            eSIM Solutions Pakistan
-          </h3>
-
-          <p style="color:#aeb9c9;margin-top:8px;">
-            Fast • Stable • Reliable
-          </p>
-
+          <h3>eSIM Solutions Pakistan</h3>
+          <p style="color:#afbacb; margin-top:8px;">Fast • Stable • Reliable</p>
         </div>
-
 
         <div class="footer-links">
-
-          <a href="#packages">
-            Packages
-          </a>
-
-          <a href="#compatibility">
-            Compatibility
-          </a>
-
-          <a
-            href="https://www.instagram.com/esimsolutions.pk/"
-            target="_blank"
-            rel="noopener"
-          >
-            Instagram
-          </a>
-
+          <a href="#packages">Packages</a>
+          <a href="#compatibility">Compatibility</a>
+          <a href="https://www.instagram.com/esimsolutions.pk/" target="_blank" rel="noopener">Instagram</a>
         </div>
-
       </div>
-
 
       <div class="copyright">
-
-        ©
-        <span id="year"></span>
-        eSIM Solutions Pakistan.
-        All rights reserved.
-
+        © <span id="year"></span> eSIM Solutions Pakistan. All rights reserved.
       </div>
-
     </div>
-
   </footer>
 
-
   <!-- CHECKOUT MODAL -->
-
-  <div
-    class="modal"
-    id="checkoutModal"
-  >
-
+  <div class="modal" id="checkoutModal">
     <div class="checkout">
 
-      <button
-        class="close-button"
-        type="button"
-        onclick="closeCheckout()"
-        aria-label="Close checkout"
-      >
-        ×
-      </button>
-
+      <button class="close-modal" type="button" onclick="closeCheckout()">×</button>
 
       <div class="checkout-progress">
-
-        <div
-          class="progress-dot active"
-          id="progress1"
-        >
-          1
-        </div>
-
+        <div class="progress-dot active" id="progress1">1</div>
         <div class="progress-line"></div>
-
-        <div
-          class="progress-dot"
-          id="progress2"
-        >
-          2
-        </div>
-
+        <div class="progress-dot" id="progress2">2</div>
         <div class="progress-line"></div>
-
-        <div
-          class="progress-dot"
-          id="progress3"
-        >
-          3
-        </div>
-
+        <div class="progress-dot" id="progress3">3</div>
       </div>
 
-
       <!-- STEP 1 -->
+      <section class="checkout-step active" id="step1">
+        <div class="eyebrow">Checkout</div>
+        <h2>Your Order</h2>
 
-      <section
-        class="checkout-step active"
-        id="step1"
-      >
-
-        <div class="eyebrow">
-          Checkout
+        <div class="summary-box">
+          <div class="summary-row">
+            <span>Package</span>
+            <strong id="selectedPackage">-</strong>
+          </div>
+          <div class="summary-row">
+            <span>Validity</span>
+            <strong id="selectedValidity">-</strong>
+          </div>
+          <div class="summary-row">
+            <span>Total</span>
+            <strong id="selectedPrice">-</strong>
+          </div>
         </div>
-
-        <h2>
-          Your Order
-        </h2>
-
-
-        <div class="order-summary">
-
-          <div class="summary-row">
-
-            <span>
-              Package
-            </span>
-
-            <strong id="selectedPackage">
-              -
-            </strong>
-
-          </div>
-
-
-          <div class="summary-row">
-
-            <span>
-              Validity
-            </span>
-
-            <strong id="selectedValidity">
-              -
-            </strong>
-
-          </div>
-
-
-          <div class="summary-row">
-
-            <span>
-              Total
-            </span>
-
-            <strong id="selectedPrice">
-              -
-            </strong>
-
-          </div>
-
-        </div>
-
 
         <form id="checkoutForm">
-
           <div class="form-group">
-
-            <label for="customerName">
-              Full Name
-            </label>
-
-            <input
-              id="customerName"
-              type="text"
-              required
-              autocomplete="name"
-              placeholder="Your full name"
-            >
-
+            <label for="customerName">Full Name</label>
+            <input id="customerName" type="text" required placeholder="Your full name" autocomplete="name" />
           </div>
 
-
           <div class="form-group">
-
-            <label for="customerPhone">
-              Phone Number
-            </label>
-
-            <input
-              id="customerPhone"
-              type="tel"
-              required
-              autocomplete="tel"
-              placeholder="03XX XXXXXXX"
-            >
-
+            <label for="customerPhone">Phone Number</label>
+            <input id="customerPhone" type="tel" required placeholder="03XX XXXXXXX" autocomplete="tel" />
           </div>
 
-
           <div class="form-group">
-
-            <label for="customerEmail">
-              Email
-            </label>
-
-            <input
-              id="customerEmail"
-              type="email"
-              required
-              autocomplete="email"
-              placeholder="you@example.com"
-            >
-
+            <label for="customerEmail">Email</label>
+            <input id="customerEmail" type="email" required placeholder="you@example.com" autocomplete="email" />
           </div>
 
-
           <div class="form-group">
-
-            <label for="customerInstagram">
-              Instagram Username (Optional)
-            </label>
-
-            <input
-              id="customerInstagram"
-              type="text"
-              placeholder="@username"
-            >
-
+            <label for="customerInstagram">Instagram Username (Optional)</label>
+            <input id="customerInstagram" type="text" placeholder="@username" />
           </div>
-
 
           <label class="checkbox-row">
-
-            <input
-              id="compatibilityConfirm"
-              type="checkbox"
-              required
-            >
-
+            <input type="checkbox" required />
             <span>
-              I confirm that my phone supports eSIM and is
-              factory unlocked.
+              I confirm that my phone supports eSIM and is factory unlocked.
             </span>
-
           </label>
 
-
-          <button
-            class="btn btn-primary btn-full"
-            type="submit"
-          >
-            Continue to JazzCash Payment
+          <button class="btn btn-primary btn-full" type="submit">
+            Continue to Payment
           </button>
-
         </form>
-
       </section>
 
-
       <!-- STEP 2 -->
-
-      <section
-        class="checkout-step"
-        id="step2"
-      >
-
-        <div class="eyebrow">
-          JazzCash / Raast Payment
-        </div>
-
-        <h2>
-          Pay
-          <span id="paymentAmount">
-            Rs. 0
-          </span>
-        </h2>
-
-        <p class="payment-heading">
-          Scan the QR code or use the payment information below.
+      <section class="checkout-step" id="step2">
+        <div class="eyebrow">JazzCash / Raast Payment</div>
+        <h2>Pay <span id="paymentAmount">Rs. 0</span></h2>
+        <p class="checkout-text">
+          Scan the QR code or pay using the merchant TILL ID below.
         </p>
 
-
         <div class="payment-grid">
+          <div class="qr-card">
+            <div class="qr-label">JazzCash / Raast QR</div>
 
-
-          <!-- EMBEDDED PAYMENT QR -->
-
-          <div class="qr-area">
-
-            <div class="merchant">
-              JazzCash / Raast
+            <div class="qr-wrap">
+              <canvas id="paymentQr" width="610" height="610"></canvas>
             </div>
 
-            <div class="qr-canvas-wrap">
-
-              <canvas
-                id="paymentQr"
-                width="610"
-                height="610"
-                aria-label="JazzCash Raast QR Code"
-              ></canvas>
-
-            </div>
-
-            <div class="till-label">
-              TILL ID
-            </div>
-
-            <div class="till-number">
-              983606109
-            </div>
-
+            <div class="till-text">TILL ID</div>
+            <div class="till-number">983606109</div>
           </div>
 
-
-          <div class="payment-details">
-
-
+          <div>
             <div class="payment-detail">
-
-              <span>
-                Merchant
-              </span>
-
-              <strong>
-                MOHAMMAD Shop
-              </strong>
-
+              <span>Merchant Name</span>
+              <strong>MOHAMMAD Shop</strong>
             </div>
 
-
             <div class="payment-detail">
-
-              <span>
-                Account Title
-              </span>
-
-              <strong>
-                Mohammad Yasin
-              </strong>
-
+              <span>TILL ID</span>
+              <strong>983606109</strong>
             </div>
-
-
-            <div class="payment-detail">
-
-              <span>
-                JazzCash Number
-              </span>
-
-              <strong>
-                0318 7151102
-              </strong>
-
-            </div>
-
 
             <button
-              class="btn btn-secondary btn-full"
-              type="button"
-              id="copyNumberButton"
-              onclick="copyJazzCashNumber()"
-            >
-              Copy JazzCash Number
-            </button>
-
-
-            <div class="payment-detail">
-
-              <span>
-                TILL ID
-              </span>
-
-              <strong>
-                983606109
-              </strong>
-
-            </div>
-
-
-            <button
-              class="btn btn-secondary btn-full"
+              class="btn btn-soft btn-full"
               type="button"
               id="copyTillButton"
               onclick="copyTillId()"
@@ -1839,858 +1288,245 @@
               Copy TILL ID
             </button>
 
-
-            <div class="payment-detail">
-
-              <span>
-                Order Number
-              </span>
-
-              <strong id="paymentOrderNumber">
-                -
-              </strong>
-
+            <div class="payment-detail" style="margin-top:10px;">
+              <span>Order Number</span>
+              <strong id="paymentOrderNumber">-</strong>
             </div>
-
           </div>
-
         </div>
-
 
         <div class="payment-note">
-
-          <strong>Important:</strong>
-          Send the exact amount shown above. After payment,
-          press <strong>I Have Paid</strong>. You will then receive
-          an order message to send to us on Instagram together with
-          your payment screenshot.
-
+          <strong>Important:</strong> After making payment, click
+          <strong>I Have Paid</strong> and send your payment screenshot
+          with your order number on Instagram.
         </div>
 
-
-        <button
-          class="btn btn-primary btn-full"
-          type="button"
-          onclick="paymentCompleted()"
-        >
+        <button class="btn btn-primary btn-full" type="button" onclick="paymentCompleted()">
           I Have Paid
         </button>
 
-
         <p class="small-note">
-          Clicking this button does not automatically verify the
-          payment. Payment is confirmed manually after you send
-          proof on Instagram.
+          Payment is verified manually after you send proof on Instagram.
         </p>
-
       </section>
 
-
       <!-- STEP 3 -->
+      <section class="checkout-step success-step" id="step3">
+        <div class="success-icon">✓</div>
+        <div class="eyebrow">Order Created</div>
+        <h2>Send Payment Proof</h2>
 
-      <section
-        class="checkout-step success"
-        id="step3"
-      >
+        <p>Your order number:</p>
+        <div id="finalOrderNumber" style="font-size:25px; font-weight:900; margin-top:6px;">-</div>
 
-        <div class="success-icon">
-          ✓
-        </div>
+        <div class="order-card" id="finalOrderSummary"></div>
 
-        <div class="eyebrow">
-          Order Created
-        </div>
-
-        <h2>
-          Send Your Payment Proof
-        </h2>
-
-        <p>
-          Your order number:
-        </p>
-
-        <div
-          id="finalOrderNumber"
-          style="
-            font-size:25px;
-            font-weight:900;
-            margin-top:5px;
-          "
-        >
-          -
-        </div>
-
-
-        <div
-          class="order-message"
-          id="finalOrderSummary"
-        ></div>
-
-
-        <button
-          class="btn btn-secondary btn-full"
-          id="copyOrderButton"
-          type="button"
-          onclick="copyOrderMessage()"
-        >
+        <button class="btn btn-soft btn-full" type="button" id="copyOrderButton" onclick="copyOrderMessage()">
           Copy Order Message
         </button>
-
 
         <a
           class="btn btn-primary btn-full"
           href="https://www.instagram.com/esimsolutions.pk/"
           target="_blank"
           rel="noopener"
+          style="margin-top:10px;"
         >
-          Open @esimsolutions.pk
+          Open Instagram
         </a>
 
-
-        <button
-          class="btn btn-light btn-full"
-          type="button"
-          onclick="newOrder()"
-        >
+        <button class="btn btn-white btn-full" type="button" onclick="newOrder()" style="margin-top:10px;">
           Buy Another Package
         </button>
-
       </section>
 
     </div>
-
   </div>
 
-
   <script>
-
-    /* ==========================================
-       BUSINESS SETTINGS
-    ========================================== */
-
     const INSTAGRAM_USERNAME = "esimsolutions.pk";
-
-    const JAZZCASH_NUMBER = "03187151102";
-
-    const JAZZCASH_DISPLAY_NUMBER = "0318 7151102";
-
-    const JAZZCASH_ACCOUNT_TITLE = "Mohammad Yasin";
-
     const MERCHANT_NAME = "MOHAMMAD Shop";
-
     const TILL_ID = "983606109";
 
-
-    /* ==========================================
-       PACKAGE LIST
-    ========================================== */
-
     const PACKAGES = {
-
       nonExpiry: [
-
-        {
-          id: "NE-3",
-          data: "3 GB",
-          validity: "Non-Expiry",
-          price: 1200
-        },
-
-        {
-          id: "NE-5",
-          data: "5 GB",
-          validity: "Non-Expiry",
-          price: 1490
-        },
-
-        {
-          id: "NE-10",
-          data: "10 GB",
-          validity: "Non-Expiry",
-          price: 2250,
-          popular: true
-        },
-
-        {
-          id: "NE-20",
-          data: "20 GB",
-          validity: "Non-Expiry",
-          price: 3599
-        },
-
-        {
-          id: "NE-50",
-          data: "50 GB",
-          validity: "Non-Expiry",
-          price: 6999
-        },
-
-        {
-          id: "NE-100",
-          data: "100 GB",
-          validity: "Non-Expiry",
-          price: 11000
-        }
-
+        { id: "NE-3", data: "3 GB", validity: "Non-Expiry", price: 1200 },
+        { id: "NE-5", data: "5 GB", validity: "Non-Expiry", price: 1490 },
+        { id: "NE-10", data: "10 GB", validity: "Non-Expiry", price: 2250, featured: true },
+        { id: "NE-20", data: "20 GB", validity: "Non-Expiry", price: 3599 },
+        { id: "NE-50", data: "50 GB", validity: "Non-Expiry", price: 6999 },
+        { id: "NE-100", data: "100 GB", validity: "Non-Expiry", price: 11000 }
       ],
-
-
       thirtyDays: [
-
-        {
-          id: "30-1",
-          data: "1 GB",
-          validity: "30 Days",
-          price: 650
-        },
-
-        {
-          id: "30-3",
-          data: "3 GB",
-          validity: "30 Days",
-          price: 850
-        },
-
-        {
-          id: "30-5",
-          data: "5 GB",
-          validity: "30 Days",
-          price: 1150,
-          popular: true
-        },
-
-        {
-          id: "30-10",
-          data: "10 GB",
-          validity: "30 Days",
-          price: 1750
-        },
-
-        {
-          id: "30-20",
-          data: "20 GB",
-          validity: "30 Days",
-          price: 2750
-        }
-
+        { id: "30-1", data: "1 GB", validity: "30 Days", price: 650 },
+        { id: "30-3", data: "3 GB", validity: "30 Days", price: 850 },
+        { id: "30-5", data: "5 GB", validity: "30 Days", price: 1150, featured: true },
+        { id: "30-10", data: "10 GB", validity: "30 Days", price: 1750 },
+        { id: "30-20", data: "20 GB", validity: "30 Days", price: 2750 }
       ]
-
     };
 
-
-    /* ==========================================
-       VARIABLES
-    ========================================== */
-
     let activeCategory = "nonExpiry";
-
     let selectedPlan = null;
-
     let currentOrder = null;
 
-
-    /* ==========================================
-       FORMAT PRICE
-    ========================================== */
-
     function formatPrice(price) {
-
-      return "Rs. " +
-        Number(price).toLocaleString("en-PK");
-
+      return "Rs. " + Number(price).toLocaleString("en-PK");
     }
-
-
-    /* ==========================================
-       DISPLAY PACKAGES
-    ========================================== */
 
     function displayPackages() {
-
-      const grid =
-        document.getElementById("packageGrid");
-
+      const grid = document.getElementById("packageGrid");
       grid.innerHTML = "";
 
-
       PACKAGES[activeCategory].forEach(plan => {
-
-        const card =
-          document.createElement("article");
-
-
-        card.className =
-          "package-card" +
-          (plan.popular ? " popular" : "");
-
+        const card = document.createElement("article");
+        card.className = "package-card" + (plan.featured ? " featured" : "");
 
         card.innerHTML = `
-
-          ${
-            plan.popular
-              ? '<div class="popular">POPULAR</div>'
-              : ""
-          }
-
-          <div class="package-category">
-            ${plan.validity.toUpperCase()}
-          </div>
-
-          <div class="package-data">
-            ${plan.data}
-          </div>
-
+          ${plan.featured ? '<div class="package-pill">POPULAR</div>' : ""}
+          <div class="package-type">${plan.validity.toUpperCase()}</div>
+          <div class="package-data">${plan.data}</div>
           <div class="package-validity">
-            ${
-              plan.validity === "Non-Expiry"
-                ? "Non-expiry data package"
-                : "Valid for 30 days"
-            }
+            ${plan.validity === "Non-Expiry" ? "Non-expiry data package" : "Valid for 30 days"}
           </div>
-
           <div class="package-price">
-
-            <small>PKR</small>
-
-            ${Number(plan.price).toLocaleString("en-PK")}
-
+            <small>PKR</small>${Number(plan.price).toLocaleString("en-PK")}
           </div>
-
-          <button
-            class="btn btn-primary btn-full"
-            type="button"
-            onclick="startCheckout('${plan.id}')"
-          >
+          <button class="btn btn-primary btn-full" type="button" onclick="startCheckout('${plan.id}')">
             Buy Now
           </button>
-
         `;
 
-
         grid.appendChild(card);
-
       });
-
     }
 
-
-    /* ==========================================
-       PACKAGE CATEGORY TABS
-    ========================================== */
-
-    document
-      .querySelectorAll(".tab")
-      .forEach(tab => {
-
-        tab.addEventListener(
-          "click",
-          function() {
-
-            document
-              .querySelectorAll(".tab")
-              .forEach(item => {
-                item.classList.remove("active");
-              });
-
-
-            this.classList.add("active");
-
-
-            activeCategory =
-              this.dataset.category;
-
-
-            displayPackages();
-
-          }
-        );
-
+    document.querySelectorAll(".tab").forEach(tab => {
+      tab.addEventListener("click", function() {
+        document.querySelectorAll(".tab").forEach(btn => btn.classList.remove("active"));
+        this.classList.add("active");
+        activeCategory = this.dataset.category;
+        displayPackages();
       });
-
-
-    /* ==========================================
-       FIND PACKAGE
-    ========================================== */
+    });
 
     function findPackage(id) {
-
-      const allPackages = [
-
-        ...PACKAGES.nonExpiry,
-
-        ...PACKAGES.thirtyDays
-
-      ];
-
-
-      return allPackages.find(
-        item => item.id === id
-      );
-
+      return [...PACKAGES.nonExpiry, ...PACKAGES.thirtyDays].find(item => item.id === id);
     }
-
-
-    /* ==========================================
-       START CHECKOUT
-    ========================================== */
 
     function startCheckout(id) {
-
-      selectedPlan =
-        findPackage(id);
-
-
-      if (!selectedPlan) {
-        return;
-      }
-
-
+      selectedPlan = findPackage(id);
       currentOrder = null;
 
-
-      document.getElementById(
-        "selectedPackage"
-      ).textContent =
-        selectedPlan.data;
-
-
-      document.getElementById(
-        "selectedValidity"
-      ).textContent =
-        selectedPlan.validity;
-
-
-      document.getElementById(
-        "selectedPrice"
-      ).textContent =
-        formatPrice(selectedPlan.price);
-
-
-      document.getElementById(
-        "checkoutForm"
-      ).reset();
-
+      document.getElementById("selectedPackage").textContent = selectedPlan.data;
+      document.getElementById("selectedValidity").textContent = selectedPlan.validity;
+      document.getElementById("selectedPrice").textContent = formatPrice(selectedPlan.price);
+      document.getElementById("checkoutForm").reset();
 
       showStep(1);
-
-
-      document.getElementById(
-        "checkoutModal"
-      ).classList.add("show");
-
-
-      document.body.classList.add(
-        "modal-open"
-      );
-
+      document.getElementById("checkoutModal").classList.add("show");
+      document.body.classList.add("modal-open");
     }
-
-
-    /* ==========================================
-       CLOSE CHECKOUT
-    ========================================== */
 
     function closeCheckout() {
-
-      document.getElementById(
-        "checkoutModal"
-      ).classList.remove("show");
-
-
-      document.body.classList.remove(
-        "modal-open"
-      );
-
+      document.getElementById("checkoutModal").classList.remove("show");
+      document.body.classList.remove("modal-open");
     }
 
+    function showStep(stepNumber) {
+      document.querySelectorAll(".checkout-step").forEach(step => step.classList.remove("active"));
+      document.getElementById("step" + stepNumber).classList.add("active");
 
-    /* ==========================================
-       CHECKOUT STEPS
-    ========================================== */
-
-    function showStep(number) {
-
-      document
-        .querySelectorAll(".checkout-step")
-        .forEach(step => {
-
-          step.classList.remove("active");
-
-        });
-
-
-      document.getElementById(
-        "step" + number
-      ).classList.add("active");
-
-
-      for (
-        let i = 1;
-        i <= 3;
-        i++
-      ) {
-
-        const progress =
-          document.getElementById(
-            "progress" + i
-          );
-
-
-        if (i <= number) {
-
-          progress.classList.add(
-            "active"
-          );
-
+      for (let i = 1; i <= 3; i++) {
+        const dot = document.getElementById("progress" + i);
+        if (i <= stepNumber) {
+          dot.classList.add("active");
         } else {
-
-          progress.classList.remove(
-            "active"
-          );
-
+          dot.classList.remove("active");
         }
-
       }
-
     }
-
-
-    /* ==========================================
-       ORDER NUMBER
-    ========================================== */
 
     function generateOrderNumber() {
-
-      const now =
-        new Date();
-
-
-      const year =
-        String(
-          now.getFullYear()
-        ).slice(-2);
-
-
-      const month =
-        String(
-          now.getMonth() + 1
-        ).padStart(2, "0");
-
-
-      const day =
-        String(
-          now.getDate()
-        ).padStart(2, "0");
-
-
-      const random =
-        Math.floor(
-          1000 +
-          Math.random() * 9000
-        );
-
-
-      return `ESIM-${year}${month}${day}-${random}`;
-
+      const now = new Date();
+      const y = String(now.getFullYear()).slice(-2);
+      const m = String(now.getMonth() + 1).padStart(2, "0");
+      const d = String(now.getDate()).padStart(2, "0");
+      const r = Math.floor(1000 + Math.random() * 9000);
+      return `ESIM-${y}${m}${d}-${r}`;
     }
 
+    document.getElementById("checkoutForm").addEventListener("submit", function(event) {
+      event.preventDefault();
 
-    /* ==========================================
-       CUSTOMER DETAILS SUBMIT
-    ========================================== */
+      currentOrder = {
+        orderNumber: generateOrderNumber(),
+        package: selectedPlan,
+        customer: {
+          name: document.getElementById("customerName").value.trim(),
+          phone: document.getElementById("customerPhone").value.trim(),
+          email: document.getElementById("customerEmail").value.trim(),
+          instagram: document.getElementById("customerInstagram").value.trim()
+        },
+        createdAt: new Date().toISOString()
+      };
 
-    document
-      .getElementById("checkoutForm")
-      .addEventListener(
-        "submit",
-        function(event) {
-
-          event.preventDefault();
-
-
-          if (!selectedPlan) {
-            return;
-          }
-
-
-          currentOrder = {
-
-            orderNumber:
-              generateOrderNumber(),
-
-            package:
-              selectedPlan,
-
-            customer: {
-
-              name:
-                document
-                  .getElementById(
-                    "customerName"
-                  )
-                  .value
-                  .trim(),
-
-              phone:
-                document
-                  .getElementById(
-                    "customerPhone"
-                  )
-                  .value
-                  .trim(),
-
-              email:
-                document
-                  .getElementById(
-                    "customerEmail"
-                  )
-                  .value
-                  .trim(),
-
-              instagram:
-                document
-                  .getElementById(
-                    "customerInstagram"
-                  )
-                  .value
-                  .trim()
-
-            },
-
-            createdAt:
-              new Date().toISOString(),
-
-            status:
-              "Awaiting Payment Verification"
-
-          };
-
-
-          document.getElementById(
-            "paymentAmount"
-          ).textContent =
-            formatPrice(
-              selectedPlan.price
-            );
-
-
-          document.getElementById(
-            "paymentOrderNumber"
-          ).textContent =
-            currentOrder.orderNumber;
-
-
-          saveOrderToBrowser();
-
-
-          showStep(2);
-
-        }
-      );
-
-
-    /* ==========================================
-       STORE ORDER LOCALLY
-    ========================================== */
-
-    function saveOrderToBrowser() {
+      document.getElementById("paymentAmount").textContent = formatPrice(selectedPlan.price);
+      document.getElementById("paymentOrderNumber").textContent = currentOrder.orderNumber;
 
       try {
+        const orders = JSON.parse(localStorage.getItem("esimOrders") || "[]");
+        orders.push(currentOrder);
+        localStorage.setItem("esimOrders", JSON.stringify(orders.slice(-50)));
+      } catch (e) {}
 
-        const orders =
-          JSON.parse(
-            localStorage.getItem(
-              "esimOrders"
-            ) || "[]"
-          );
+      showStep(2);
+    });
 
-
-        orders.push(
-          currentOrder
-        );
-
-
-        localStorage.setItem(
-          "esimOrders",
-          JSON.stringify(
-            orders.slice(-50)
-          )
-        );
-
-      } catch (error) {
-
-        console.log(
-          "Could not save local order",
-          error
-        );
-
-      }
-
-    }
-
-
-    /* ==========================================
-       COPY TEXT
-    ========================================== */
-
-    async function copyText(
-      text,
-      button,
-      successText
-    ) {
-
+    async function copyText(text, button, successText) {
       try {
-
-        await navigator.clipboard
-          .writeText(text);
-
-
-        const oldText =
-          button.textContent;
-
-
-        button.textContent =
-          successText;
-
-
-        setTimeout(
-          () => {
-
-            button.textContent =
-              oldText;
-
-          },
-          1500
-        );
-
-
+        await navigator.clipboard.writeText(text);
+        const old = button.textContent;
+        button.textContent = successText;
+        setTimeout(() => button.textContent = old, 1500);
       } catch (error) {
-
-        window.prompt(
-          "Copy this:",
-          text
-        );
-
+        window.prompt("Copy this:", text);
       }
-
     }
-
-
-    function copyJazzCashNumber() {
-
-      const button =
-        document.getElementById(
-          "copyNumberButton"
-        );
-
-
-      copyText(
-        JAZZCASH_NUMBER,
-        button,
-        "Number Copied!"
-      );
-
-    }
-
 
     function copyTillId() {
-
-      const button =
-        document.getElementById(
-          "copyTillButton"
-        );
-
-
-      copyText(
-        TILL_ID,
-        button,
-        "TILL ID Copied!"
-      );
-
+      const button = document.getElementById("copyTillButton");
+      copyText(TILL_ID, button, "TILL ID Copied!");
     }
-
-
-    /* ==========================================
-       PAYMENT COMPLETED
-    ========================================== */
 
     function paymentCompleted() {
+      if (!currentOrder) return;
 
-      if (!currentOrder) {
-        return;
-      }
+      document.getElementById("finalOrderNumber").textContent = currentOrder.orderNumber;
 
-
-      document.getElementById(
-        "finalOrderNumber"
-      ).textContent =
-        currentOrder.orderNumber;
-
-
-      document.getElementById(
-        "finalOrderSummary"
-      ).innerHTML = `
-
-        <strong>
-          ${escapeHtml(
-            currentOrder.package.data
-          )}
-          —
-          ${escapeHtml(
-            currentOrder.package.validity
-          )}
-        </strong>
-
+      document.getElementById("finalOrderSummary").innerHTML = `
+        <strong>${escapeHtml(currentOrder.package.data)} — ${escapeHtml(currentOrder.package.validity)}</strong>
         <br><br>
-
-        Amount:
-        <strong>
-          ${formatPrice(
-            currentOrder.package.price
-          )}
-        </strong>
-
+        Amount: <strong>${formatPrice(currentOrder.package.price)}</strong>
         <br>
-
-        Customer:
-        ${escapeHtml(
-          currentOrder.customer.name
-        )}
-
+        Customer: ${escapeHtml(currentOrder.customer.name)}
         <br>
-
-        Phone:
-        ${escapeHtml(
-          currentOrder.customer.phone
-        )}
-
+        Phone: ${escapeHtml(currentOrder.customer.phone)}
         <br>
-
-        Payment:
-        JazzCash / Raast
-
+        Merchant: ${MERCHANT_NAME}
+        <br>
+        TILL ID: ${TILL_ID}
       `;
 
-
       showStep(3);
-
     }
 
-
-    /* ==========================================
-       CREATE INSTAGRAM ORDER MESSAGE
-    ========================================== */
-
     function createOrderMessage() {
-
-      if (!currentOrder) {
-        return "";
-      }
-
+      if (!currentOrder) return "";
 
       let message = `Assalam-o-Alaikum,
 
-I have submitted payment for an eSIM order.
+I have made payment for an eSIM order.
 
 Order Number: ${currentOrder.orderNumber}
 Package: ${currentOrder.package.data}
@@ -2701,309 +1537,95 @@ Name: ${currentOrder.customer.name}
 Phone: ${currentOrder.customer.phone}
 Email: ${currentOrder.customer.email}`;
 
-
-      if (
-        currentOrder.customer.instagram
-      ) {
-
+      if (currentOrder.customer.instagram) {
         message += `
 
 Instagram: ${currentOrder.customer.instagram}`;
-
       }
-
 
       message += `
 
 Payment Method: JazzCash / Raast
-Merchant: ${MERCHANT_NAME}
+Merchant Name: ${MERCHANT_NAME}
 TILL ID: ${TILL_ID}
 
-I will attach my payment screenshot for verification.`;
-
+I am attaching my payment screenshot for verification.`;
 
       return message;
-
     }
-
-
-    /* ==========================================
-       COPY ORDER MESSAGE
-    ========================================== */
 
     function copyOrderMessage() {
-
-      if (!currentOrder) {
-        return;
-      }
-
-
-      const button =
-        document.getElementById(
-          "copyOrderButton"
-        );
-
-
-      copyText(
-        createOrderMessage(),
-        button,
-        "Order Message Copied!"
-      );
-
+      const button = document.getElementById("copyOrderButton");
+      copyText(createOrderMessage(), button, "Order Message Copied!");
     }
-
-
-    /* ==========================================
-       NEW ORDER
-    ========================================== */
 
     function newOrder() {
-
       closeCheckout();
-
-
-      setTimeout(
-        () => {
-
-          document
-            .getElementById("packages")
-            .scrollIntoView({
-              behavior: "smooth"
-            });
-
-        },
-        150
-      );
-
+      setTimeout(() => {
+        document.getElementById("packages").scrollIntoView({ behavior: "smooth" });
+      }, 150);
     }
-
-
-    /* ==========================================
-       ESCAPE USER INPUT
-    ========================================== */
 
     function escapeHtml(value) {
-
-      const div =
-        document.createElement("div");
-
-
-      div.textContent =
-        String(value);
-
-
+      const div = document.createElement("div");
+      div.textContent = String(value);
       return div.innerHTML;
-
     }
 
+    document.getElementById("checkoutModal").addEventListener("click", function(event) {
+      if (event.target === this) closeCheckout();
+    });
 
-    /* ==========================================
-       EMBEDDED JAZZCASH / RAAST QR
-       
-       This matrix was generated from the
-       QR code you supplied.
-    ========================================== */
+    document.addEventListener("keydown", function(event) {
+      if (event.key === "Escape") closeCheckout();
+    });
 
+    document.getElementById("year").textContent = new Date().getFullYear();
+
+    /* QR MATRIX */
     const QR_SIZE = 61;
-
     const QR_BINARY =
       "AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAP5VVhs+o/gEFAfxHCGQQC6ssl1C1LoBdcliXeRV0Auhx4+yHi6AQTxgRcqRBAP6qqqqqq/gABWaceUdAACCsgf+AC5wAsy4gFwwJkAVwPaUHgpkACJ1rVqELUAIatK+2y/3gFoZWIJtIsADXkVeyY2xYBWvCrcE0AAA/mW0ixN0KAelOsak+1NAEOCf88/3vgA5W9kO/NmABvk12aUteIB+Adef5hcEAS6039dCmEAbOL+Si0QSAJ+MEvqez7gHRackaOVEAD6pQipyGr4BEZ1BEQzxUAT4b7+c0/uAUqQsQ0FR8ADan2OxI3vACIkAuFhDAwB7LZWWrSVAAG0PS51mlcAzypx92MgEAJoT87j48LAC9gztfVWbgEjr0Mk0DnABCRmrrSQqAAmpEhMpXeQAxmzSjNUYqAbllQQwQgMAN5It63z7cADBpeLIHDJQASd3v4VO+IAAajxFEgx8A/m0Mq/QqkAQTXSxpZkSALp+Dv/tj/AF0nOgqSxpAC6HJUoWCYQBBA4tmdIEMA/qkxSW0lUAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==";
 
-
     function drawPaymentQr() {
+      const canvas = document.getElementById("paymentQr");
+      const ctx = canvas.getContext("2d");
+      const binary = atob(QR_BINARY);
+      const bytes = new Uint8Array(binary.length);
 
-      const canvas =
-        document.getElementById(
-          "paymentQr"
-        );
-
-
-      if (!canvas) {
-        return;
+      for (let i = 0; i < binary.length; i++) {
+        bytes[i] = binary.charCodeAt(i);
       }
 
+      const moduleSize = canvas.width / QR_SIZE;
+      ctx.imageSmoothingEnabled = false;
+      ctx.fillStyle = "#fff";
+      ctx.fillRect(0, 0, canvas.width, canvas.height);
+      ctx.fillStyle = "#000";
 
-      const context =
-        canvas.getContext("2d");
+      const totalBits = QR_SIZE * QR_SIZE;
 
-
-      const binaryString =
-        atob(QR_BINARY);
-
-
-      const bytes =
-        new Uint8Array(
-          binaryString.length
-        );
-
-
-      for (
-        let i = 0;
-        i < binaryString.length;
-        i++
-      ) {
-
-        bytes[i] =
-          binaryString.charCodeAt(i);
-
-      }
-
-
-      const moduleSize =
-        canvas.width / QR_SIZE;
-
-
-      context.imageSmoothingEnabled =
-        false;
-
-
-      context.fillStyle =
-        "#ffffff";
-
-
-      context.fillRect(
-        0,
-        0,
-        canvas.width,
-        canvas.height
-      );
-
-
-      context.fillStyle =
-        "#000000";
-
-
-      const totalBits =
-        QR_SIZE * QR_SIZE;
-
-
-      for (
-        let bitIndex = 0;
-        bitIndex < totalBits;
-        bitIndex++
-      ) {
-
-        const byteIndex =
-          Math.floor(
-            bitIndex / 8
-          );
-
-
-        const bitPosition =
-          7 -
-          (
-            bitIndex % 8
-          );
-
-
-        const bit =
-          (
-            bytes[byteIndex] >>
-            bitPosition
-          ) & 1;
-
+      for (let bitIndex = 0; bitIndex < totalBits; bitIndex++) {
+        const byteIndex = Math.floor(bitIndex / 8);
+        const bitPos = 7 - (bitIndex % 8);
+        const bit = (bytes[byteIndex] >> bitPos) & 1;
 
         if (bit === 1) {
+          const row = Math.floor(bitIndex / QR_SIZE);
+          const col = bitIndex % QR_SIZE;
 
-          const row =
-            Math.floor(
-              bitIndex / QR_SIZE
-            );
-
-
-          const column =
-            bitIndex % QR_SIZE;
-
-
-          context.fillRect(
-
-            Math.floor(
-              column * moduleSize
-            ),
-
-            Math.floor(
-              row * moduleSize
-            ),
-
-            Math.ceil(
-              moduleSize
-            ),
-
-            Math.ceil(
-              moduleSize
-            )
-
+          ctx.fillRect(
+            Math.floor(col * moduleSize),
+            Math.floor(row * moduleSize),
+            Math.ceil(moduleSize),
+            Math.ceil(moduleSize)
           );
-
         }
-
       }
-
     }
 
-
-    /* ==========================================
-       CLOSE MODAL WHEN BACKGROUND CLICKED
-    ========================================== */
-
-    document
-      .getElementById(
-        "checkoutModal"
-      )
-      .addEventListener(
-        "click",
-        function(event) {
-
-          if (
-            event.target === this
-          ) {
-
-            closeCheckout();
-
-          }
-
-        }
-      );
-
-
-    /* ==========================================
-       ESC KEY
-    ========================================== */
-
-    document.addEventListener(
-      "keydown",
-      function(event) {
-
-        if (
-          event.key === "Escape"
-        ) {
-
-          closeCheckout();
-
-        }
-
-      }
-    );
-
-
-    /* ==========================================
-       FOOTER YEAR
-    ========================================== */
-
-    document.getElementById(
-      "year"
-    ).textContent =
-      new Date().getFullYear();
-
-
-    /* ==========================================
-       START WEBSITE
-    ========================================== */
-
     displayPackages();
-
     drawPaymentQr();
-
   </script>
 
 </body>
